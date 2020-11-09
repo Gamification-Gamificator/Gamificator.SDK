@@ -1,0 +1,29 @@
+name: $(BuildVersion)$(rev:.r)
+
+trigger:
+  branches:
+    include:
+    - development
+  paths:
+    include:
+    - src/Gamification.Platform.Common.Display/*
+
+resources:
+  repositories:
+  - repository: 'Infrastructure'
+    type: git
+    name: 'Operations/Infrastructure'
+    ref: 'refs/heads/development'
+
+jobs:
+- job: BuildNETCoreWebApp
+  displayName: 'Build .NET Core Web App'
+  pool:
+    VmImage: 'windows-2019' 
+
+  steps:
+  - template: BuildPipelines\Templates\Steps-BuildWebAppNetCore.yml@Infrastructure
+    parameters:
+      BuildConfiguration: 'Release'
+      ProjectFolder: 'src/Gamification.Platform.Common.Display'
+      ArtifactName: 'GamificationPlatformCommonDisplay'
