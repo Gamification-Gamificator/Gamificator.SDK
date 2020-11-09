@@ -41,3 +41,4 @@ jobs:
       ProjectFolder: 'src/Gamification.Platform.Common.Display'
       ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
         BuildConfiguration: 'Debug'
+        ExternalNuget: true
