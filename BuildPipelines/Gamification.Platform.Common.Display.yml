@@ -1,9 +1,18 @@
-name: $(BuildVersion)$(rev:.r)
+name: "1.1.1"
+
+variables:
+  ${{ if startsWith(variables['Build.SourceBranchName'], 'release') }}:
+    buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
+    buildVersion: "$(ReleaseVersion).$(buildIncrement)"
+  ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
+    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]  
+    buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
 
 trigger:
   branches:
     include:
     - development
+    - release
   paths:
     include:
     - src/Gamification.Platform.Common.Display/*
@@ -16,14 +25,19 @@ resources:
     ref: 'refs/heads/development'
 
 jobs:
-- job: BuildNETCoreWebApp
-  displayName: 'Build .NET Core Web App'
+- job: BuildNETCore
+  displayName: 'Build and Push .NET Core Assemblies'
   pool:
-    VmImage: 'windows-2019' 
-
+    VmImage: 'windows-2019'  
+  
   steps:
-  - template: BuildPipelines\Templates\Steps-BuildWebAppNetCore.yml@Infrastructure
+
+  - powershell: |
+      Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
+    displayName: "Set Build Number"
+
+  - template: BuildPipelines\Templates\Steps-BuildAndPushNetCore.yml@Infrastructure
     parameters:
-      BuildConfiguration: 'Release'
       ProjectFolder: 'src/Gamification.Platform.Common.Display'
-      ArtifactName: 'GamificationPlatformCommonDisplay'
+      ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
+        BuildConfiguration: 'Debug'
