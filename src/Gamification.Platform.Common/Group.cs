@@ -1,0 +1,11 @@
+﻿using Newtonsoft.Json;
+using System;
+
+namespace Gamification.Platform.Common
+{
+    public class Group
+    {
+        [JsonProperty(PropertyName = "groupRefId")]
+        public Guid GroupRefId { get; set; } = Guid.NewGuid();
+    }
+}
