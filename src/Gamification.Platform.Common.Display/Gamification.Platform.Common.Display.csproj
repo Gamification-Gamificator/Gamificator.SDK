@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Michael C. Pinkus</Authors>
+    <Company>Lazlo 326</Company>
+    <Product>Gamificator</Product>
   </PropertyGroup>
 
   <ItemGroup>
