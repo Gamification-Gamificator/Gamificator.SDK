@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.Platform.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.Platform.Common.Extensions", "Gamification.Platform.Common.Extensions\Gamification.Platform.Common.Extensions.csproj", "{584D04BD-4260-412D-8D3D-107E70234B06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamification.Platform.Common.Tests", "Gamification.Platform.Common.Tests\Gamification.Platform.Common.Tests.csproj", "{06C8EAD9-7EF5-453C-8760-17497F424B08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{584D04BD-4260-412D-8D3D-107E70234B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{584D04BD-4260-412D-8D3D-107E70234B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{584D04BD-4260-412D-8D3D-107E70234B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C8EAD9-7EF5-453C-8760-17497F424B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C8EAD9-7EF5-453C-8760-17497F424B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C8EAD9-7EF5-453C-8760-17497F424B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C8EAD9-7EF5-453C-8760-17497F424B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
