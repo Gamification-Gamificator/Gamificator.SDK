@@ -5,6 +5,7 @@
     <Product>Gamificator</Product>
     <Company>Lazlo 326</Company>
     <Authors>Michael C. Pinkus</Authors>
+    <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
