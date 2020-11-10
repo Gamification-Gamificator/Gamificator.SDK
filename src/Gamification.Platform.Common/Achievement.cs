@@ -11,7 +11,10 @@ namespace Gamification.Platform.Common
     public class Achievement : AchievementCore
     {
         [JsonProperty(PropertyName = "achievementRefId")]
-        public Guid AchievementRefId { get; private set; } = Guid.NewGuid();
+        public Guid AchievementRefId { get { return Id; } set { Id = value; } }
+
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         //TODO goals can be ordered, timespan of achievement etc etc
         [JsonProperty(PropertyName = "goals")]
