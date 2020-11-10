@@ -31,7 +31,10 @@ namespace Gamification.Platform.Common
     public class Goal : GoalCore
     {
         [JsonProperty(PropertyName = "goalRefId")]
-        public Guid GoalRefId { get; private set; } = Guid.NewGuid();
+        public Guid GoalRefId { get { return Id; } set { Id = value; } }
+
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy

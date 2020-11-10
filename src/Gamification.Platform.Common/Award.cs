@@ -10,8 +10,10 @@ namespace Gamification.Platform.Common
     public class Award : AwardCore
     {
         [JsonProperty(PropertyName = "awardRefId")]
-        public Guid AwardRefId { get; private set; } = Guid.NewGuid();
+        public Guid AwardRefId { get { return Id; } set { Id = value; } }
 
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; } = Guid.NewGuid();
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
         /// </summary>

@@ -11,7 +11,10 @@ namespace Gamification.Platform.Common
     public class Realm : RealmCore
     {
         [JsonProperty(PropertyName = "realmRefId")]
-        public Guid RealmRefId { get; private set; } = Guid.NewGuid();
+        public Guid RealmRefId { get { return Id; } set { Id = value; } }
+
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 
     public class RealmCore

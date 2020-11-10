@@ -57,7 +57,10 @@ namespace Gamification.Platform.Common
     public class Action : ActionCore
     {
         [JsonProperty(PropertyName = "actionRefId")]
-        public Guid ActionRefId { get; set; } = Guid.NewGuid();
+        public Guid ActionRefId { get { return Id; } set { Id = value; } }
+
+        [JsonProperty(PropertyName = "id")]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
