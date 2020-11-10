@@ -183,7 +183,12 @@ namespace Gamification.Platform.Common.Extensions
             {
                 if (
                     action.OccurredAt != null && 
-                    triggerStep.InsideOf.Contains(new Point(new Coordinate(action.OccurredAt.Position.Longitude, action.OccurredAt.Position.Latitude))))
+                    triggerStep.InsideOf.Contains(new Point(
+                        new Coordinate(
+                            action.OccurredAt.Coordinate.CoordinateValue.X, 
+                            action.OccurredAt.Coordinate.CoordinateValue.Y
+                            )
+                        )))
                 {
                     contains = true;
 
