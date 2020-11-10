@@ -5,6 +5,8 @@
     <Authors>Michael C. Pinkus</Authors>
     <Company>Lazlo 326</Company>
     <Product>Gamificator</Product>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

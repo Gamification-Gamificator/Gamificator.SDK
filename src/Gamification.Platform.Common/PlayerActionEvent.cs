@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Cosmos.Spatial;
+﻿using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,6 +28,7 @@ namespace Gamification.Platform.Common
         public DateTimeOffset OccurredOn { get; set; }
 
         [JsonProperty(PropertyName = "occurredAt")]
+        [JsonConverter(typeof(NetTopologySuiteGeometryConverter))]
         public Point OccurredAt { get; set; }
     }
 
