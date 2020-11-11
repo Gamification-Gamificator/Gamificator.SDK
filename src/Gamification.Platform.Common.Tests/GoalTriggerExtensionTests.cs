@@ -10,7 +10,7 @@ using System.Linq;
 namespace Gamification.Platform.Common.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class GoalTriggerExtensionTests
     {
         [TestMethod]
         [DeploymentItem(@"GeorgiaGeoJsonData.json")]
@@ -56,22 +56,13 @@ namespace Gamification.Platform.Common.Tests
                 insideOf = jsonSerializer.Deserialize<NetTopologySuite.Geometries.MultiPolygon>(reader);
             }
 
-            var coins = new Coins();
-            coins.LoadTestData(realmRefId);
+            var coins = new Coins().LoadTestData(realmRefId);
 
-            var awards = new Awards();
-            awards.LoadTestData(coins);
+            var awards = new Awards().LoadTestData(coins);
 
-            var goal = new Goal();
-            goal.LoadTestData(realmRefId, awards);
+            var goal = new Goal().LoadTestData(realmRefId, awards);
 
-            var goalTriggers = new GoalTriggers();
-            goalTriggers.LoadTestData(realmRefId, goal, actions, insideOf, null, null);
-
-            //TODO move to stand alone test
-            //var json = JsonConvert.SerializeObject(goalTriggers);
-
-            //var t2 = JsonConvert.DeserializeObject<GoalTriggers>(json, new NetTopologySuite.IO.Converters.GeometryConverter());
+            var goalTriggers = new GoalTriggers().LoadTestData(realmRefId, goal, actions, insideOf, null, null); ;
 
             foreach (var goalTrigger in goalTriggers)
             {

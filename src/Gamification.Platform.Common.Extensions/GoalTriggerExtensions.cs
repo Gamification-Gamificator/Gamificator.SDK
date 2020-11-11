@@ -211,7 +211,7 @@ namespace Gamification.Platform.Common.Extensions
 
 
 
-        public static void LoadTestData(
+        public static GoalTriggers LoadTestData(
             this GoalTriggers goalTriggers, 
             Guid realmRefId, 
             Goal goal,
@@ -268,9 +268,11 @@ namespace Gamification.Platform.Common.Extensions
 
                 goalTriggers.Add(goalTrigger);
             }
+
+            return goalTriggers;
         }
         
-        public static void LoadTestData(
+        public static Goal LoadTestData(
             this Goal goal,
             Guid realmRefId,
             Awards awards
@@ -284,9 +286,11 @@ namespace Gamification.Platform.Common.Extensions
             goal.RealmRefId = realmRefId;
             goal.SimpleName = simpleName;
             goal.Awards = awards.Select(e=> new AwardRule() { AwardRefId = e.AwardRefId }).ToList();
+
+            return goal;
         }
 
-        public static void LoadTestData(
+        public static Coins LoadTestData(
             this Coins coins,
             Guid realmRefId
             )
@@ -305,9 +309,11 @@ namespace Gamification.Platform.Common.Extensions
                     SimpleName = $"XP [{Guid.NewGuid()}]"
                 }
                 );
+
+            return coins;
         }
 
-        public static void LoadTestData(
+        public static Awards LoadTestData(
             this Awards awards,
             Coins coins
             )
@@ -323,6 +329,8 @@ namespace Gamification.Platform.Common.Extensions
                         Value = rnd.Next(2, 10),
                     });
             }
+
+            return awards;
         }
     }
 }

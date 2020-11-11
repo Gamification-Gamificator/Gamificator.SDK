@@ -79,9 +79,7 @@ namespace Gamification.Platform.Common.Tests
                 }
             );
 
-            // Act 
-
-            // Assert
+            // Act, Assert
 
             // duplicate SimpleName
             Assert.ThrowsException<ArgumentException>(() =>
@@ -167,5 +165,56 @@ namespace Gamification.Platform.Common.Tests
         }
 
         #endregion Tags
+
+        #region Serialization
+
+        [TestMethod]
+        [DeploymentItem(@"GeorgiaGeoJsonData.json")]
+        public void GoalTriggerSerializeDeserializeSucceed()
+        {
+            // Arrange
+            var realmRefId = Guid.NewGuid();
+
+            NetTopologySuite.Geometries.MultiPolygon insideOf = null;
+
+            var jsonSerializer = NetTopologySuite.IO.GeoJsonSerializer.Create();
+
+            using (StreamReader file = File.OpenText(@"GeorgiaGeoJsonData.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                insideOf = jsonSerializer.Deserialize<NetTopologySuite.Geometries.MultiPolygon>(reader);
+            }
+
+            var actions = new Actions()
+            {
+                new Common.Action()
+                    {
+                        RealmRefId = realmRefId,
+                        ReleasedOn = DateTimeOffset.UtcNow.AddSeconds(-60),
+                        ActionId = Guid.NewGuid().ToString("N"),
+                    }
+            };
+
+            var coins = new Coins().LoadTestData(realmRefId);
+
+            var awards = new Awards().LoadTestData(coins);
+
+            var goal = new Goal().LoadTestData(realmRefId, awards);
+
+            var goalTriggers = new GoalTriggers().LoadTestData(realmRefId, goal, actions, insideOf, null, null);
+
+            foreach (var goalTrigger in goalTriggers)
+            {
+                // Act 
+                var json = JsonConvert.SerializeObject(goalTriggers);
+
+                var t2 = JsonConvert.DeserializeObject<GoalTriggers>(json, new NetTopologySuite.IO.Converters.GeometryConverter());
+
+                // Assert
+
+            }
+        }
+
+        #endregion Serialization
     }
-}
+    }
