@@ -11,6 +11,9 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "nameTranslations")]
         public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
 
+        [JsonProperty(PropertyName = "iconTranslations")]
+        public List<MediaTranslation> IconTranslations { get; set; } = new List<MediaTranslation>();
+
         [JsonProperty(PropertyName = "headerTranslations")]
         public List<StringTranslation> HeaderTranslations { get; set; } = new List<StringTranslation>();
 
