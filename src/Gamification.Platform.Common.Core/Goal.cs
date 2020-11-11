@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gamification.Platform.Common
+namespace Gamification.Platform.Common.Core
 {
     public class GoalCore
     {

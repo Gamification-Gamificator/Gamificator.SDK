@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Gamification.Platform.Common
+namespace Gamification.Platform.Common.Core
 {
     public class RealmCore
     {
