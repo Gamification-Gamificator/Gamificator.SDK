@@ -217,4 +217,4 @@ namespace Gamification.Platform.Common.Tests
 
         #endregion Serialization
     }
-    }
+}

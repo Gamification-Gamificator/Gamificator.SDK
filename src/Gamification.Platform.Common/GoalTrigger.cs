@@ -44,6 +44,13 @@ namespace Gamification.Platform.Common
         [JsonRequired]
         [JsonProperty(PropertyName = "rateLimitRules")]
         public RateLimitRules RateLimitRules { get; set; } = new RateLimitRules();
+
+        /// <summary>
+        /// This Goal triggers a push notification
+        /// </summary>
+        [JsonProperty(PropertyName = "pushNotificationTemplate")]
+        public PushNotificationTemplate PushNotificationTemplate { get; set; }
+
     }
 
     public class GoalTriggers : List<GoalTrigger>

@@ -18,6 +18,13 @@ namespace Gamification.Platform.Common
 
         [JsonProperty(PropertyName = "periodRecurrance")]
         public PeriodRecurrance PeriodRecurrance { get; set; }
+
+        /// <summary>
+        /// Quantity of actions performed
+        /// </summary>
+        [JsonProperty(PropertyName = "actionOccurrenceRule")]
+        public ActionOccurrenceRules ActionOccurrenceRules { get; set; }
+
     }
 
     public class TriggerSteps : List<TriggerStep>
