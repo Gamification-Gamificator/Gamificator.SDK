@@ -6,35 +6,13 @@ using System.Text;
 
 namespace Gamification.Platform.Common
 {
-    public class GoalCore
-    {
-        [JsonProperty(PropertyName = "simpleName")]
-        public string SimpleName { get; set; }
-
-        [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
-
-        [JsonProperty(PropertyName = "releaseOn")]
-        public DateTimeOffset ReleaseOn { get; set; } = DateTimeOffset.MinValue;
-
-        [JsonProperty(PropertyName = "releasedOn")]
-        public DateTimeOffset? ReleasedOn { get; set; }
-
-
-        [JsonProperty(PropertyName = "expireOn")]
-        public DateTimeOffset ExpireOn { get; set; } = DateTimeOffset.MaxValue;
-
-        [JsonProperty(PropertyName = "expiredOn")]
-        public DateTimeOffset? ExpiredOn { get; set; }
-    }
-
     public class Goal : GoalCore
     {
-        [JsonProperty(PropertyName = "goalRefId")]
-        public Guid GoalRefId { get { return Id; } set { Id = value; } }
-
+        /// <summary>
+        /// ** New pattern **
+        /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid GoalRefId { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
@@ -67,14 +45,4 @@ namespace Gamification.Platform.Common
             base.Add(item);
         }
     }
-
-    public class GoalDisplay : GoalCore
-    {
-        [JsonProperty(PropertyName = "awards")]
-        public List<AwardRuleDisplay> Awards { get; set; } = new List<AwardRuleDisplay>();
-    }
-
-
-
-
 }

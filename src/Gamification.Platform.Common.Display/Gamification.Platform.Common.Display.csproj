@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gamification.Platform.Common.Core" Version="2.0.0-preview" />
+    <PackageReference Include="Gamification.Platform.Common.Core" Version="2.0.5-preview" />
   </ItemGroup>
 
 </Project>

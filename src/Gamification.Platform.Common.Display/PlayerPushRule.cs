@@ -5,8 +5,6 @@ namespace Gamification.Platform.Common.Display
 {
     public class PlayerPushRuleDisplay : PlayerPushRuleCore
     {
-        [JsonProperty(PropertyName = "value")]
-        public decimal Value { get; set; }
     }
 
 }

@@ -10,11 +10,11 @@ namespace Gamification.Platform.Common
     /// </summary>
     public class Achievement : AchievementCore
     {
-        [JsonProperty(PropertyName = "achievementRefId")]
-        public Guid AchievementRefId { get { return Id; } set { Id = value; } }
-
+        /// <summary>
+        /// ** New pattern **
+        /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid AchievementRefId = Guid.NewGuid();
 
         //TODO goals can be ordered, timespan of achievement etc etc
         [JsonProperty(PropertyName = "goals")]
@@ -39,32 +39,5 @@ namespace Gamification.Platform.Common
         /// </summary>
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
         public CurrencyMultiplierRule CurrencyMultiplierRule { get; set; }        
-    }
-
-    public class AchievementCore
-    {
-        /// <summary>
-        /// "Gold Star!"
-        /// </summary>
-        [JsonProperty(PropertyName = "simpleName")]
-        public string SimpleName { get; set; }
-
-        /// <summary>
-        /// Étoile d’or ! OR Gold Stern!
-        /// </summary>
-        [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
-
-        /// <summary>
-        /// Trophy image or video etc
-        /// </summary>
-        [JsonProperty(PropertyName = "mediaTranslations")]
-        public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
-    }
-
-    public class AchievementDisplay : AchievementCore
-    {
-        [JsonProperty(PropertyName = "goals")]
-        public Goals Goals { get; set; } = new Goals();
     }
 }

@@ -15,8 +15,11 @@ namespace Gamification.Platform.Common
             PlayerRefId = playerRefId;
         }
 
-        [JsonProperty(PropertyName = "playerRefId")]
-        public Guid PlayerRefId { get; private set; } = Guid.NewGuid();
+        /// <summary>
+        /// ** New pattern **
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public Guid PlayerRefId { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy

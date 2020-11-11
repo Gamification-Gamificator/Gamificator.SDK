@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Gamification.Platform.Common.Core;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -9,11 +10,12 @@ namespace Gamification.Platform.Common
     /// </summary>
     public class Award : AwardCore
     {
-        [JsonProperty(PropertyName = "awardRefId")]
-        public Guid AwardRefId { get { return Id; } set { Id = value; } }
-
+        /// <summary>
+        /// ** New pattern **
+        /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid AwardRefId { get; set; } = Guid.NewGuid();
+
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
         /// </summary>
@@ -25,32 +27,8 @@ namespace Gamification.Platform.Common
         public Guid CoinRefId { get; set; }
     }
 
-    public class AwardCore
-    {
-        [JsonProperty(PropertyName = "value")]
-        public decimal Value { get; set; }
-    }
-
     public class Awards : List<Award>
     {
     }
 
-    public class AwardRule
-    {
-        [JsonProperty(PropertyName = "awardRefId")]
-        public Guid AwardRefId { get; set; }
-
-        /// <summary>
-        /// Causes an ActionCheckpoint to be persisted
-        /// </summary>
-        //[JsonProperty(PropertyName = "actionToCheckpoint")]
-        //public Guid? ActionToCheckpoint { get; set; }
-    }
-
-
-    public class AwardRuleDisplay : AwardCore
-    {
-        [JsonProperty(PropertyName = "actionToCheckpoint")]
-        public ActionDisplay ActionToCheckpoint { get; set; }
-    }
 }
