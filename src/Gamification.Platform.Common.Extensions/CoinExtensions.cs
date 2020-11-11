@@ -1,4 +1,6 @@
-﻿namespace Gamification.Platform.Common.Extensions
+﻿using Gamification.Platform.Common.Display;
+
+namespace Gamification.Platform.Common.Extensions
 {
     public static class CoinExtensions
     {

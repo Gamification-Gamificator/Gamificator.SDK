@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Gamification.Platform.Common.Display;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Gamification.Platform.Common.Extensions
