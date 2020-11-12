@@ -15,7 +15,7 @@ trigger:
     - release
   paths:
     include:
-    - 'src/Gamification.Platform.Common.Extensions/*'
+    - src/Gamification.Platform.Client.CSharp/*
 
 resources:
   repositories:
@@ -28,8 +28,8 @@ jobs:
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
-    VmImage: 'windows-2019'
-
+    VmImage: 'windows-2019'  
+  
   steps:
 
   - powershell: |
@@ -38,7 +38,7 @@ jobs:
 
   - template: BuildPipelines\Templates\Steps-BuildAndPushNetCore.yml@Infrastructure
     parameters:
-      ProjectFolder: 'src/Gamification.Platform.Common.Extensions'
+      ProjectFolder: 'src/Gamification.Platform.Client.CSharp'
       ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
         BuildConfiguration: 'Debug'
         ExternalNuget: true
