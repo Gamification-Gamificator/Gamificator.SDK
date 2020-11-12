@@ -35,7 +35,7 @@ jobs:
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
-    VmImage: 'windows-2019'  
+    VmImage: 'windows-2019'
   
   steps:
 
