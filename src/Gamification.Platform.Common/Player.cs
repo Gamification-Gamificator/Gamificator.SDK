@@ -36,5 +36,8 @@ namespace Gamification.Platform.Common
 
         [JsonProperty(PropertyName = "tags")]
         public List<string> Tags { get; set; } =  new List<string>();
+
+        [JsonProperty(PropertyName = "playerWebPushSubscription")]
+        public PlayerWebPushSubscription PlayerWebPushSubscription { get; set; }
     }
 }
