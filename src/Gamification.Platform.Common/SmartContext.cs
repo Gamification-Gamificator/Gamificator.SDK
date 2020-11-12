@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Lazlo.Common.Enumerators;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +16,9 @@ namespace Lazlo.Common.Core
 
         [JsonProperty(PropertyName = "createdOn")]
         public DateTimeOffset CreatedOn { get; set; }
+
+        [JsonProperty(PropertyName = "simulationType")]
+        public SimulationType SimulationType { get; set; }
     }
 
     public class SmartContext<T> : SmartContextBase<T>
