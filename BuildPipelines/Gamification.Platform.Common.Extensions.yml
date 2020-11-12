@@ -15,7 +15,7 @@ trigger:
     - release
   paths:
     include:
-    - src/Gamification.Platform.Common.Extensions/*
+    - 'src/Gamification.Platform.Common.Extensions/*'
 
 resources:
   repositories:
@@ -28,8 +28,8 @@ jobs:
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
-    VmImage: 'windows-2019'  
-  
+    VmImage: 'windows-2019'
+
   steps:
 
   - powershell: |
