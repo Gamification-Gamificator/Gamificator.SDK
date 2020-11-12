@@ -19,7 +19,7 @@ trigger:
 
 resources:
   repositories:
-  - repository: 'Infrastructure'
+  - repository: 'Infrastructure' 
     type: git
     name: 'Operations/Infrastructure'
     ref: 'refs/heads/development'
