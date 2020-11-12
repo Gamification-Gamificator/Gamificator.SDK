@@ -24,8 +24,8 @@ resources:
     name: 'Operations/Infrastructure'
     ref: 'refs/heads/development'
   pipelines:
-  - pipeline: LazloGamingCommonDisplay
-    source: "Build Lazlo.Gaming.Common.Display"
+  - pipeline: GamificationPlatformCommonCore
+    source: "Build Gamification.Platform.Common.Core"
     trigger: 
       branches:
       - release
