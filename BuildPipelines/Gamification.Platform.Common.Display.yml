@@ -5,7 +5,7 @@ variables:
     buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
     buildVersion: "$(ReleaseVersion).$(buildIncrement)"
   ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
-    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]  
+    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]
     buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
 
 trigger:
@@ -23,13 +23,20 @@ resources:
     type: git
     name: 'Operations/Infrastructure'
     ref: 'refs/heads/development'
+  pipelines:
+  - pipeline: GamificationPlatformCommonCore
+    source: "Build Gamification.Platform.Common.Core"
+    trigger:
+      branches:
+      - release
+      - development
 
 jobs:
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
-    VmImage: 'windows-2019'  
-  
+    VmImage: 'windows-2019'
+
   steps:
 
   - powershell: |
