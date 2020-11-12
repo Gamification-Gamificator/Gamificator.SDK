@@ -23,6 +23,13 @@ resources:
     type: git
     name: 'Operations/Infrastructure'
     ref: 'refs/heads/development'
+  pipelines:
+  - pipeline: LazloGamingCommonDisplay
+    source: "Build Lazlo.Gaming.Common.Display"
+    trigger: 
+      branches:
+      - release
+      - development
 
 jobs:
 - job: BuildNETCore
