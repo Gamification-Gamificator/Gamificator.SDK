@@ -23,6 +23,13 @@ resources:
     type: git
     name: 'Operations/Infrastructure'
     ref: 'refs/heads/development'
+  pipelines:
+  - pipeline: GamificationPlatformCommon
+    source: "Build Gamification.Platform.Common"
+    trigger: 
+      branches:
+      - release
+      - development
 
 jobs:
 - job: BuildNETCore
