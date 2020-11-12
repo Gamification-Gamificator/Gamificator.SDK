@@ -181,18 +181,21 @@ namespace Gamification.Platform.Common.Extensions
 
             foreach (var action in currentPlayerActions)
             {
-                if (
-                    action.OccurredAt != null && 
-                    triggerStep.InsideOf.Contains(new Point(
-                        new Coordinate(
-                            action.OccurredAt.Coordinate.CoordinateValue.X, 
-                            action.OccurredAt.Coordinate.CoordinateValue.Y
-                            )
-                        )))
+                foreach (var rule in triggerStep.ActionOccurrenceRules)
                 {
-                    contains = true;
+                    if (
+                        action.OccurredAt != null &&
+                        rule.InsideOf.Contains(new Point(
+                            new Coordinate(
+                                action.OccurredAt.Coordinate.CoordinateValue.X,
+                                action.OccurredAt.Coordinate.CoordinateValue.Y
+                                )
+                            )))
+                    {
+                        contains = true;
 
-                    if (!stepPlayerActions.Exists(e => e.ActionRefId.Equals(action.ActionRefId))) stepPlayerActions.Add(action);
+                        if (!stepPlayerActions.Exists(e => e.ActionRefId.Equals(action.ActionRefId))) stepPlayerActions.Add(action);
+                    }
                 }
             }
 
@@ -246,7 +249,6 @@ namespace Gamification.Platform.Common.Extensions
                     new TriggerStep()
                     {
                         ExecutionOrder = i,
-                        AreActionsCheckpointed = true,
                         PeriodRecurrance = new PeriodRecurrance()
                         {
                             PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
@@ -257,14 +259,31 @@ namespace Gamification.Platform.Common.Extensions
                                         Until = DateTime.MaxValue
                                     }.ToString()
                         },
-                        Actions = new Dictionary<Guid, int>
+                        ActionOccurrenceRules = new ActionOccurrenceRules()
                         {
-                        { actions.First().ActionRefId, 1 }
-                        },
-                        InsideOf = insideOf,
-                        OutsideOf = outsideOf
+                            new ActionOccurrenceRule()
+                            {
+                                ActionRefId = actions[0].ActionRefId,
+                                OperationType = Core.Enums.OperationRuleType.And,
+                                TenseType = Core.Enums.TenseRuleType.Did,
+                                CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
+                                Count = 1,
+                                PeriodRecurrance = new PeriodRecurrance()
+                                {
+                                    PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                                    PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
+                                    PeriodRecurrence =
+                                            new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                            {
+                                                Until = DateTime.MaxValue
+                                            }.ToString()
+                                },
+                                InsideOf = insideOf,
+                                OutsideOf = outsideOf
+                            }
+                        }
                     }
-                );
+                ); ;
 
                 goalTriggers.Add(goalTrigger);
             }
