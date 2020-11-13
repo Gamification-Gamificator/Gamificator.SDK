@@ -10,13 +10,13 @@ namespace Gamification.Platform.Common
         public Coin(){ }
 
         public Coin(Guid coinRefId)
-        { CoinRefId = coinRefId; }
+        { RefId = coinRefId; }
 
         /// <summary>
         /// ** New pattern **
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid CoinRefId { get; set; } = Guid.NewGuid();
+        public Guid RefId { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
@@ -31,9 +31,9 @@ namespace Gamification.Platform.Common
     {
         public new void Add(Coin item)
         {
-            if (base.Exists(e => e.CoinRefId.Equals(item.CoinRefId)))
+            if (base.Exists(e => e.RefId.Equals(item.RefId)))
             {
-                throw new ArgumentException($"A {nameof(Coin)} with the same {nameof(Coin.CoinRefId)} already exists.");
+                throw new ArgumentException($"A {nameof(Coin)} with the same {nameof(Coin.RefId)} already exists.");
             }
 
             if (base.Exists(e => e.SimpleName == item.SimpleName))

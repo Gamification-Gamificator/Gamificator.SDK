@@ -14,7 +14,7 @@ namespace Gamification.Platform.Common
         /// ** New pattern **
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid AwardRefId { get; set; } = Guid.NewGuid();
+        public Guid RefId { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy

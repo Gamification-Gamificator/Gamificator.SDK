@@ -12,7 +12,7 @@ namespace Gamification.Platform.Common
         /// ** New pattern **
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid GoalRefId { get; set; } = Guid.NewGuid();
+        public Guid RefId { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// All root entities require RealmRefId for multi-tenancy
@@ -32,9 +32,9 @@ namespace Gamification.Platform.Common
     {
         public new void Add(Goal item)
         {
-            if (base.Exists(e => e.GoalRefId.Equals(item.GoalRefId)))
+            if (base.Exists(e => e.RefId.Equals(item.RefId)))
             {
-                throw new ArgumentException($"A {nameof(Goal)} with the same {nameof(Goal.GoalRefId)} already exists.");
+                throw new ArgumentException($"A {nameof(Goal)} with the same {nameof(Goal.RefId)} already exists.");
             }
 
             if (base.Exists(e => e.SimpleName == item.SimpleName))
