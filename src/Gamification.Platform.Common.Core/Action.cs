@@ -1,4 +1,5 @@
 ﻿using Gamification.Platform.Common.Core;
+using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
