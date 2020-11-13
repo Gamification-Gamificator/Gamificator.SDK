@@ -29,7 +29,7 @@ namespace Gamification.Platform.Common
         public DateTimeOffset OccurredOn { get; set; }
 
         [JsonProperty(PropertyName = "occurredAt")]
-        [JsonConverter(typeof(NetTopologySuiteGeometryConverter))]
+        [JsonConverter(typeof(NetTopologySuiteGeometryPointConverter))]
         public Point OccurredAt { get; set; }
     }
 
