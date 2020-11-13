@@ -41,7 +41,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             if (Uri.Host == "localhost")
             {
-                return new Uri($"https://{Uri.Host}:8501/{relativeUri}");
+                return new Uri($"{Uri.Scheme}://{Uri.Host}:{Uri.Port}/{relativeUri}");
             }
 
             else
