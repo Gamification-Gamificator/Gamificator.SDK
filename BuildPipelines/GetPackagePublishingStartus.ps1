@@ -1,7 +1,9 @@
 ﻿param (
  [Parameter(Mandatory = $true)] [string]$folderName = "D:\Nuget",
- [Parameter(Mandatory = $false)] [string]$secondsToSleep = 20
+ [Parameter(Mandatory = $false)] [string]$secondsToSleep = 60
 )
+
+# Find-Package Gamification.Platform.Common.Core -Source https://www.nuget.org/api/v2 -AllowPrereleaseVersions -RequiredVersion 2.0.13-preview
 
 $nugetPackageFiles = "$folderName" + "\*.nupkg" 
 Write-Host "Search Path: $nugetPackageFiles"
@@ -50,13 +52,14 @@ $fileItems | ForEach-Object {
     
     $package = Find-Package $packageName -Source https://www.nuget.org/api/v2 -AllowPrereleaseVersions -RequiredVersion $version -ErrorAction SilentlyContinue -ErrorVariable SearchError
 
-
     if ($package) {
       Write-Output "Package published."
       Write-Output $package
       $packageFound = $true
     } else {
-      Write-Output "Package $package has not been published yet. Sleeping for $secondsToSleep seconds. Error: $SearchError "
+      Write-Output "Error: $SearchError "
+      Write-Output "Package $package has not been published yet. Sleeping for $secondsToSleep seconds."
+      Write-Output "Sleep for $secondsToSleep seconds."
       sleep 20
     }
   
