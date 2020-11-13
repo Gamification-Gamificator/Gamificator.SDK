@@ -14,6 +14,6 @@ namespace Gamification.Platform.Common
         /// ** New pattern **
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid RefId { get; set; } = Guid.NewGuid();
+        public Guid EntityRefId { get; set; } = Guid.NewGuid();
     }
 }
