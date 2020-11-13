@@ -87,6 +87,62 @@ namespace Gamification.Platform.SDK.CSharp
             return false;
         }
 
+        public async Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(
+            Guid correlationRefId,
+            Guid playerRefId,
+            double latitude,
+            double longitude,
+            CancellationToken cancellationToken = default)
+        {
+            string requestUrl = GetUri("api/webpush/subscription").AbsolutePath;
+
+            HttpResponseMessage response = await HttpClient.GetAsync(requestUrl);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            {
+                var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                var subscription = JsonConvert.DeserializeObject<PlayerWebPushSubscription>(responseJson);
+
+                return subscription;
+            }
+
+            return null;
+        }
+
+        public async Task<bool> WebPushSubscriptionStore(
+            Guid correlationRefId,
+            PlayerWebPushSubscription playerWebPushSubscription,
+            double latitude,
+            double longitude,
+            CancellationToken cancellationToken = default)
+        {
+            SmartRequest<PlayerWebPushSubscription> req = new SmartRequest<PlayerWebPushSubscription>
+            {
+                Data = playerWebPushSubscription,
+                Latitude = latitude,
+                Longitude = longitude,
+                Uuid = Guid.NewGuid().ToString()
+            };
+
+            string requestUrl = GetUri("api/webpush/subscription").AbsolutePath;
+
+            HttpResponseMessage response = await SendAsJsonAsync(
+                HttpMethod.Post,
+                requestUrl,
+                correlationRefId,
+                req,
+                null,
+                cancellationToken).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private async Task<string> ExtractResponseErrorAsync(HttpResponseMessage httpResponse)
         {
             if (httpResponse.IsSuccessStatusCode)
