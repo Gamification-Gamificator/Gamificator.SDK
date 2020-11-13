@@ -147,7 +147,7 @@ namespace Gamification.Platform.Common.Extensions
                     // if valid then which participatingActionEvents participated?
 
                     // if set to burn then add GoalTriggerRefId
-                    participatingActionEvents.ForEach(e => e.TriggerStepRefId = goalTrigger.GoalTriggerRefId);
+                    participatingActionEvents.ForEach(e => e.TriggerStepRefId = goalTrigger.RefId);
 
                     // if Step is valid then continue
                     continue;
@@ -232,7 +232,7 @@ namespace Gamification.Platform.Common.Extensions
                 var goalTrigger = new GoalTrigger()
                 {
                     RealmRefId = realmRefId,
-                    GoalRefId = goal.GoalRefId,
+                    GoalRefId = goal.RefId,
                     SimpleName = simpleName,
                     Priority = i,
                     ReleaseOn = DateTimeOffset.UtcNow.AddDays(-365),
@@ -263,7 +263,7 @@ namespace Gamification.Platform.Common.Extensions
                         {
                             new ActionOccurrenceRule()
                             {
-                                ActionRefId = actions[0].ActionRefId,
+                                ActionRefId = actions[0].RefId,
                                 OperationType = Core.Enums.OperationRuleType.And,
                                 TenseType = Core.Enums.TenseRuleType.Did,
                                 CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
@@ -304,7 +304,7 @@ namespace Gamification.Platform.Common.Extensions
             goal.ExpireOn = DateTimeOffset.UtcNow.AddDays(rnd.Next(10, 100));
             goal.RealmRefId = realmRefId;
             goal.SimpleName = simpleName;
-            goal.Awards = awards.Select(e=> new AwardRule() { AwardRefId = e.AwardRefId }).ToList();
+            goal.Awards = awards.Select(e=> new AwardRule() { AwardRefId = e.RefId }).ToList();
 
             return goal;
         }
@@ -344,7 +344,7 @@ namespace Gamification.Platform.Common.Extensions
                 awards.Add(
                     new Award()
                     {
-                        CoinRefId = coin.CoinRefId,
+                        CoinRefId = coin.RefId,
                         Value = rnd.Next(2, 10),
                     });
             }

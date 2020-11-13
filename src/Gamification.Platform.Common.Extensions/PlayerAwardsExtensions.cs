@@ -12,10 +12,10 @@ namespace Gamification.Platform.Common.Extensions
         public static List<CoinBalanceDisplay> ToBalance(this PlayerAwards item, Coins coins)
         {
             //TODO not expired etc
-            return item.Where(e=>coins.Any(c=>c.CoinRefId.Equals(e.CoinRefId))).GroupBy(f => f.CoinRefId).Select(cl =>
+            return item.Where(e=>coins.Any(c=>c.RefId.Equals(e.CoinRefId))).GroupBy(f => f.CoinRefId).Select(cl =>
                           new CoinBalanceDisplay
                           {
-                              Coin = coins.FirstOrDefault(g => g.CoinRefId.Equals(cl.First().CoinRefId))?.ToDisplay(),
+                              Coin = coins.FirstOrDefault(g => g.RefId.Equals(cl.First().CoinRefId))?.ToDisplay(),
                               Balance = cl.Sum(s => s.Value),
                           }
                         ).ToList();

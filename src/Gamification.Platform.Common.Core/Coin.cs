@@ -15,5 +15,11 @@ namespace Gamification.Platform.Common.Core
 
         [JsonProperty(PropertyName = "nameTranslations")]
         public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+
+        /// <summary>
+        /// Default Ephemeral Award experation for THIS Coin
+        /// </summary>
+        [JsonProperty(PropertyName = "expireIn")]
+        public TimeSpan? ExpireIn { get; set; }
     }
 }

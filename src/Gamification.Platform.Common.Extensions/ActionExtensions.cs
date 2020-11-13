@@ -18,7 +18,7 @@ namespace Gamification.Platform.Common.Extensions
 
         public static PlayerActionEvent Map(this PlayerActionEvent toItem, ActionRequest fromItem, Actions actions)
         {
-            toItem.ActionRefId = actions.FirstOrDefault(e => e.ActionId == fromItem.ActionId).ActionRefId;
+            toItem.ActionRefId = actions.FirstOrDefault(e => e.ActionId == fromItem.ActionId).RefId;
             toItem.OccurredOn = fromItem.OccurredOn;
 
             return toItem;

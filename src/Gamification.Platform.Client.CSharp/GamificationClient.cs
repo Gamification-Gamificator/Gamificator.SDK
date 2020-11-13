@@ -16,6 +16,13 @@ namespace Gamification.Platform.SDK.CSharp
 
         Uri Uri;
 
+        /// <summary>
+        /// ***
+        /// Deprecated
+        /// ***
+        /// </summary>
+        /// <param name="httpClient"></param>
+        /// <param name="baseUri"></param>
         public GamificationClient(HttpClient httpClient, string baseUri)
         {
             Uri = new Uri(baseUri.ToLower());

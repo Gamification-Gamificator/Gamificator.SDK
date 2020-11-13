@@ -27,6 +27,19 @@ namespace Gamification.Platform.Common.Core
 
         [JsonProperty(PropertyName = "occurredOn")]
         public DateTimeOffset OccurredOn { get; set; }
+
+        /// <summary>
+        /// Ephemeral Award experation
+        /// Default from Coin.ExpireIn (Null would be DateTime.MaxValue)
+        /// </summary>
+        [JsonProperty(PropertyName = "expireOn")]
+        public DateTimeOffset ExpireOn { get; set; } = DateTime.MaxValue;
+
+        /// <summary>
+        /// Explicit Ephemeral expiration
+        /// </summary>
+        [JsonProperty(PropertyName = "expireOn")]
+        public DateTimeOffset? ExpiredOn { get; set; } = DateTime.MaxValue;
     }
 
     public class PlayerAwardCores : List<PlayerAwardCore>
