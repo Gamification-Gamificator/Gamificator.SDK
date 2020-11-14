@@ -26,8 +26,8 @@ namespace Gamification.Platform.Common
         /// 
         /// PeriodTimeSpan of 8H and PeriodBeginOn 8AM of matching PeriodRecurrence day means within the first 8H after 8AM you can be accomplish Count of Trigger
         /// </summary>
-        [JsonProperty(PropertyName = "periodRecurrance")]
-        public PeriodRecurrance PeriodRecurrance { get; set; }
+        [JsonProperty(PropertyName = "periodRecurrence")]
+        public PeriodRecurrence PeriodRecurrence { get; set; }
 
 
         [JsonProperty(PropertyName = "executionOrder")]

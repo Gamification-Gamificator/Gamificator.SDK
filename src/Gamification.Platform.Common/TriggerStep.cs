@@ -16,16 +16,25 @@ namespace Gamification.Platform.Common
         [JsonProperty(PropertyName = "triggerStepRefId")]
         public Guid TriggerStepRefId { get; set; } = Guid.NewGuid();
 
-        [JsonProperty(PropertyName = "periodRecurrance")]
-        public PeriodRecurrance PeriodRecurrance { get; set; }
+        /// <summary>
+        /// When Actions were performed
+        /// </summary>
+        [JsonProperty(PropertyName = "periodRecurrence")]
+        public PeriodRecurrence PeriodRecurrence { get; set; } = new PeriodRecurrence();
 
         /// <summary>
         /// Quantity of actions performed
         /// </summary>
         [JsonProperty(PropertyName = "actionOccurrenceRule")]
-        public ActionOccurrenceRules ActionOccurrenceRules { get; set; }
+        public ActionOccurrenceRules ActionOccurrenceRules { get; set; } = new ActionOccurrenceRules();
 
-    }
+        /// <summary>
+        /// What Meta data was gathered
+        /// ActionOccurrenceRules MUST be 0, you only gather meta data once
+        /// </summary>
+        [JsonProperty(PropertyName = "metaDataAquisitionRule")]
+        public MetaDataAquisitionRule MetaDataAquisitionRule { get; set; } = new MetaDataAquisitionRule();        
+     }
 
     public class TriggerSteps : List<TriggerStep>
     {

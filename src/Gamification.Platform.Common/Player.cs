@@ -39,5 +39,11 @@ namespace Gamification.Platform.Common
 
         [JsonProperty(PropertyName = "playerWebPushSubscription")]
         public PlayerWebPushSubscription PlayerWebPushSubscription { get; set; }
+
+        /// <summary>
+        /// Data collected about the Player
+        /// </summary>
+        [JsonProperty(PropertyName = "metaDataAquisitionEvents")]
+        public MetaDataAquisitionEvents MetaDataAquisitionEvents { get; set; } = new MetaDataAquisitionEvents();       
     }
 }

@@ -34,7 +34,7 @@ namespace Gamification.Platform.Common
         public Guid GoalRefId { get; set; }
 
         [JsonProperty(PropertyName = "steps")]
-        public List<TriggerStep> Steps { get; set; } = new List<TriggerStep>();
+        public TriggerSteps Steps { get; set; } = new TriggerSteps();
 
         /// <summary>
         /// As multiple Actions per TimeSpan match GoalTriggers, limit the GoalEvents created within Periods
@@ -47,9 +47,10 @@ namespace Gamification.Platform.Common
 
         /// <summary>
         /// This Goal triggers a push notification
+        /// No PushNotificationTemplate means the Goal only shows in Player State GET
         /// </summary>
         [JsonProperty(PropertyName = "pushNotificationTemplate")]
-        public PushNotificationTemplate PushNotificationTemplate { get; set; }
+        public PushNotificationTemplate PushNotificationTemplate { get; set; } = new PushNotificationTemplate();
 
     }
 

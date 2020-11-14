@@ -30,12 +30,12 @@ namespace Gamification.Platform.Common.Extensions
                 // An event taking place between PeriodBeginOn + PeriodTimeSpan
                 var vEvent = new CalendarEvent
                 {
-                    Start = new CalDateTime(goalTrigger.ReleaseOn.UtcDateTime.Date.AddMinutes(rateLimitRule.PeriodRecurrance.PeriodMinuteBeginOn.Value)),
-                    Duration = rateLimitRule.PeriodRecurrance.PeriodTimeSpan.GetValueOrDefault()
+                    Start = new CalDateTime(goalTrigger.ReleaseOn.UtcDateTime.Date.AddMinutes(rateLimitRule.PeriodRecurrence.PeriodMinuteBeginOn.Value)),
+                    Duration = rateLimitRule.PeriodRecurrence.PeriodTimeSpan.GetValueOrDefault()
                 };
 
                 vEvent.RecurrenceRules = JsonConvert.DeserializeObject<List<RecurrencePattern>>(
-                    rateLimitRule.PeriodRecurrance.PeriodRecurrence
+                    rateLimitRule.PeriodRecurrence.PeriodRecurrence
                     );
 
                 var searchStart = DateTimeOffset.MinValue.DateTime;
@@ -77,8 +77,8 @@ namespace Gamification.Platform.Common.Extensions
             foreach (var step in goalTrigger.Steps)
             {
                 var start = goalTrigger.ReleaseOn.UtcDateTime.Date.AddMinutes(
-                            step.PeriodRecurrance.PeriodMinuteBeginOn.Value);
-                var duration = step.PeriodRecurrance.PeriodTimeSpan.GetValueOrDefault();
+                            step.PeriodRecurrence.PeriodMinuteBeginOn.Value);
+                var duration = step.PeriodRecurrence.PeriodTimeSpan.GetValueOrDefault();
 
                 // An event taking place between PeriodBeginOn + PeriodTimeSpan
                 var vEvent = new CalendarEvent
@@ -89,7 +89,7 @@ namespace Gamification.Platform.Common.Extensions
 
                 vEvent.RecurrenceRules =
                     new List<RecurrencePattern> {
-                    new RecurrencePattern(step.PeriodRecurrance.PeriodRecurrence)
+                    new RecurrencePattern(step.PeriodRecurrence.PeriodRecurrence)
                     };
 
                 var searchStart = DateTime.UtcNow.AddYears(-1).Date;
@@ -249,7 +249,7 @@ namespace Gamification.Platform.Common.Extensions
                     new TriggerStep()
                     {
                         ExecutionOrder = i,
-                        PeriodRecurrance = new PeriodRecurrance()
+                        PeriodRecurrence = new PeriodRecurrence()
                         {
                             PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
                             PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
@@ -268,7 +268,7 @@ namespace Gamification.Platform.Common.Extensions
                                 TenseType = Core.Enums.TenseRuleType.Did,
                                 CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
                                 Count = 1,
-                                PeriodRecurrance = new PeriodRecurrance()
+                                PeriodRecurrence = new PeriodRecurrence()
                                 {
                                     PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
                                     PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
