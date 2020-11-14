@@ -65,7 +65,7 @@ namespace Gamification.Platform.SDK.CSharp
                 Uuid = Guid.NewGuid().ToString()
             };
 
-            string requestUrl = GetUri("api/action/completed").AbsolutePath;
+            string requestUrl = GetUri("api/action/completed").AbsoluteUri;
 
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Post,
@@ -94,7 +94,7 @@ namespace Gamification.Platform.SDK.CSharp
             double longitude,
             CancellationToken cancellationToken = default)
         {
-            string requestUrl = GetUri("api/webpush/subscription").AbsolutePath;
+            string requestUrl = GetUri("api/webpush/subscription").AbsoluteUri;
 
             HttpResponseMessage response = await HttpClient.GetAsync(requestUrl);
 
@@ -125,7 +125,7 @@ namespace Gamification.Platform.SDK.CSharp
                 Uuid = Guid.NewGuid().ToString()
             };
 
-            string requestUrl = GetUri("api/webpush/subscription").AbsolutePath;
+            string requestUrl = GetUri("api/webpush/subscription").AbsoluteUri;
 
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Post,
@@ -206,3 +206,4 @@ namespace Gamification.Platform.SDK.CSharp
         }
     }
 }
+

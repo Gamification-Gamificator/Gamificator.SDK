@@ -28,7 +28,7 @@ namespace Gamification.Platform.Common.Core
         /// <summary>
         /// Explicit Ephemeral expiration
         /// </summary>
-        [JsonProperty(PropertyName = "expireOn")]
+        [JsonProperty(PropertyName = "expiredOn")]
         public DateTimeOffset? ExpiredOn { get; set; } = DateTime.MaxValue;
     }
 
@@ -41,5 +41,6 @@ namespace Gamification.Platform.Common.Core
             base.Add(item);
         }
     }
+
 
 }
