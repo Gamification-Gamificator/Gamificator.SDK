@@ -49,8 +49,8 @@ namespace Gamification.Platform.Common.Core
         /// <summary>
         /// occur during these periods
         /// </summary>
-        [JsonProperty(PropertyName = "periodRecurrance")]
-        public PeriodRecurrance PeriodRecurrance { get; set; }
+        [JsonProperty(PropertyName = "PeriodRecurrence")]
+        public PeriodRecurrence PeriodRecurrence { get; set; }
 
         /// <summary>
         /// More or less than
