@@ -8,6 +8,12 @@ namespace Gamification.Platform.Common.Core
     {
         [JsonProperty(PropertyName = "value")]
         public decimal Value { get; set; }
+
+        /// <summary>
+        /// Debit = 1, Credit = 2
+        /// </summary>
+        [JsonProperty(PropertyName = "accountingTransactionType")]
+        public int AccountingTransactionType { get; set; }
     }
 
 }

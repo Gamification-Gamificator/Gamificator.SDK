@@ -7,18 +7,8 @@ namespace Gamification.Platform.Common.Core
     /// <summary>
     /// 
     /// </summary>
-    public class PlayerAwardCore
+    public class PlayerAwardCore : AwardCore
     {
-
-        [JsonProperty(PropertyName = "value")]
-        public decimal Value { get; set; }
-
-        ///// <summary>
-        ///// Debit = 1, Credit = 2
-        ///// </summary>
-        //[JsonProperty(PropertyName = "accountingTransactionType")]
-        //public int AccountingTransactionType { get; set; }
-
         /// <summary>
         /// If no AwardRefId then why?
         /// </summary>
