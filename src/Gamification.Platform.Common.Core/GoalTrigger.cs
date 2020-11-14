@@ -66,7 +66,7 @@ namespace Gamification.Platform.Common.Core
         /// NULL means no expiration
         /// </summary>
         [JsonProperty(PropertyName = "expireOn")]
-        public DateTimeOffset? ExpireOn { get; set; }
+        public DateTimeOffset ExpireOn { get; set; } = DateTimeOffset.MaxValue;
 
         /// <summary>
         /// NULL untill > ExpireOn OR manually set

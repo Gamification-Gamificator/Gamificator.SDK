@@ -24,5 +24,18 @@ namespace Gamification.Platform.Common.Core
         /// </summary>
         [JsonProperty(PropertyName = "mediaTranslations")]
         public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
+
+        [JsonProperty(PropertyName = "releaseOn")]
+        public DateTimeOffset ReleaseOn { get; set; } = DateTimeOffset.MinValue;
+
+        [JsonProperty(PropertyName = "releasedOn")]
+        public DateTimeOffset? ReleasedOn { get; set; }
+
+
+        [JsonProperty(PropertyName = "expireOn")]
+        public DateTimeOffset ExpireOn { get; set; } = DateTimeOffset.MaxValue;
+
+        [JsonProperty(PropertyName = "expiredOn")]
+        public DateTimeOffset? ExpiredOn { get; set; }
     }
 }
