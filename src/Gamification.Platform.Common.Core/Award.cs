@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Gamification.Platform.Common.Core.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -9,11 +10,7 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "value")]
         public decimal Value { get; set; }
 
-        /// <summary>
-        /// Debit = 1, Credit = 2
-        /// </summary>
         [JsonProperty(PropertyName = "accountingTransactionType")]
-        public int AccountingTransactionType { get; set; }
+        public AccountingTransactionType AccountingTransactionType { get; set; }
     }
-
 }

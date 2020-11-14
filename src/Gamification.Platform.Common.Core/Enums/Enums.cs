@@ -26,4 +26,10 @@ namespace Gamification.Platform.Common.Core.Enums
         Less = 3,
         LessOrEqual = 4,
     }
+
+    public enum AccountingTransactionType
+    {
+        Debit = 1,
+        Credit = 2,
+    }
 }
