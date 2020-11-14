@@ -35,7 +35,7 @@ namespace Gamification.Platform.Common.Extensions
                 };
 
                 vEvent.RecurrenceRules = JsonConvert.DeserializeObject<List<RecurrencePattern>>(
-                    rateLimitRule.PeriodRecurrence.PeriodRecurrence
+                    rateLimitRule.PeriodRecurrence.PeriodPattern
                     );
 
                 var searchStart = DateTimeOffset.MinValue.DateTime;
@@ -89,7 +89,7 @@ namespace Gamification.Platform.Common.Extensions
 
                 vEvent.RecurrenceRules =
                     new List<RecurrencePattern> {
-                    new RecurrencePattern(step.PeriodRecurrence.PeriodRecurrence)
+                    new RecurrencePattern(step.PeriodRecurrence.PeriodPattern)
                     };
 
                 var searchStart = DateTime.UtcNow.AddYears(-1).Date;
@@ -253,7 +253,7 @@ namespace Gamification.Platform.Common.Extensions
                         {
                             PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
                             PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
-                            PeriodRecurrence =
+                            PeriodPattern =
                                     new RecurrencePattern(FrequencyType.Daily, interval: 1)
                                     {
                                         Until = DateTime.MaxValue
@@ -272,7 +272,7 @@ namespace Gamification.Platform.Common.Extensions
                                 {
                                     PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
                                     PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
-                                    PeriodRecurrence =
+                                    PeriodPattern =
                                             new RecurrencePattern(FrequencyType.Daily, interval: 1)
                                             {
                                                 Until = DateTime.MaxValue
