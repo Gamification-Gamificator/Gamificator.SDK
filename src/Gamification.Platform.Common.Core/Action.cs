@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class ActionCore
+    public abstract class ActionCore
     {
         /// <summary>
         /// An application can send any unique identifier and then associate a Rule with that actionId

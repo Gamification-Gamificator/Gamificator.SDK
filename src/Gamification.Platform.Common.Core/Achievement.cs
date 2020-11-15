@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {   
-    public class AchievementCore 
+    public abstract class AchievementCore 
     {
         /// <summary>
         /// "Gold Star!"

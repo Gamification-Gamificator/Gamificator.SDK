@@ -7,7 +7,7 @@ namespace Gamification.Platform.Common.Core
     /// <summary>
     /// 
     /// </summary>
-    public class PlayerAwardCore : AwardCore
+    public abstract class PlayerAwardCore : AwardCore
     {
         /// <summary>
         /// If no AwardRefId then why?

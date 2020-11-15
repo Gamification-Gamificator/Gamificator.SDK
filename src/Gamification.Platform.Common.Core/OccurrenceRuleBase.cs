@@ -71,9 +71,4 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
     }
-
-    public class ActionOccurrenceRuleCores : List<OccurrenceRuleBase>
-    {
-
-    }
 }

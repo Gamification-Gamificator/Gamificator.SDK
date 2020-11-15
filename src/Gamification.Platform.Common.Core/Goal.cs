@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class GoalCore
+    public abstract class GoalCore
     {
         [JsonProperty(PropertyName = "simpleName")]
         public string SimpleName { get; set; }

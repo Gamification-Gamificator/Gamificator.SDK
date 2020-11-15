@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {   
-    public class AwardCore
+    public abstract class AwardCore
     {
         [JsonProperty(PropertyName = "value")]
         public decimal Value { get; set; }

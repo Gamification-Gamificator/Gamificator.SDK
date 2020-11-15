@@ -8,7 +8,7 @@ namespace Gamification.Platform.Common.Core
     /// <summary>
     /// The Coin of the Realm ;)
     /// </summary>
-    public class CoinCore
+    public abstract class CoinCore
     {
         [JsonProperty(PropertyName = "simpleName")]
         public string SimpleName { get; set; }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class TriggerStepCore
+    public abstract class TriggerStepCore
     {
         /// <summary>
         /// Steps are ordered to prioritize Award within GoalTriggers

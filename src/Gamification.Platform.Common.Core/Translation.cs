@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class StringTranslation
+    public sealed class StringTranslation
     {
         /// <summary>
         /// en-US
@@ -20,7 +20,7 @@ namespace Gamification.Platform.Common.Core
         public string LocalName { get; set; }
     }
 
-    public class MediaTranslation
+    public sealed class MediaTranslation
     {
         /// <summary>
         /// en-US

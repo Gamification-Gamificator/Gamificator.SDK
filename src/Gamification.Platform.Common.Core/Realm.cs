@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class RealmCore
+    public abstract class RealmCore
     {
         /// <summary>
         /// "Gold Star!"

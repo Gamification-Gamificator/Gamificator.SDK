@@ -181,7 +181,7 @@ namespace Gamification.Platform.Common.Extensions
 
             foreach (var action in currentPlayerActions)
             {
-                foreach (var rule in triggerStep.OccurrenceRules)
+                foreach (var rule in triggerStep.ActionOccurrenceRules)
                 {
                     if (
                         action.OccurredAt != null &&

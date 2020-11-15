@@ -8,7 +8,7 @@ namespace Gamification.Platform.Common.Core
 {
 
 
-    public class OccurrenceRule : OccurrenceRuleCore
+    public class OccurrenceRule : OccurrenceRuleBase
     {
         
 
