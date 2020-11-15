@@ -6,7 +6,7 @@ namespace Gamification.Platform.Common.Core
     /// <summary>
     /// Recurrance MUST be configured in UTC to work properly
     /// </summary>
-    public abstract class PeriodRecurrence
+    public sealed class PeriodRecurrence
     {
         /// <summary>
         /// Only allow Step to be evaluated TRUE on these Dates Periods
