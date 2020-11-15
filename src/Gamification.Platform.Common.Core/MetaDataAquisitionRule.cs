@@ -17,6 +17,22 @@ namespace Gamification.Platform.Common.Core
         public string SimpleName { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty(PropertyName = "validationRegex")]
+        public string ValidationRegex { get; set; }
+
+        /// <summary>
+        /// Forces selection from a list
+        /// Be carefull, ValidationRegex validates the final .Value so the OptionValues better validate!
+        /// </summary>
+        [JsonProperty(PropertyName = "optionValues")]
+        public Dictionary<string, string> OptionValues { get; set; }
+
+        [JsonProperty(PropertyName = "validationErrorTranslations")]
+        public List<StringTranslation> ValidationErrorTranslations { get; set; } = new List<StringTranslation>();
+
+        /// <summary>
         /// Étoile d’or ! OR Gold Stern!
         /// </summary>
         [JsonProperty(PropertyName = "nameTranslations")]

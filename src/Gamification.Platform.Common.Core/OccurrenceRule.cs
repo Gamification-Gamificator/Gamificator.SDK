@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class ActionOccurrenceRuleCore
+    public class OccurrenceRuleCore
     {
         /// <summary>
         /// and/or
@@ -14,11 +14,7 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "operationType")]
         public OperationRuleType OperationType { get; set; }
 
-        /// <summary>
-        /// This Action
-        /// </summary>
-        [JsonProperty(PropertyName = "actionRefId")]
-        public Guid ActionRefId { get; set; }
+        // The thing we're tracking Occurrences of ...
 
         /// <summary>
         /// Did/DidNot
@@ -65,7 +61,7 @@ namespace Gamification.Platform.Common.Core
         public int Count { get; set; }
     }
 
-    public class ActionOccurrenceRuleCores : List<ActionOccurrenceRuleCore>
+    public class ActionOccurrenceRuleCores : List<OccurrenceRuleCore>
     {
 
     }
