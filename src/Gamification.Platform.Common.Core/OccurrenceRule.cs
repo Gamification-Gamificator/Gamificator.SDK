@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common.Core
 {
+    /// <summary>
+    /// "Visits is > 2 in last 3 weeks"
+    /// </summary>
     public class OccurrenceRuleCore
     {
         /// <summary>
@@ -47,6 +50,14 @@ namespace Gamification.Platform.Common.Core
         /// </summary>
         [JsonProperty(PropertyName = "periodRecurrence")]
         public PeriodRecurrence PeriodRecurrence { get; set; }
+
+        /// <summary>
+        /// occur within this heirarchy
+        /// "occured within the 2020 season"
+        /// "occured within the 12th game of the 2020 season"
+        /// </summary>
+        [JsonProperty(PropertyName = "sessionHierarchy")]
+        public string SessionHierarchy { get; set; } = "default";
 
         /// <summary>
         /// More or less than
