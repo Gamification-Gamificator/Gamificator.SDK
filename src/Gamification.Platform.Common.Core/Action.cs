@@ -39,7 +39,7 @@ namespace Gamification.Platform.Common.Core
         /// This allows Gamification of Sku based purchase(s) NOT a replacement for aswarded promotion value
         /// </summary>
         [JsonProperty(PropertyName = "machineReadablePurchases")]
-        public List<MachineReadablePurchaseRequest> MachineReadablePurchases { get; set; } = new List<MachineReadablePurchaseRequest>();
+        public List<MachineReadablePurchase> MachineReadablePurchases { get; set; } = new List<MachineReadablePurchase>();
     }
 }
 

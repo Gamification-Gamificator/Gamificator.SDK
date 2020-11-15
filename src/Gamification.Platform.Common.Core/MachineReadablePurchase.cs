@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
-using System;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class MachineReadablePurchaseRequest
+    public sealed class MachineReadablePurchase
     {
+        /// <summary>
+        /// The raw string value emmitted by a POS peripheral (usb/serial scanner, etc)
+        /// </summary>
         [JsonProperty(PropertyName = "machineReadableCode")]
-        public DateTimeOffset? MachineReadableCode { get; set; }
+        public string MachineReadableCode { get; set; }
 
         [JsonProperty(PropertyName = "quantity")]
         public int Quantity { get; set; }
@@ -15,7 +17,7 @@ namespace Gamification.Platform.Common.Core
         public PriceItem Price { get; set; }
     }
 
-    public class PriceItem
+    public sealed class PriceItem
     {
         /// <summary>
         /// Actual price from sending system (if available)
@@ -26,8 +28,8 @@ namespace Gamification.Platform.Common.Core
         /// <summary>
         /// Actual price paid from sending system (if available) assuming discounts or promotions
         /// </summary>
-        [JsonProperty(PropertyName = "pricePaidPerQuantity")]
-        public decimal? PricePaidPerQuantity { get; set; }
+        [JsonProperty(PropertyName = "pricePerQuantityPaid")]
+        public decimal? PricePerQuantityPaid { get; set; }
     }
 }
 
