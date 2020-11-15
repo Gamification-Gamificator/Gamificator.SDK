@@ -33,8 +33,14 @@ namespace Gamification.Platform.Common
         /// ActionOccurrenceRules MUST be 0, you only gather meta data once
         /// </summary>
         [JsonProperty(PropertyName = "metaDataAquisitionRule")]
-        public MetaDataAquisitionRule MetaDataAquisitionRule { get; set; } = new MetaDataAquisitionRule();        
-     }
+        public MetaDataAquisitionRule MetaDataAquisitionRule { get; set; } = new MetaDataAquisitionRule();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty(PropertyName = "purchaseRule")]
+        public PurchaseRule PurchaseRule { get; set; } = new PurchaseRule();
+    }
 
     public class TriggerSteps : List<TriggerStep>
     {
