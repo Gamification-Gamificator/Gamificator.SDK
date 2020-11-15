@@ -9,7 +9,7 @@ namespace Gamification.Platform.Common.Core
     /// <summary>
     /// "Visits is > 2 in last 3 weeks"
     /// </summary>
-    public class OccurrenceRuleCore
+    public abstract class OccurrenceRuleBase
     {
         /// <summary>
         /// and/or
@@ -33,20 +33,20 @@ namespace Gamification.Platform.Common.Core
         /// </summary>
         [JsonProperty(PropertyName = "insideOf")]
         /// <summary>
-        [JsonConverter(typeof(NetTopologySuiteGeometryConverter))]
+        [JsonConverter(typeof(NetTopologySuiteGeometryMultiPolygonConverter))]
         public MultiPolygon InsideOf { get; set; }
 
         /// <summary>
         /// Step requires this Action to have occurred outside these Polygons
         /// </summary>
         [JsonProperty(PropertyName = "outsideOf")]
-        [JsonConverter(typeof(NetTopologySuiteGeometryConverter))]
+        [JsonConverter(typeof(NetTopologySuiteGeometryMultiPolygonConverter))]
         public MultiPolygon OutsideOf { get; set; }
 
         #endregion Inside/Outside
 
         /// <summary>
-        /// occur during these periods
+        /// occur during this period
         /// </summary>
         [JsonProperty(PropertyName = "periodRecurrence")]
         public PeriodRecurrence PeriodRecurrence { get; set; }
@@ -72,7 +72,7 @@ namespace Gamification.Platform.Common.Core
         public int Count { get; set; }
     }
 
-    public class ActionOccurrenceRuleCores : List<OccurrenceRuleCore>
+    public class ActionOccurrenceRuleCores : List<OccurrenceRuleBase>
     {
 
     }

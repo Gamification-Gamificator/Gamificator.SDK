@@ -8,7 +8,7 @@ namespace Gamification.Platform.Common
     /// <summary>
     /// A true Base, Core is an abstraction for .Common vs .Display
     /// </summary>
-    public class ActionEventBase
+    public class ActionEventBase : OccurrenceBase
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "actionRefId")]
@@ -21,17 +21,5 @@ namespace Gamification.Platform.Common
         /// </summary>
         [JsonProperty(PropertyName = "sessionHierarchy")]
         public string SessionHierarchy { get; set; } = "default";
-
-        /// <summary>
-        /// An ActionRequest may occur out of sync with the Action
-        /// This is WHEN the Action Occurred NOT when it was sent
-        /// </summary>
-        [JsonRequired]
-        [JsonProperty(PropertyName = "occurredOn")]
-        public DateTimeOffset OccurredOn { get; set; }
-
-        [JsonProperty(PropertyName = "occurredAt")]
-        [JsonConverter(typeof(NetTopologySuiteGeometryPointConverter))]
-        public Point OccurredAt { get; set; }
     }
 }

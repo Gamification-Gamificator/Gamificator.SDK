@@ -6,7 +6,7 @@ namespace Gamification.Platform.Common
     /// <summary>
     /// The persisted Goal transaction
     /// </summary>
-    public class GoalEvent
+    public class GoalEvent : OccurrenceBase
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
@@ -22,14 +22,6 @@ namespace Gamification.Platform.Common
         [JsonRequired]
         [JsonProperty(PropertyName = "goalRefId")]
         public Guid GoalRefId { get; set; }
-
-        /// <summary>
-        /// An ActionRequest may occur out of sync with the Action
-        /// This is WHEN the Action Occurred NOT when it was sent
-        /// </summary>
-        [JsonRequired]
-        [JsonProperty(PropertyName = "occurredOn")]
-        public DateTimeOffset OccurredOn { get; set; }
 
         /// <summary>
         /// A Goal is accomplished

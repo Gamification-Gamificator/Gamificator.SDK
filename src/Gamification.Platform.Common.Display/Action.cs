@@ -7,8 +7,6 @@ namespace Gamification.Platform.Common.Display
 {
     public class ActionDisplay : ActionCore
     {
-        [JsonProperty(PropertyName = "actionCheckpoints")]
-        public List<DateTimeOffset> ActionCheckpoints { get; set; } = new List<DateTimeOffset>();
     }
 
     public class ActionDisplays : List<ActionDisplay>

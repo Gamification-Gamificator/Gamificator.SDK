@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Gamification.Platform.Common
 {
-    public class MetaDataAquisitionEvent : MetaDataAquisitionBase
+    public class MetaDataAquisitionEvent : OccurrenceBase
     {
         [JsonProperty(PropertyName = "metaDataAquisitionRuleRefId")]
         public Guid MetaDataAquisitionRuleRefId { get; set; }

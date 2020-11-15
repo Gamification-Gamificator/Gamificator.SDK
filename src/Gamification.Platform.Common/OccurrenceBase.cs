@@ -5,7 +5,7 @@ using System;
 
 namespace Gamification.Platform.Common
 {
-    public class MetaDataAquisitionBase
+    public class OccurrenceBase
     {
         /// <summary>
         /// An ActionRequest may occur out of sync with the Action

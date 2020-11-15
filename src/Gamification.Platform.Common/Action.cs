@@ -39,12 +39,18 @@ namespace Gamification.Platform.Common
         [JsonProperty(PropertyName = "actionCheckpoints")]
         public List<ActionCheckpoint> ActionCheckpoints { get; set; } = new List<ActionCheckpoint>();
 
-
         /// <summary>
         /// The Action can itself cause Awards to be granted
         /// </summary>
         [JsonProperty(PropertyName = "awards")]
         public List<AwardRule> Awards { get; set; } = new List<AwardRule>();
+
+        /// <summary>
+        /// **Optional**
+        /// When an ActionRequest includes a .Value this is the rule that processes the Metadata
+        /// </summary>
+        [JsonProperty(PropertyName = "metaDataAquisitionRuleRefId")]
+        public Guid? MetaDataAquisitionRuleRefId { get; set; }
     }
 
     public class Actions : List<Action>

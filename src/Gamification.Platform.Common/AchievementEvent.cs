@@ -6,7 +6,7 @@ namespace Gamification.Platform.Common
     /// <summary>
     /// The persisted Goal transaction
     /// </summary>
-    public class AchievementEvent
+    public class AchievementEvent : OccurrenceBase
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
@@ -31,13 +31,5 @@ namespace Gamification.Platform.Common
 
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
         public CurrencyMultiplierRule CurrencyMultiplierRule { get; set; }
-
-        /// <summary>
-        /// An ActionRequest may occur out of sync with the Action
-        /// This is WHEN the Action Occurred NOT when it was sent
-        /// </summary>
-        [JsonRequired]
-        [JsonProperty(PropertyName = "occurredOn")]
-        public DateTimeOffset OccurredOn { get; set; }
     }
 }

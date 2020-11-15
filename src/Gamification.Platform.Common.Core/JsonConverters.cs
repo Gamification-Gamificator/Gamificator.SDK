@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Gamification.Platform.Common.Core
 {
-    public class NetTopologySuiteGeometryConverter : JsonConverter
+    public class NetTopologySuiteGeometryMultiPolygonConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -25,6 +25,32 @@ namespace Gamification.Platform.Common.Core
             var jsonSerializer = NetTopologySuite.IO.GeoJsonSerializer.Create();
 
             return jsonSerializer.Deserialize<NetTopologySuite.Geometries.MultiPolygon>(reader);
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(string).IsAssignableFrom(objectType);
+        }
+    }
+
+    public class NetTopologySuiteGeometryPolygonConverter : JsonConverter
+    {
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var jsonSerializer = GeoJsonSerializer.Create();
+            using (var stringWriter = new StringWriter())
+            using (var jsonWriter = new JsonTextWriter(stringWriter))
+            {
+                jsonSerializer.Serialize(jsonWriter, value);
+                writer.WriteRawValue(stringWriter.ToString());
+            }
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var jsonSerializer = NetTopologySuite.IO.GeoJsonSerializer.Create();
+
+            return jsonSerializer.Deserialize<NetTopologySuite.Geometries.Polygon>(reader);
         }
 
         public override bool CanConvert(Type objectType)
