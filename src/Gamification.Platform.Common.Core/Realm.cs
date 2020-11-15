@@ -26,10 +26,19 @@ namespace Gamification.Platform.Common.Core
         public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
 
         /// <summary>
-        /// Api calls are authenticated using digital signature matching
+        /// When changed causes an administrative creation of an Event Grid subscription with EventType = EntityRefId.ToString()
         /// </summary>
-        [JsonProperty(PropertyName = "publicKeys")]
-        public Dictionary<string, DateTime> PublicKeys { get; set; }
+        [JsonProperty(PropertyName = "webhookUri")]
+        public Uri WebhookUri { get; set; }
+
+        /// <summary>
+        /// All Webhook Posts use CloudEvent schema and are encrypted in a Lazlo.SecureData 
+        /// using an asymetric public key
+        /// Digital Signature using a Lazlo private key
+        /// Key is thumbprint, Value is public key
+        /// </summary>
+        [JsonProperty(PropertyName = "webhookPublicKeys")]
+        public Dictionary<string, string> WebhookPublicKeys { get; set; }
     }
 
 }
