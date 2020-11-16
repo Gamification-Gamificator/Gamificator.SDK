@@ -1,5 +1,5 @@
 ﻿using Gamification.Platform.Common.Extensions;
-using Lazlo.Common.Core;
+using Lazlo.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
