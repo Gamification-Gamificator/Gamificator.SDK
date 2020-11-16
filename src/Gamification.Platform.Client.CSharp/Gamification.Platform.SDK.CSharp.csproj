@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
+    <PackageReference Include="Gamification.Platform.Common" Version="2.0.51-preview" />
   </ItemGroup>
 
 </Project>
