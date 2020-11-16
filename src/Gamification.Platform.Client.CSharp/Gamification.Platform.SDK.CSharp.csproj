@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
-    <PackageReference Include="Lazlo.Common.Core" Version="2.2.2-preview" />
   </ItemGroup>
 
 </Project>

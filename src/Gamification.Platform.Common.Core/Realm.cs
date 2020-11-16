@@ -9,7 +9,7 @@ namespace Gamification.Platform.Common.Core
     public abstract class RealmCore
     {
         /// <summary>
-        /// "Gold Star!"
+        /// Sharpfoxx.com etc.
         /// </summary>
         [JsonProperty(PropertyName = "simpleName")]
         public string SimpleName { get; set; }
@@ -21,10 +21,10 @@ namespace Gamification.Platform.Common.Core
         public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
 
         /// <summary>
-        /// Trophy image or video etc
+        /// Logo
         /// </summary>
-        [JsonProperty(PropertyName = "mediaTranslations")]
-        public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
+        [JsonProperty(PropertyName = "logoTranslations")]
+        public List<MediaTranslation> LogoTranslations { get; set; } = new List<MediaTranslation>();
 
         /// <summary>
         /// When changed causes an administrative creation of an Event Grid subscription with EventType = EntityRefId.ToString()
