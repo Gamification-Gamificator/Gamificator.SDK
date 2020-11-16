@@ -40,5 +40,4 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "webhookPublicKeys")]
         public Dictionary<string, string> WebhookPublicKeys { get; set; }
     }
-
 }
