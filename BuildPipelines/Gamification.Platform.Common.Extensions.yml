@@ -56,4 +56,4 @@ jobs:
         BuildConfiguration: 'Debug'
         ExternalNuget: true
         TestProjectFolder: "src/Gamification.Platform.Common.Tests"
-        RunTests: true
+        RunTests: false
