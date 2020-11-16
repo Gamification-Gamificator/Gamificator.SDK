@@ -1,4 +1,4 @@
-﻿using Lazlo.Common.Core;
+﻿using Lazlo.Common;
 using Lazlo.Common.Requests;
 using System;
 using System.Collections.Generic;

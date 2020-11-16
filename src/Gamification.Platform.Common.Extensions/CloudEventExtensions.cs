@@ -1,11 +1,9 @@
 ﻿using CloudNative.CloudEvents;
-using Lazlo.Common.Core;
+using Lazlo.Common;
 using Lazlo.Common.Requests;
 using Newtonsoft.Json;
 using System;
-using System.Net.Http;
 using System.Net.Mime;
-using System.Runtime.CompilerServices;
 
 namespace Gamification.Platform.Common.Extensions
 {
