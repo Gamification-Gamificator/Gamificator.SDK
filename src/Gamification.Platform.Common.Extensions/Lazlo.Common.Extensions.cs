@@ -8,7 +8,7 @@ namespace Lazlo.Common.Extensions
 {
     public static class SmartContextExtensions
     {
-        public static SmartContextBase<T> Map<T>(this SmartContextBase<T> to, SmartContextBase<T> from)
+        public static SmartBase<T> Map<T>(this SmartBase<T> to, SmartBase<T> from)
         {
             to.Data = from.Data;
             to.Properties = from.Properties;
@@ -17,7 +17,7 @@ namespace Lazlo.Common.Extensions
             return to;
         }
 
-        public static SmartContextBase<T> Map<T>(this SmartContext<T> to, SmartContext<T> from)
+        public static SmartBase<T> Map<T>(this SmartContext<T> to, SmartContext<T> from)
         {
             to.Data = from.Data;
             to.Properties = from.Properties;
@@ -29,7 +29,7 @@ namespace Lazlo.Common.Extensions
             return to;
         }
 
-        public static SmartContextBase<T> Map<T>(this SmartContext<T> to, SmartRequest<T> smartRequest)
+        public static SmartBase<T> Map<T>(this SmartContext<T> to, SmartRequest<T> smartRequest)
         {
             to.Data = smartRequest.Data;
             to.CreatedOn = smartRequest.CreatedOn;
