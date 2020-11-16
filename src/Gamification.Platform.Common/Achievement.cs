@@ -38,6 +38,6 @@ namespace Gamification.Platform.Common
         /// When achieved, all future Awards of Currency are multiplied
         /// </summary>
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
-        public CurrencyMultiplierRule CurrencyMultiplierRule { get; set; }        
+        public CoinMultiplierRule CurrencyMultiplierRule { get; set; }        
     }
 }

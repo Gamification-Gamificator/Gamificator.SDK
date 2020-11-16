@@ -30,6 +30,6 @@ namespace Gamification.Platform.Common
         public int PathPriority { get; set; }
 
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
-        public CurrencyMultiplierRule CurrencyMultiplierRule { get; set; }
+        public CoinMultiplierRule CurrencyMultiplierRule { get; set; }
     }
 }

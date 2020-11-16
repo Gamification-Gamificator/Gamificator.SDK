@@ -3,10 +3,10 @@ using System;
 
 namespace Gamification.Platform.Common
 {
-    public class CurrencyMultiplierRule
+    public class CoinMultiplierRule
     {
-        [JsonProperty(PropertyName = "currencyRefId")]
-        public Guid CurrencyRefId { get; set; }
+        [JsonProperty(PropertyName = "coinRefId")]
+        public Guid CoinRefId { get; set; }
 
         [JsonProperty(PropertyName = "multiplier")]
         public decimal Multiplier { get; set; }
