@@ -98,7 +98,7 @@ namespace Gamification.Platform.SDK.CSharp
 
             HttpResponseMessage response = await HttpClient.GetAsync(requestUrl);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            if (response.IsSuccessStatusCode)
             {
                 var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
