@@ -52,6 +52,7 @@ namespace Gamification.Platform.SDK.CSharp
 
         public async Task<bool> ActionCompletedV1Async(
             Guid correlationRefId,
+            string gamificatorApiKey,
             ActionRequest actionRequest,
             double latitude,
             double longitude,
@@ -72,14 +73,10 @@ namespace Gamification.Platform.SDK.CSharp
                 requestUrl,
                 correlationRefId,
                 req,
-                null,
+                new Dictionary<string, string> { { "gamificator-apikey", gamificatorApiKey } },
                 cancellationToken).ConfigureAwait(false);
 
-            var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            //SmartResponse<GenerateSelectionsResponse> smartResponse = JsonConvert.DeserializeObject<SmartResponse<GenerateSelectionsResponse>>(responseJson);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+            if (response.IsSuccessStatusCode)
             {
                 return true;
             }
