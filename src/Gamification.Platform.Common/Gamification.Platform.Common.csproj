@@ -8,6 +8,7 @@
     <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
   
+  
   <ItemGroup>
     <PackageReference Include="CloudNative.CloudEvents" Version="1.3.80" />
     <PackageReference Include="Gamification.Platform.Common.Core" Version="*-*" />
