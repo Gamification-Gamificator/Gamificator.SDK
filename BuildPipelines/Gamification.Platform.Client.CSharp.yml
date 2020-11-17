@@ -38,6 +38,7 @@ jobs:
     VmImage: 'windows-2019'
 
   steps:
+
   - powershell: |
       Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
     displayName: "Set Build Number"
