@@ -44,7 +44,7 @@ jobs:
 
   - template: BuildPipelines\Templates\Steps-BuildAndPushNetCore.yml@Infrastructure
     parameters:
-      ProjectFolder: 'src/Gamification.Platform.Common.Extensions'
+      ProjectFolder: 'src/Gamification.Platform.Common.CSharp'
       ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
         BuildConfiguration: 'Debug'
         ExternalNuget: true
