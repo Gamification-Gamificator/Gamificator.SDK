@@ -32,13 +32,13 @@ resources:
       - development
 
 jobs:
+
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
     VmImage: 'windows-2019'
-  
-  steps:
 
+  steps:
   - powershell: |
       Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
     displayName: "Set Build Number"

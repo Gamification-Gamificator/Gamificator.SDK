@@ -5,7 +5,7 @@ variables:
     buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
     buildVersion: "$(ReleaseVersion).$(buildIncrement)"
   ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
-    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]  
+    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]
     buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
 
 trigger:
@@ -15,7 +15,7 @@ trigger:
     - release
   paths:
     include:
-    - 'src/Gamification.Platform.Common.Extensions/*'
+    - src/Gamification.Platform.Common.Extensions/*
 
 resources:
   repositories:
@@ -26,13 +26,13 @@ resources:
   pipelines:
   - pipeline: GamificationPlatformCommon
     source: "Build Gamification.Platform.Common"
-    trigger: 
+    trigger:
       branches:
       - release
       - development
   - pipeline: GamificationPlatformCommonDisplay
     source: "Build Gamification.Platform.Common.Display"
-    trigger: 
+    trigger:
       branches:
       - release
       - development
@@ -44,7 +44,6 @@ jobs:
     VmImage: 'windows-2019'
 
   steps:
-
   - powershell: |
       Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
     displayName: "Set Build Number"
