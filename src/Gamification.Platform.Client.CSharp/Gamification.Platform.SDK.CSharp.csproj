@@ -6,7 +6,6 @@
     <Company>Lazlo 326</Company>
     <Product>Gamificator</Product>
   </PropertyGroup>
-
   
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
