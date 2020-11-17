@@ -9,7 +9,6 @@
     <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
   
-
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common.Core" Version="*-*" />
   </ItemGroup>
