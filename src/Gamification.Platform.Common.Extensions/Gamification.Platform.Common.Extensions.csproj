@@ -10,7 +10,6 @@
     <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
   
-
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
