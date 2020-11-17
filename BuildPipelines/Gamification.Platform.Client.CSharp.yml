@@ -15,7 +15,7 @@ trigger:
     - release
   paths:
     include:
-    - src/Gamification.Platform.Client.CSharp/*
+    - src/Gamification.Platform.Common.Extensions/*
 
 resources:
   repositories:
@@ -32,7 +32,6 @@ resources:
       - development
 
 jobs:
-
 - job: BuildNETCore
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
@@ -45,7 +44,9 @@ jobs:
 
   - template: BuildPipelines\Templates\Steps-BuildAndPushNetCore.yml@Infrastructure
     parameters:
-      ProjectFolder: 'src/Gamification.Platform.Client.CSharp'
+      ProjectFolder: 'src/Gamification.Platform.Common.Extensions'
       ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
         BuildConfiguration: 'Debug'
         ExternalNuget: true
+        TestProjectFolder: "src/Gamification.Platform.Common.Tests"
+        RunTests: false
