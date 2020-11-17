@@ -15,27 +15,27 @@ namespace Gamification.Platform.SDK.CSharp
     {
 
 
-        //public async Task<Realm> RegisterRealmAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
-        //{
-        //    HttpResponseMessage httpResponse = await SendAsJsonAsync(
-        //                    method: HttpMethod.Post,
-        //                    absoluteUri: GetUri($"api/v1/realm").AbsoluteUri,
-        //                    correlationRefId: correlationRefId,
-        //                    request: realm,
-        //                    requestHeaders: null,
-        //                    cancellationToken).ConfigureAwait(false);
+        public async Task<Realm> RegisterRealmAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
+        {
+            HttpResponseMessage httpResponse = await SendAsJsonAsync(
+                            method: HttpMethod.Post,
+                            absoluteUri: GetUri($"api/v1/realm").AbsoluteUri,
+                            correlationRefId: correlationRefId,
+                            request: contact,
+                            requestHeaders: null,
+                            cancellationToken).ConfigureAwait(false);
 
-        //    string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-        //    var response = JsonConvert.DeserializeObject<SmartResponse<Realm>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponse<Realm>>(responseJson);
 
-        //    if (httpResponse.IsSuccessStatusCode)
-        //    {
-        //        return response.Data;
-        //    }
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return response.Data;
+            }
 
-        //    throw new Exception($"Get Realm failed. {response.Error.Message}");
-        //}
+            throw new Exception($"Register Realm failed. {response.Error.Message}");
+        }
 
 
 
@@ -80,7 +80,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return response.Data;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Get All Realm failed. {response.Error.Message}");
         }
 
         public async Task<Realm> CreateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default)
@@ -102,7 +102,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return response.Data;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Create Realm failed. {response.Error.Message}");
         }
 
         public async Task UpdateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default)
@@ -124,7 +124,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Update Realm failed. {response.Error.Message}");
         }
 
         public async Task DeleteRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default)
@@ -146,7 +146,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Delete Realm failed. {response.Error.Message}");
         }
 
         public async Task<Realm> RetrieveDeletedRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default)
@@ -168,7 +168,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return response.Data;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Get Deleted Realm failed. {response.Error.Message}");
         }
 
         public async Task<List<Realm>> RetrieveDeletedRealmsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
@@ -190,7 +190,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return response.Data;
             }
 
-            throw new Exception($"Get Realm failed. {response.Error.Message}");
+            throw new Exception($"Get Deleted Realms failed. {response.Error.Message}");
         }
     }
 }
