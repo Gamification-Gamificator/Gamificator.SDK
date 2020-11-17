@@ -7,7 +7,6 @@
     <Product>Gamificator</Product>
   </PropertyGroup>  
   
-  
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
   </ItemGroup>
