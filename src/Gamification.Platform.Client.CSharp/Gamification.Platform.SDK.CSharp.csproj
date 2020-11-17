@@ -5,8 +5,7 @@
     <Authors>Michael C. Pinkus</Authors>
     <Company>Lazlo 326</Company>
     <Product>Gamificator</Product>
-  </PropertyGroup>
-      
+  </PropertyGroup>      
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
   </ItemGroup>
