@@ -8,8 +8,7 @@
     <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
     <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
   </PropertyGroup>
-  
-  
+    
   <ItemGroup>
     <PackageReference Include="Lazlo.Common.Core" Version="2.2.7-preview" />
     <PackageReference Include="NetTopologySuite" Version="2.1.0" />
