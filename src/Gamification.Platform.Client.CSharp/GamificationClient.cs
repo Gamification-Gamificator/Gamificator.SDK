@@ -91,7 +91,7 @@ namespace Gamification.Platform.SDK.CSharp
             double longitude,
             CancellationToken cancellationToken = default)
         {
-            string requestUrl = GetUri("api/webpush/subscription").AbsoluteUri;
+            string requestUrl = GetUri($"api/webpush/subscription/{playerRefId}").AbsoluteUri;
 
             HttpResponseMessage response = await HttpClient.GetAsync(requestUrl);
 
