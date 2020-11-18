@@ -11,7 +11,7 @@
     
   
   <ItemGroup>
-    <PackageReference Include="Lazlo.Common.Core" Version="2.2.7-preview" />
+    <PackageReference Include="Lazlo.Common.Core" Version="2.2.8-preview" />
     <PackageReference Include="NetTopologySuite" Version="2.1.0" />
     <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="2.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
