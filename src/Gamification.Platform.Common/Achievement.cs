@@ -14,7 +14,7 @@ namespace Gamification.Platform.Common
         /// ** New pattern **
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid EntityRefId = Guid.NewGuid();
+        public Guid EntityRefId { get; set; } = Guid.NewGuid();
 
         //TODO goals can be ordered, timespan of achievement etc etc
         [JsonProperty(PropertyName = "goals")]
