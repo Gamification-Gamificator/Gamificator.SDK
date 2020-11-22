@@ -34,6 +34,28 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get Action failed. {response.Error.Message}");
         }
 
+        public async Task<Action> RetrieveActionByIdAsync(Guid correlationRefId, string actionId, CancellationToken cancellationToken = default)
+        {
+            HttpResponseMessage httpResponse = await SendAsJsonAsync(
+                            method: HttpMethod.Get,
+                            pathAndQuery: $"api/v1/action/{actionId}",
+                            correlationRefId: correlationRefId,
+                            request: null,
+                            requestHeaders: null,
+                            cancellationToken).ConfigureAwait(false);
+
+            string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            var response = JsonConvert.DeserializeObject<SmartResponse<Action>>(responseJson);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return response.Data;
+            }
+
+            throw new Exception($"Get Action By Id failed. {response.Error.Message}");
+        }
+
         public async Task<List<Action>> RetrieveAllActionsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
