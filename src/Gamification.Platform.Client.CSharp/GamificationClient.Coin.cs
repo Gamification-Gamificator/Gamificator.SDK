@@ -15,7 +15,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/coins/all").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coins/all",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -37,7 +37,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
-                            absoluteUri: GetUri($"api/v1/coin").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coin",
                             correlationRefId: correlationRefId,
                             request: coin,
                             requestHeaders: null,
@@ -59,7 +59,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,
-                            absoluteUri: GetUri($"api/v1/coin").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coin",
                             correlationRefId: correlationRefId,
                             request: coin,
                             requestHeaders: null,
@@ -81,7 +81,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Delete,
-                            absoluteUri: GetUri($"api/v1/coin/{coinRefId}").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coin/{coinRefId}",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -103,7 +103,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/coin/deleted/{coinRefId}").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coin/deleted/{coinRefId}",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -125,7 +125,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/coins/deleted").AbsoluteUri,
+                            pathAndQuery: $"api/v1/coins/deleted",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
