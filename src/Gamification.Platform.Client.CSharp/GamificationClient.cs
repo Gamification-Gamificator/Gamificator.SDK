@@ -1,6 +1,8 @@
 ﻿using Gamification.Platform.Common;
 using Lazlo.Common.Requests;
 using Lazlo.Common.Responses;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,43 +12,42 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public sealed class GamificationClientOptions
     {
-        protected HttpClient HttpClient { get; set; }
+        public Uri BaseAddress { get; set; }
+        public string ApiKey { get; set; }
+    }
 
-        Uri Uri;
-
-        /// <summary>
-        /// ***
-        /// Deprecated
-        /// ***
-        /// </summary>
-        /// <param name="httpClient"></param>
-        /// <param name="baseUri"></param>
-        public GamificationClient(HttpClient httpClient, string baseUri)
+    public static class GamificationExtensions
+    {
+        public static IServiceCollection AddGamificationClient(this IServiceCollection services, GamificationClientOptions options)
         {
-            Uri = new Uri(baseUri.ToLower());
-
-            HttpClient = httpClient;
-        }
-
-        public GamificationClient(HttpClient httpClient, Uri baseUri)
-        {
-            Uri = baseUri;
-
-            HttpClient = httpClient;
-        }
-
-        private Uri GetUri(string relativeUri)
-        {
-            if (Uri.Host == "localhost")
+            services.AddHttpClient<IGamificationClient, GamificationClient>(client =>
             {
-                return new Uri($"{Uri.Scheme}://{Uri.Host}:{Uri.Port}/{relativeUri}");
+                client.BaseAddress = options.BaseAddress;
+                client.DefaultRequestHeaders.Add("gamificator-apikey", options.ApiKey);
+            });
+
+            return services;
+        }
+    }
+
+    public partial class GamificationClient : IGamificationClient
+    {
+        private HttpClient _httpClient;
+
+        public GamificationClient(HttpClient httpClient, GamificationClientOptions options)
+        {
+            _httpClient = httpClient;
+
+            if (options.BaseAddress != null)
+            {
+                _httpClient.BaseAddress = options.BaseAddress;
             }
 
-            else
+            if(!httpClient.DefaultRequestHeaders.Contains("gamificator-apikey"))
             {
-                return new Uri($"https://{Uri.Host}/{relativeUri}");
+                _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", options.ApiKey);
             }
         }
 
@@ -66,7 +67,7 @@ namespace Gamification.Platform.SDK.CSharp
                 Uuid = Guid.NewGuid().ToString()
             };
 
-            string requestUrl = GetUri("api/action/completed").AbsoluteUri;
+            string requestUrl = "api/action/completed";
 
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Post,
@@ -84,60 +85,39 @@ namespace Gamification.Platform.SDK.CSharp
             return false;
         }
 
-        public async Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(
+        private async Task<HttpResponseMessage> SendAsJsonAsync(
+            HttpMethod method,
+            string pathAndQuery,
             Guid correlationRefId,
-            Guid playerRefId,
-            double latitude,
-            double longitude,
+            object request,
+            Dictionary<string, string> requestHeaders,
             CancellationToken cancellationToken = default)
         {
-            string requestUrl = GetUri("api/webpush/subscription").AbsoluteUri;
+            HttpRequestMessage httpreq = new HttpRequestMessage(method, $"{_httpClient.BaseAddress.AbsoluteUri}{pathAndQuery}");
 
-            HttpResponseMessage response = await HttpClient.GetAsync(requestUrl);
+            httpreq.Headers.Add("lazlo-correlationrefid", correlationRefId.ToString());
 
-            if (response.IsSuccessStatusCode)
+            if (requestHeaders != null)
             {
-                var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-                var subscription = JsonConvert.DeserializeObject<PlayerWebPushSubscription>(responseJson);
-
-                return subscription;
+                foreach (string key in requestHeaders.Keys)
+                {
+                    httpreq.Headers.Add(key, requestHeaders[key]);
+                }
             }
 
-            return null;
-        }
-
-        public async Task<bool> WebPushSubscriptionStore(
-            Guid correlationRefId,
-            PlayerWebPushSubscription playerWebPushSubscription,
-            double latitude,
-            double longitude,
-            CancellationToken cancellationToken = default)
-        {
-            SmartRequest<PlayerWebPushSubscription> req = new SmartRequest<PlayerWebPushSubscription>
+            if (request == null)
             {
-                Data = playerWebPushSubscription,
-                Latitude = latitude,
-                Longitude = longitude,
-                Uuid = Guid.NewGuid().ToString()
-            };
-
-            string requestUrl = GetUri("api/webpush/subscription").AbsoluteUri;
-
-            HttpResponseMessage response = await SendAsJsonAsync(
-                HttpMethod.Post,
-                requestUrl,
-                correlationRefId,
-                req,
-                null,
-                cancellationToken).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
+                return await _httpClient.SendAsync(httpreq, cancellationToken).ConfigureAwait(false);
             }
 
-            return false;
+            else
+            {
+                string json = JsonConvert.SerializeObject(request);
+
+                httpreq.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                return await _httpClient.SendAsync(httpreq, cancellationToken).ConfigureAwait(false);
+            }
         }
 
         private async Task<string> ExtractResponseErrorAsync(HttpResponseMessage httpResponse)
@@ -167,40 +147,6 @@ namespace Gamification.Platform.SDK.CSharp
             }
         }
 
-        private async Task<HttpResponseMessage> SendAsJsonAsync(
-            HttpMethod method,
-            string absoluteUri,
-            Guid correlationRefId,
-            object request,
-            Dictionary<string, string> requestHeaders,
-            CancellationToken cancellationToken = default)
-        {
-            HttpRequestMessage httpreq = new HttpRequestMessage(method, absoluteUri);
-
-            httpreq.Headers.Add("lazlo-correlationrefid", correlationRefId.ToString());
-
-            if (requestHeaders != null)
-            {
-                foreach (string key in requestHeaders.Keys)
-                {
-                    httpreq.Headers.Add(key, requestHeaders[key]);
-                }
-            }
-
-            if (request == null)
-            {
-                return await HttpClient.SendAsync(httpreq, cancellationToken).ConfigureAwait(false);
-            }
-
-            else
-            {
-                string json = JsonConvert.SerializeObject(request);
-
-                httpreq.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-                return await HttpClient.SendAsync(httpreq, cancellationToken).ConfigureAwait(false);
-            }
-        }
     }
 }
 

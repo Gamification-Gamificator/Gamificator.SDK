@@ -13,13 +13,11 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public partial class GamificationClient
     {
-
-
         public async Task<Realm> RegisterRealmAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
-                            absoluteUri: GetUri($"api/v1/realm").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm",
                             correlationRefId: correlationRefId,
                             request: contact,
                             requestHeaders: null,
@@ -43,7 +41,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/realm/{realmRefId}").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm/{realmRefId}",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -65,7 +63,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/realms/all").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realms/all",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -87,7 +85,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
-                            absoluteUri: GetUri($"api/v1/realm").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm",
                             correlationRefId: correlationRefId,
                             request: realm,
                             requestHeaders: null,
@@ -109,7 +107,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,
-                            absoluteUri: GetUri($"api/v1/realm").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm",
                             correlationRefId: correlationRefId,
                             request: realm,
                             requestHeaders: null,
@@ -131,7 +129,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Delete,
-                            absoluteUri: GetUri($"api/v1/realm/{realmRefId}").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm/{realmRefId}",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -153,7 +151,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/realm/deleted/{realmRefId}").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realm/deleted/{realmRefId}",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
@@ -175,7 +173,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Get,
-                            absoluteUri: GetUri($"api/v1/realms/deleted").AbsoluteUri,
+                            pathAndQuery: $"api/v1/realms/deleted",
                             correlationRefId: correlationRefId,
                             request: null,
                             requestHeaders: null,
