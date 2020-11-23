@@ -16,14 +16,17 @@ namespace Gamification.SDK.CSharp
 {
     public partial class GamificationClient
     {
-        public async Task<Realm> RegisterRealmAsync(SmartRequest<RealmRegisterRequest> request, CancellationToken cancellationToken = default)
+        public async Task<Realm> RegisterRealmAsync(
+            SmartRequest<RealmRegisterRequest> request, 
+            CancellationToken cancellationToken = default
+            )
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
                             pathAndQuery: $"api/v1/realm/register",
                             correlationRefId: Guid.NewGuid(),
                             request: request,
-                            requestHeaders: null,
+                            requestHeaders: null, // apiKey is injected
                             cancellationToken).ConfigureAwait(false);
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);

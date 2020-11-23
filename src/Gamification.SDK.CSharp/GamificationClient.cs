@@ -64,7 +64,7 @@ namespace Gamification.SDK.CSharp
                 pathAndQuery,
                 correlationRefId,
                 req,
-                new Dictionary<string, string> { { "gamificator-apikey", gamificatorApiKey } },
+                null, // apiKey is injected
                 cancellationToken).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)

@@ -20,7 +20,10 @@ namespace Gamification.SDK.CSharp
             Dictionary<string, string> requestHeaders,
             CancellationToken cancellationToken = default)
         {
-            HttpRequestMessage httpreq = new HttpRequestMessage(method, $"{_httpClient.BaseAddress.AbsoluteUri}{pathAndQuery}");
+            HttpRequestMessage httpreq = new HttpRequestMessage(
+                method, 
+                $"{_httpClient.BaseAddress.AbsoluteUri}{pathAndQuery}"
+                );
 
             httpreq.Headers.Add("lazlo-correlationrefid", correlationRefId.ToString());
 
