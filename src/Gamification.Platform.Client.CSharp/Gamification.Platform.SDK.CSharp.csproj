@@ -15,7 +15,8 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Gamification.SDK.CSharp\Gamification.SDK.CSharp.csproj">
-      <Private>true</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <IncludeAssets>Gamification.SDK.CSharp.dll</IncludeAssets>
     </ProjectReference>
   </ItemGroup>
 
