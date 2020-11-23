@@ -7,17 +7,9 @@
     <Product>Gamificator</Product>
     <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-  </PropertyGroup>      
-  
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.10" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.10" />
-  </ItemGroup>      
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Gamification.SDK.CSharp\Gamification.SDK.CSharp.csproj">
-      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-    </ProjectReference>
+    <PackageReference Include="Gamification.SDK.CSharp" Version="2.0.0-preview" />
   </ItemGroup>
 </Project>
