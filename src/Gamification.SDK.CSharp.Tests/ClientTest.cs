@@ -53,6 +53,7 @@ namespace Gamification.Platform.SDK.Test
                     -84.386330
                     );
 
+                Assert.IsTrue(success);
             }
             catch (Exception ex)
             {

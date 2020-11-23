@@ -1,5 +1,8 @@
 ﻿using Gamification.Platform.Common;
+using Gamification.Platform.Common.Core;
+using Gamification.Platform.Common.Requests;
 using Lazlo.Common;
+using Lazlo.Common.Requests;
 using Lazlo.Common.Responses;
 using Newtonsoft.Json;
 using System;
@@ -13,13 +16,13 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public partial class GamificationPlatformClient
     {
-        public async Task<Realm> RegisterRealmAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
+        public async Task<Realm> RegisterRealmAsync(SmartRequest<RealmRegisterRequest> request, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
-                            pathAndQuery: $"api/v1/realm",
-                            correlationRefId: correlationRefId,
-                            request: contact,
+                            pathAndQuery: $"api/v1/realm/register",
+                            correlationRefId: Guid.NewGuid(),
+                            request: request,
                             requestHeaders: null,
                             cancellationToken).ConfigureAwait(false);
 
