@@ -9,9 +9,12 @@
   
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.10" />
+  </ItemGroup>      
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.CSharp\Gamification.SDK.CSharp.csproj" />
   </ItemGroup>
 
 </Project>

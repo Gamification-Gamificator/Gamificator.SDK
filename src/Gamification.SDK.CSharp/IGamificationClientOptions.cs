@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gamification.Platform.SDK.CSharp
+namespace Gamification.SDK.CSharp
 {
     public interface IGamificationClientOptions
     {

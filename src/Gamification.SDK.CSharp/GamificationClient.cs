@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gamification.Platform.SDK.CSharp
+namespace Gamification.SDK.CSharp
 {
     //public static class GamificationExtensions
     //{
@@ -29,9 +29,9 @@ namespace Gamification.Platform.SDK.CSharp
     //    }
     //}
 
-    public partial class GamificationFunctionClient : GamificationClientBase, IGamificationFunctionClient
+    public partial class GamificationClient : GamificationClientBase, IGamificationClient
     {
-        public GamificationFunctionClient(HttpClient httpClient, IOptions<GamificationClientOptions> options)
+        public GamificationClient(HttpClient httpClient, IOptions<GamificationClientOptions> options)
         {
             _httpClient = httpClient;
 

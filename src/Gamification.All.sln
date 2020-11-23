@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.Platform.SDK.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.Platform.SDK.Test", "Gamification.Platform.SDK.Test\Gamification.Platform.SDK.Test.csproj", "{C7EC8B45-D683-423C-8362-03CEFF4F6F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamification.Platform.Common.Extensions.Tests", "Gamification.Platform.Common.Extensions.Tests\Gamification.Platform.Common.Extensions.Tests.csproj", "{A36D289A-188C-4C01-9A90-110F491A1DC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.Platform.Common.Extensions.Tests", "Gamification.Platform.Common.Extensions.Tests\Gamification.Platform.Common.Extensions.Tests.csproj", "{A36D289A-188C-4C01-9A90-110F491A1DC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamification.SDK.CSharp", "Gamification.SDK.CSharp\Gamification.SDK.CSharp.csproj", "{2461760B-1C92-429C-B5B0-29C360D26EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{A36D289A-188C-4C01-9A90-110F491A1DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A36D289A-188C-4C01-9A90-110F491A1DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A36D289A-188C-4C01-9A90-110F491A1DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2461760B-1C92-429C-B5B0-29C360D26EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2461760B-1C92-429C-B5B0-29C360D26EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2461760B-1C92-429C-B5B0-29C360D26EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2461760B-1C92-429C-B5B0-29C360D26EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

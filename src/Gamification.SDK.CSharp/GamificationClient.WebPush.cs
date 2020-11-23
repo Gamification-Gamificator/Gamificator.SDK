@@ -10,9 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Action = Gamification.Platform.Common.Action;
 
-namespace Gamification.Platform.SDK.CSharp
+namespace Gamification.SDK.CSharp
 {
-    public partial class GamificationFunctionClient
+    public partial class GamificationClient
     {
 
         public async Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(

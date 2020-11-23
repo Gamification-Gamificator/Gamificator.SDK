@@ -1,4 +1,4 @@
-﻿namespace Gamification.Platform.SDK.CSharp
+﻿namespace Gamification.SDK.CSharp
 {
     public class GamificationClientOptions : IGamificationClientOptions
     {
