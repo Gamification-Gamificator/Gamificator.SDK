@@ -12,42 +12,47 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public sealed class GamificationClientOptions
+    public class GamificationClientOptions : IGamificationClientOptions
     {
-        public Uri BaseAddress { get; set; }
         public string ApiKey { get; set; }
     }
 
-    public static class GamificationExtensions
-    {
-        public static IServiceCollection AddGamificationClient(this IServiceCollection services, GamificationClientOptions options)
-        {
-            services.AddHttpClient<IGamificationClient, GamificationClient>(client =>
-            {
-                client.BaseAddress = options.BaseAddress;
-                client.DefaultRequestHeaders.Add("gamificator-apikey", options.ApiKey);
-            });
+    //public static class GamificationExtensions
+    //{
+    //    public static IServiceCollection AddGamificationClient(
+    //        this IServiceCollection services, 
+    //        IOptions<GamificationClientOptions> gamificationClientOptions,
+    //        Uri baseAddress
+    //        )
+    //    {
+    //        services.AddHttpClient<GamificationClient>(c => c.BaseAddress = baseAddress);
 
-            return services;
-        }
-    }
+    //        services.AddOptions();
 
+    //        services.Configure<GamificationClientOptions>(o => o = gamificationClientOptions.Value);
+
+    //        services.AddTransient<IGamificationClient, GamificationClient>();
+
+    //        return services;
+    //    }
+    //}
+
+    /// <summary>
+    /// The HttpClient.BaseAddress should NOT be part of the GamificationClientOptions
+    /// A second instance could be created with a different base address etc
+    /// Only those Options associated with ALL instances should be injected in the client
+    /// </summary>
     public partial class GamificationClient : IGamificationClient
     {
         private HttpClient _httpClient;
 
-        public GamificationClient(HttpClient httpClient, GamificationClientOptions options)
+        public GamificationClient(HttpClient httpClient, IOptions<GamificationClientOptions> options)
         {
             _httpClient = httpClient;
 
-            if (options.BaseAddress != null)
-            {
-                _httpClient.BaseAddress = options.BaseAddress;
-            }
-
             if(!httpClient.DefaultRequestHeaders.Contains("gamificator-apikey"))
             {
-                _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", options.ApiKey);
+                _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", options.Value.ApiKey);
             }
         }
 
