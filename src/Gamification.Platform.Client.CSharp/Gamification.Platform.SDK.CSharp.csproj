@@ -10,6 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gamification.SDK.CSharp" Version="2.0.3-preview" />
+    <PackageReference Include="Gamification.SDK.CSharp" Version="2.0.5-preview" />
   </ItemGroup>
 </Project>
