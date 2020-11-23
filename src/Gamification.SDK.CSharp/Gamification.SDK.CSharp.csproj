@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gamification.Platform.Common" Version="2.0.61-preview" />
+    <PackageReference Include="Gamification.Platform.Common" Version="2.0.62-preview" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.10" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.10" />
   </ItemGroup>

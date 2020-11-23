@@ -57,11 +57,11 @@ namespace Gamification.SDK.CSharp
                 Uuid = Guid.NewGuid().ToString()
             };
 
-            string requestUrl = "api/action/completed";
+            string pathAndQuery = "api/action/completed";
 
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Post,
-                requestUrl,
+                pathAndQuery,
                 correlationRefId,
                 req,
                 new Dictionary<string, string> { { "gamificator-apikey", gamificatorApiKey } },
