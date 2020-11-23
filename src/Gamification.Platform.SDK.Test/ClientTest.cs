@@ -12,13 +12,22 @@ namespace Gamification.Platform.SDK.Test
     public class GamificationClientTests
     {
         private IGamificationClient gamificationClient;
+        private IGamificationFunctionClient gamificationFunctionClient;
 
         private ServiceCollection services = new ServiceCollection();
 
         public GamificationClientTests()
         {
 
-            services.AddHttpClient<GamificationClient>(c => c.BaseAddress = new Uri("https://sb1-functions.gamificator.io"));
+            services.AddHttpClient<GamificationClient>(
+                "api", 
+                c => c.BaseAddress = new Uri("https://sb1-api.gamificator.io")
+                );
+
+            services.AddHttpClient<GamificationFunctionClient>(
+                "functions",
+                c => c.BaseAddress = new Uri("https://sb1-functions.gamificator.io")
+                );
 
             services.AddOptions();
 
@@ -28,6 +37,9 @@ namespace Gamification.Platform.SDK.Test
             });
 
             services.AddSingleton<IGamificationClient, GamificationClient>();
+
+            services.AddSingleton<IGamificationFunctionClient, GamificationFunctionClient>();
+
         }
 
         [TestMethod]
@@ -37,9 +49,9 @@ namespace Gamification.Platform.SDK.Test
             {
                 var serviceProvider = services.BuildServiceProvider();
 
-                gamificationClient = serviceProvider.GetService<GamificationClient>();
+                gamificationFunctionClient = serviceProvider.GetService<GamificationFunctionClient>();
 
-                var success = await gamificationClient.ActionCompletedV1Async(
+                var success = await gamificationFunctionClient.ActionCompletedV1Async(
                     Guid.NewGuid(),
                     Guid.NewGuid().ToString("N"),
                     new Common.ActionRequest()

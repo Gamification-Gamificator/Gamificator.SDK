@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public interface IGamificationClient
+    public interface IGamificationFunctionClient
     {
         Task<bool> ActionCompletedV1Async(Guid correlationRefId, string gamificatorApiKey, ActionRequest actionRequest, double latitude, double longitude, CancellationToken cancellationToken = default);
+        Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(Guid correlationRefId, Guid playerRefId, double latitude, double longitude, CancellationToken cancellationToken = default);
+        Task<bool> WebPushSubscriptionStore(Guid correlationRefId, PlayerWebPushSubscription playerWebPushSubscription, double latitude, double longitude, CancellationToken cancellationToken = default);
+    }
+
+    public interface IGamificationClient
+    {
         Task<Common.Action> CreateActionAsync(Guid correlationRefId, Common.Action action, CancellationToken cancellationToken = default);
         Task<Realm> CreateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default);
         Task DeleteActionAsync(Guid correlationRefId, Guid actionRefId, CancellationToken cancellationToken = default);
@@ -24,7 +30,5 @@ namespace Gamification.Platform.SDK.CSharp
         Task<Realm> RetrieveRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default);
         Task UpdateActionAsync(Guid correlationRefId, Common.Action action, CancellationToken cancellationToken = default);
         Task UpdateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default);
-        Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(Guid correlationRefId, Guid playerRefId, double latitude, double longitude, CancellationToken cancellationToken = default);
-        Task<bool> WebPushSubscriptionStore(Guid correlationRefId, PlayerWebPushSubscription playerWebPushSubscription, double latitude, double longitude, CancellationToken cancellationToken = default);
     }
 }

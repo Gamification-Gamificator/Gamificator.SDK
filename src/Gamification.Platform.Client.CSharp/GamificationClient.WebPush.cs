@@ -12,7 +12,7 @@ using Action = Gamification.Platform.Common.Action;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public partial class GamificationFunctionClient
     {
 
         public async Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(
