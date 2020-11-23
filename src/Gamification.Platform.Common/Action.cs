@@ -59,7 +59,7 @@ namespace Gamification.Platform.Common
 
     public interface IFiniteStateMachine<T>
     {
-        public int State { get; set; }
+        int State { get; set; }
     }
 }
 
