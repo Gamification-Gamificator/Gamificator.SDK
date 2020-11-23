@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public partial class GamificationPlatformClient
     {
         public async Task<List<Contact>> RetrieveAllContactsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
         {

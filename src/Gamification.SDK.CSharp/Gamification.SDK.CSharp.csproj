@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Michael C Pinkus</Authors>
+    <Product>Gamificator</Product>
+    <Company>Lazlo 326</Company>
+    <PackageProjectUrl>gamificator.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>

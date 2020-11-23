@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public partial class GamificationPlatformClient
     {
         public async Task<List<Coin>> RetrieveAllCoinsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
         {

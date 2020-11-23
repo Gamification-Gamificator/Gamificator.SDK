@@ -10,7 +10,7 @@ using Action = Gamification.Platform.Common.Action;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public partial class GamificationPlatformClient
     {
         public async Task<Action> RetrieveActionAsync(Guid correlationRefId, Guid actionRefId, CancellationToken cancellationToken = default)
         {

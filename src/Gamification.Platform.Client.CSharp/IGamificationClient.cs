@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Gamification.Platform.SDK.CSharp
 {
 
-    public interface IGamificationClient
+    public interface IGamificationPlatformClient
     {
         Task<Common.Action> CreateActionAsync(Guid correlationRefId, Common.Action action, CancellationToken cancellationToken = default);
         Task<Realm> CreateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default);

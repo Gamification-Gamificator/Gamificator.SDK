@@ -1,10 +1,8 @@
 using Gamification.Platform.SDK.CSharp;
 using Gamification.SDK.CSharp;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.Test
@@ -12,20 +10,20 @@ namespace Gamification.Platform.SDK.Test
     [TestClass]
     public class GamificationClientTests
     {
-        private CSharp.IGamificationClient gamificationClient;
-        private Gamification.SDK.CSharp.IGamificationClient gamificationFunctionClient;
+        private IGamificationPlatformClient gamificationClient;
+        private IGamificationClient gamificationFunctionClient;
 
         private ServiceCollection services = new ServiceCollection();
 
         public GamificationClientTests()
         {
 
-            services.AddHttpClient<CSharp.GamificationClient>(
+            services.AddHttpClient<CSharp.GamificationPlatformClient>(
                 "api", 
                 c => c.BaseAddress = new Uri("https://sb1-api.gamificator.io")
                 );
 
-            services.AddHttpClient<Gamification.SDK.CSharp.GamificationClient>(
+            services.AddHttpClient<GamificationClient>(
                 "functions",
                 c => c.BaseAddress = new Uri("https://sb1-functions.gamificator.io")
                 );
@@ -37,10 +35,9 @@ namespace Gamification.Platform.SDK.Test
                 options.ApiKey = Guid.NewGuid().ToString("N");
             });
 
-            services.AddSingleton<CSharp.IGamificationClient, CSharp.GamificationClient>();
+            services.AddSingleton<IGamificationPlatformClient, GamificationPlatformClient>();
 
-            services.AddSingleton<Gamification.SDK.CSharp.IGamificationClient, Gamification.SDK.CSharp.GamificationClient>();
-
+            services.AddSingleton<IGamificationClient, GamificationClient>();
         }
 
         [TestMethod]
@@ -50,7 +47,7 @@ namespace Gamification.Platform.SDK.Test
             {
                 var serviceProvider = services.BuildServiceProvider();
 
-                gamificationFunctionClient = serviceProvider.GetService<Gamification.SDK.CSharp.GamificationClient>();
+                gamificationFunctionClient = serviceProvider.GetService<GamificationClient>();
 
                 var success = await gamificationFunctionClient.ActionCompletedV1Async(
                     Guid.NewGuid(),

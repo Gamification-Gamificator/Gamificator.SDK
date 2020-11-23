@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Michael C. Pinkus</Authors>
     <Company>Lazlo 326</Company>
     <Product>Gamificator</Product>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>      
   
   <ItemGroup>
@@ -16,8 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Gamification.SDK.CSharp\Gamification.SDK.CSharp.csproj">
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <IncludeAssets>Gamification.SDK.CSharp.dll</IncludeAssets>
     </ProjectReference>
   </ItemGroup>
-
 </Project>

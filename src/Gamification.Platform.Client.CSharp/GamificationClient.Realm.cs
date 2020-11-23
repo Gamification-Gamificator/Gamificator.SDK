@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Gamification.Platform.SDK.CSharp
 {
-    public partial class GamificationClient
+    public partial class GamificationPlatformClient
     {
         public async Task<Realm> RegisterRealmAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
         {
