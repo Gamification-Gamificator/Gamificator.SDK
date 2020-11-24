@@ -26,6 +26,7 @@ namespace Gamification.SDK.CSharp
                 );
 
             httpreq.Headers.Add("lazlo-correlationrefid", correlationRefId.ToString());
+            httpreq.Headers.Add("Access-Control-Allow-Origin", "*");
 
             if (requestHeaders != null)
             {
