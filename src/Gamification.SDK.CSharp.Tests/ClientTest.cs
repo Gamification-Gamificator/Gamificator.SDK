@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
 
-namespace Gamification.Platform.SDK.Test
+namespace Gamification.SDK.Test
 {
     [TestClass]
     public class GamificationClientTests
@@ -43,7 +43,7 @@ namespace Gamification.Platform.SDK.Test
                 var success = await gamificationFunctionClient.ActionCompletedV1Async(
                     Guid.NewGuid(),
                     Guid.NewGuid().ToString("N"),
-                    new Common.ActionRequest()
+                    new Platform.Common.ActionRequest()
                     {
                         ActionId = Guid.NewGuid().ToString("N"),
                         SessionHierarchy = "2020:11:22",
