@@ -11,6 +11,28 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public partial class GamificationPlatformClient
     {
+        public async Task<Goal> RetrieveGoalAsync(Guid correlationRefId, Guid goalRefId, CancellationToken cancellationToken = default)
+        {
+            HttpResponseMessage httpResponse = await SendAsJsonAsync(
+                            method: HttpMethod.Get,
+                            pathAndQuery: $"api/v1/goal/{goalRefId}",
+                            correlationRefId: correlationRefId,
+                            request: null,
+                            requestHeaders: null,
+                            cancellationToken).ConfigureAwait(false);
+
+            string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            var response = JsonConvert.DeserializeObject<SmartResponse<Goal>>(responseJson);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return response.Data;
+            }
+
+            throw new Exception($"Get Goal failed. {response.Error.Message}");
+        }
+
         public async Task<List<Goal>> RetrieveAllGoalsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(

@@ -17,7 +17,7 @@ namespace Gamification.Platform.SDK.CSharp
         {
             _httpClient = httpClient;
 
-            if(!httpClient.DefaultRequestHeaders.Contains("gamificator-apikey"))
+            if (!httpClient.DefaultRequestHeaders.Contains("gamificator-apikey"))
             {
                 _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", options.Value.ApiKey);
             }

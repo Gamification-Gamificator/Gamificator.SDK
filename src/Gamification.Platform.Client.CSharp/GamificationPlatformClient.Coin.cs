@@ -11,6 +11,28 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public partial class GamificationPlatformClient
     {
+        public async Task<Coin> RetrieveCoinAsync(Guid correlationRefId, Guid coinRefId, CancellationToken cancellationToken = default)
+        {
+            HttpResponseMessage httpResponse = await SendAsJsonAsync(
+                            method: HttpMethod.Get,
+                            pathAndQuery: $"api/v1/coin/{coinRefId}",
+                            correlationRefId: correlationRefId,
+                            request: null,
+                            requestHeaders: null,
+                            cancellationToken).ConfigureAwait(false);
+
+            string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            var response = JsonConvert.DeserializeObject<SmartResponse<Coin>>(responseJson);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return response.Data;
+            }
+
+            throw new Exception($"Get Coin failed. {response.Error.Message}");
+        }
+
         public async Task<List<Coin>> RetrieveAllCoinsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
