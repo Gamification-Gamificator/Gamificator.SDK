@@ -16,6 +16,34 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public partial class GamificationPlatformClient
     {
+        public async Task<string> RegisterRealmAsync(Guid correlationRefId, RealmRegisterRequest realmRegisterRequest, CancellationToken cancellationToken = default)
+        {
+            SmartRequest<RealmRegisterRequest> realmRequest = new SmartRequest<RealmRegisterRequest>
+            {
+                Data = realmRegisterRequest
+            };
+
+            HttpResponseMessage httpResponse = await SendAsJsonAsync(
+                            method: HttpMethod.Post,
+                            pathAndQuery: $"api/v1/realm/register",
+                            correlationRefId: correlationRefId,
+                            request: realmRequest,
+                            requestHeaders: null,
+                            cancellationToken).ConfigureAwait(false);
+
+            string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            var response = JsonConvert.DeserializeObject<SmartResponse<string>>(responseJson);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return response.Data;
+            }
+
+            throw new Exception($"Register Realm failed. {response.Error.Message}");
+        }
+
+
         public async Task<Realm> RetrieveRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
