@@ -1,4 +1,5 @@
 ﻿using Gamification.Platform.Common;
+using Gamification.Platform.Common.Requests;
 using Lazlo.Common.Responses;
 using Newtonsoft.Json;
 using System;
@@ -55,7 +56,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get All Coin failed. {response.Error.Message}");
         }
 
-        public async Task<Coin> CreateCoinAsync(Guid correlationRefId, Coin coin, CancellationToken cancellationToken = default)
+        public async Task<Coin> CreateCoinAsync(Guid correlationRefId, CoinCreateRequest coin, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
@@ -77,7 +78,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Create Coin failed. {response.Error.Message}");
         }
 
-        public async Task UpdateCoinAsync(Guid correlationRefId, Coin coin, CancellationToken cancellationToken = default)
+        public async Task UpdateCoinAsync(Guid correlationRefId, CoinUpdateRequest coin, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,

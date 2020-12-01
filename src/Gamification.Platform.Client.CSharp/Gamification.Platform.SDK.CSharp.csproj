@@ -12,4 +12,8 @@
   <ItemGroup>
     <PackageReference Include="Gamification.SDK.CSharp" Version="2.0.12-preview" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.Platform.Common\Gamification.Platform.Common.csproj" />
+  </ItemGroup>
 </Project>

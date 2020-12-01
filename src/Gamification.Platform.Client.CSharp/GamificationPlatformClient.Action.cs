@@ -1,4 +1,5 @@
-﻿using Lazlo.Common.Responses;
+﻿using Gamification.Platform.Common.Requests;
+using Lazlo.Common.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get Action failed. {response.Error.Message}");
         }
 
-        public async Task<Action> CreateActionAsync(Guid correlationRefId, Action action, CancellationToken cancellationToken = default)
+        public async Task<Action> CreateActionAsync(Guid correlationRefId, ActionCreateRequest action, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
@@ -100,7 +101,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get Action failed. {response.Error.Message}");
         }
 
-        public async Task UpdateActionAsync(Guid correlationRefId, Action action, CancellationToken cancellationToken = default)
+        public async Task UpdateActionAsync(Guid correlationRefId, ActionUpdateRequest action, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,

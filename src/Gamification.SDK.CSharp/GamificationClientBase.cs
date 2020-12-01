@@ -1,4 +1,5 @@
-﻿using Lazlo.Common.Responses;
+﻿using Lazlo.Common;
+using Lazlo.Common.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -40,10 +41,13 @@ namespace Gamification.SDK.CSharp
             {
                 return await _httpClient.SendAsync(httpreq, cancellationToken).ConfigureAwait(false);
             }
-
             else
             {
-                string json = JsonConvert.SerializeObject(request);
+                var sc = new SmartContext<object>();
+                sc.Data = request;
+                string json = JsonConvert.SerializeObject(sc);
+                
+                //string json = JsonConvert.SerializeObject(new );
 
                 httpreq.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 

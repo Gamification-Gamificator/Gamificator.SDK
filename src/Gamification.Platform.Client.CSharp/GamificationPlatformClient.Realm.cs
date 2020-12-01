@@ -88,7 +88,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get All Realm failed. {response.Error.Message}");
         }
 
-        public async Task<Realm> CreateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default)
+        public async Task<Realm> CreateRealmAsync(Guid correlationRefId, RealmCreateRequest realm, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
@@ -110,7 +110,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Create Realm failed. {response.Error.Message}");
         }
 
-        public async Task UpdateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default)
+        public async Task UpdateRealmAsync(Guid correlationRefId, RealmUpdateRequest realm, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,
