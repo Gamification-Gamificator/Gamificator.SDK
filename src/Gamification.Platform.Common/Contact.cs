@@ -10,6 +10,6 @@ namespace Gamification.Platform.Common
     public class Contact : ContactCore<EndpointEmail, EndpointVoice, EndpointText>
     {
         [JsonProperty(PropertyName = "id")] 
-        public Guid EntityRefId { get; set; } = Guid.NewGuid();
+        public Guid EntityRefId { get; set; }
     }
 }
