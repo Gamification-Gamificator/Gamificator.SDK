@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Gamification.Platform.Common.Requests
 {
-    public sealed class RealmRegisterRequest : RealmCore
+    public sealed class RealmRegisterRequest :RealmCore
     {
     }
 
