@@ -26,6 +26,15 @@ namespace Gamification.Platform.Common.Requests
     {
     }
 
+    public sealed class AchievementCreateRequest : AchievementCore
+    {
+    }
+
+    public sealed class AchievementUpdateRequest : Achievement
+    {
+    }
+
+
     public sealed class GoalCreateRequest: GoalCore
     {
     }
