@@ -57,7 +57,7 @@ namespace Gamification.SDK.CSharp
                 Uuid = Guid.NewGuid().ToString()
             };
 
-            string pathAndQuery = "api/action/completed";
+            string pathAndQuery = "api/v1/action/completed";
 
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Post,

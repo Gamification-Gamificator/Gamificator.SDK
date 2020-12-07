@@ -43,9 +43,7 @@ namespace Gamification.SDK.CSharp
             }
             else
             {
-                var sc = new SmartContext<object>();
-                sc.Data = request;
-                string json = JsonConvert.SerializeObject(sc);
+                string json = JsonConvert.SerializeObject(request);
                 
                 //string json = JsonConvert.SerializeObject(new );
 
