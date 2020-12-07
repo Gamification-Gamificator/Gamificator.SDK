@@ -59,11 +59,8 @@ namespace Gamification.Platform.SDK.Test
                         }
                     }
                 };
+
                 var result = await gamificationPlatformClient.RegisterRealmAsync(Guid.NewGuid(), realmRegisterRequest);
-
-                //var result = await gamificationPlatformClient.RetrieveAllRealmsAsync(Guid.NewGuid());
-
-                
             }
             catch (Exception ex)
             {

@@ -1,3 +1,4 @@
+using Gamification.Platform.Common.Requests;
 using Gamification.SDK.CSharp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -61,5 +62,6 @@ namespace Gamification.SDK.Test
                 throw;
             }
         }
+
     }
 }
