@@ -13,8 +13,8 @@
   
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Gamification.Platform.Common" Version="2.0.70-preview" />
-    <PackageReference Include="Gamification.Platform.Common.Display" Version="2.0.40-preview" />
+    <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
+    <PackageReference Include="Gamification.Platform.Common.Display" Version="*-*" />
   </ItemGroup>
 
   <ItemGroup>
