@@ -2,6 +2,7 @@ using Gamification.Platform.Common.Requests;
 using Gamification.SDK.CSharp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace Gamification.SDK.Test
 
             services.AddHttpClient<GamificationClient>(
                 "functions",
-                c => c.BaseAddress = new Uri("https://sb1-functions.gamificator.io")
+                c => c.BaseAddress = new Uri("http://localhost:7073")
                 );
 
             services.AddOptions();
@@ -41,15 +42,19 @@ namespace Gamification.SDK.Test
 
                 gamificationFunctionClient = serviceProvider.GetService<GamificationClient>();
 
+                var ar = new Platform.Common.ActionRequest()
+                {
+                    ActionId = Guid.NewGuid().ToString("N"),
+                    SessionHierarchy = "2020:11:22",
+                    OccurredOn = DateTimeOffset.UtcNow.AddMinutes(-60)
+                };
+
+                var json = JsonConvert.SerializeObject(ar);
+
                 var success = await gamificationFunctionClient.ActionCompletedV1Async(
                     Guid.NewGuid(),
                     Guid.NewGuid().ToString("N"),
-                    new Platform.Common.ActionRequest()
-                    {
-                        ActionId = Guid.NewGuid().ToString("N"),
-                        SessionHierarchy = "2020:11:22",
-                        OccurredOn = DateTimeOffset.UtcNow.AddMinutes(-60)
-                    },
+                    ar,
                     33.753746,
                     -84.386330
                     );
