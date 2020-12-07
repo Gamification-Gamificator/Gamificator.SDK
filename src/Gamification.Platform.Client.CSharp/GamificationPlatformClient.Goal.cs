@@ -1,4 +1,5 @@
 ﻿using Gamification.Platform.Common;
+using Gamification.Platform.Common.Requests;
 using Lazlo.Common.Responses;
 using Newtonsoft.Json;
 using System;
@@ -55,7 +56,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get All Goal failed. {response.Error.Message}");
         }
 
-        public async Task<Goal> CreateGoalAsync(Guid correlationRefId, Goal goal, CancellationToken cancellationToken = default)
+        public async Task<Goal> CreateGoalAsync(Guid correlationRefId, GoalCreateRequest goal, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Post,
@@ -77,7 +78,7 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Create Goal failed. {response.Error.Message}");
         }
 
-        public async Task UpdateGoalAsync(Guid correlationRefId, Goal goal, CancellationToken cancellationToken = default)
+        public async Task UpdateGoalAsync(Guid correlationRefId, GoalUpdateRequest goal, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
                             method: HttpMethod.Put,

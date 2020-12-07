@@ -1,4 +1,5 @@
 ﻿using Gamification.Platform.Common;
+using Gamification.Platform.Common.Requests;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,13 +9,13 @@ namespace Gamification.Platform.SDK.CSharp
 {
     public interface IGamificationPlatformClient
     {
-        Task<Common.Action> CreateActionAsync(Guid correlationRefId, Common.Action action, CancellationToken cancellationToken = default);
-        Task<Award> CreateAwardAsync(Guid correlationRefId, Award award, CancellationToken cancellationToken = default);
-        Task<Coin> CreateCoinAsync(Guid correlationRefId, Coin coin, CancellationToken cancellationToken = default);
+        Task<Common.Action> CreateActionAsync(Guid correlationRefId, ActionCreateRequest action, CancellationToken cancellationToken = default);
+        Task<Award> CreateAwardAsync(Guid correlationRefId, AwardCreateRequest award, CancellationToken cancellationToken = default);
+        Task<Coin> CreateCoinAsync(Guid correlationRefId, CoinCreateRequest coin, CancellationToken cancellationToken = default);
         Task<Contact> CreateContactAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default);
-        Task<Goal> CreateGoalAsync(Guid correlationRefId, Goal goal, CancellationToken cancellationToken = default);
-        Task<GoalTrigger> CreateGoalTriggerAsync(Guid correlationRefId, GoalTrigger goalTrigger, CancellationToken cancellationToken = default);
-        Task<Realm> CreateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default);
+        Task<Goal> CreateGoalAsync(Guid correlationRefId, GoalCreateRequest goal, CancellationToken cancellationToken = default);
+        Task<GoalTrigger> CreateGoalTriggerAsync(Guid correlationRefId, GoalTriggerCreateRequest goalTrigger, CancellationToken cancellationToken = default);
+        Task<Realm> CreateRealmAsync(Guid correlationRefId, RealmCreateRequest realm, CancellationToken cancellationToken = default);
         Task DeleteActionAsync(Guid correlationRefId, Guid actionRefId, CancellationToken cancellationToken = default);
         Task DeleteAwardAsync(Guid correlationRefId, Guid awardRefId, CancellationToken cancellationToken = default);
         Task DeleteCoinAsync(Guid correlationRefId, Guid coinRefId, CancellationToken cancellationToken = default);
@@ -22,6 +23,7 @@ namespace Gamification.Platform.SDK.CSharp
         Task DeleteGoalAsync(Guid correlationRefId, Guid goalRefId, CancellationToken cancellationToken = default);
         Task DeleteGoalTriggerAsync(Guid correlationRefId, Guid goalTriggerRefId, CancellationToken cancellationToken = default);
         Task DeleteRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default);
+        Task<string> RegisterRealmAsync(Guid correlationRefId, RealmRegisterRequest realmRegisterRequest, CancellationToken cancellationToken = default);
         Task<Common.Action> RetrieveActionAsync(Guid correlationRefId, Guid actionRefId, CancellationToken cancellationToken = default);
         Task<Common.Action> RetrieveActionByIdAsync(Guid correlationRefId, string actionId, CancellationToken cancellationToken = default);
         Task<List<Common.Action>> RetrieveAllActionsAsync(Guid correlationRefId, CancellationToken cancellationToken = default);
@@ -50,12 +52,12 @@ namespace Gamification.Platform.SDK.CSharp
         Task<Goal> RetrieveGoalAsync(Guid correlationRefId, Guid goalRefId, CancellationToken cancellationToken = default);
         Task<GoalTrigger> RetrieveGoalTriggerAsync(Guid correlationRefId, Guid refId, CancellationToken cancellationToken = default);
         Task<Realm> RetrieveRealmAsync(Guid correlationRefId, Guid realmRefId, CancellationToken cancellationToken = default);
-        Task UpdateActionAsync(Guid correlationRefId, Common.Action action, CancellationToken cancellationToken = default);
-        Task UpdateAwardAsync(Guid correlationRefId, Award award, CancellationToken cancellationToken = default);
-        Task UpdateCoinAsync(Guid correlationRefId, Coin coin, CancellationToken cancellationToken = default);
+        Task UpdateActionAsync(Guid correlationRefId, ActionUpdateRequest action, CancellationToken cancellationToken = default);
+        Task UpdateAwardAsync(Guid correlationRefId, AwardUpdateRequest award, CancellationToken cancellationToken = default);
+        Task UpdateCoinAsync(Guid correlationRefId, CoinUpdateRequest coin, CancellationToken cancellationToken = default);
         Task UpdateContactAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default);
-        Task UpdateGoalAsync(Guid correlationRefId, Goal goal, CancellationToken cancellationToken = default);
-        Task UpdateGoalTriggerAsync(Guid correlationRefId, GoalTrigger goalTrigger, CancellationToken cancellationToken = default);
-        Task UpdateRealmAsync(Guid correlationRefId, Realm realm, CancellationToken cancellationToken = default);
+        Task UpdateGoalAsync(Guid correlationRefId, GoalUpdateRequest goal, CancellationToken cancellationToken = default);
+        Task UpdateGoalTriggerAsync(Guid correlationRefId, GoalTriggerUpdateRequest goalTrigger, CancellationToken cancellationToken = default);
+        Task UpdateRealmAsync(Guid correlationRefId, RealmUpdateRequest realm, CancellationToken cancellationToken = default);
     }
 }
