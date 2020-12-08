@@ -258,6 +258,13 @@ namespace Gamification.Platform.Common.Extensions
                     RollingPeriodActionFilter = TimeSpan.FromDays(-30),
                 };
 
+                goalTrigger.RateLimitRules.Add(
+                    new RateLimitRule()
+                    {
+                        Count = 1
+                    }
+                );
+
                 goalTrigger.NameTranslations.Add(
                     new StringTranslation() { Locale = "en-Us", LocalName = simpleName }
                     );
@@ -308,7 +315,7 @@ namespace Gamification.Platform.Common.Extensions
             return goalTriggers;
         }
 
-        public static void LoadTestGoalTriggerStepsData(
+        public static void LoadSingleTestGoalTriggerStepsData(
             this GoalTrigger goalTrigger,
             Guid actionRedId,
             int executionOrder,
@@ -356,6 +363,86 @@ namespace Gamification.Platform.Common.Extensions
             ); 
         }
 
+        /// <summary>
+        /// Create GoalTriggers
+        /// </summary>
+        /// <param name="goalTriggers"></param>
+        /// <param name="realmRefId"></param>
+        /// <param name="goalRefId"></param>
+        /// <param name="actionRedId"></param>
+        /// <param name="executionOrder"></param>
+        /// <param name="insideOf"></param>
+        /// <param name="outsideOf"></param>
+        public static void LoadGoalTriggersDataForLogin(
+            this GoalTriggers goalTriggers,
+            Guid realmRefId,
+            Guid goalRefId,
+            Guid actionRedId,
+            int executionOrder,
+            NetTopologySuite.Geometries.MultiPolygon insideOf,
+            NetTopologySuite.Geometries.MultiPolygon outsideOf)
+        {
+            var goalTrigger = new GoalTrigger()
+            {
+                RealmRefId = realmRefId,
+                GoalRefId = goalRefId,
+                SimpleName = "Login",
+                Priority = 1,
+                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-7),
+                ExpireOn = DateTimeOffset.MaxValue,
+                RollingPeriodActionFilter = TimeSpan.FromDays(-30),
+            };
+
+            goalTrigger.RateLimitRules.Add(
+                new RateLimitRule()
+                {
+                    Count = 1
+                }
+            );
+
+            goalTrigger.Steps.Add(
+                new TriggerStep()
+                {
+                    ExecutionOrder = executionOrder,
+                    PeriodRecurrence = new PeriodRecurrence()
+                    {
+                        PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                        PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),                        
+                        PeriodPattern =
+                                new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                {
+                                    Until = DateTime.MaxValue,
+                                }.ToString()
+                    },
+                    ActionOccurrenceRules = new ActionOccurrenceRules()
+                    {
+                        new ActionOccurrenceRule()
+                        {
+                            ActionRefId = actionRedId,
+                            OperationType = Core.Enums.OperationRuleType.And,
+                            TenseType = Core.Enums.TenseRuleType.Did,
+                            CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
+                            Count = 1,
+                            PeriodRecurrence = new PeriodRecurrence()
+                            {
+                                PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                                PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
+                                PeriodPattern =
+                                        new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                        {
+                                            Until = DateTime.MaxValue
+                                        }.ToString()
+                            },
+                            InsideOf = insideOf,
+                            OutsideOf = outsideOf
+                        }
+                    }
+                }
+            );
+
+            goalTriggers.Add(goalTrigger);
+        }
+
         public static Goal LoadTestData(
             this Goal goal,
             Guid realmRefId,
@@ -366,6 +453,7 @@ namespace Gamification.Platform.Common.Extensions
 
             var simpleName = $"Goal [{Guid.NewGuid()}]";
 
+            goal.EntityRefId = Guid.NewGuid();
             goal.ExpireOn = DateTimeOffset.UtcNow.AddDays(rnd.Next(10, 100));
             goal.RealmRefId = realmRefId;
             goal.SimpleName = simpleName;
@@ -393,7 +481,30 @@ namespace Gamification.Platform.Common.Extensions
                     SimpleName = $"XP [{Guid.NewGuid()}]"
                 }
                 );
-
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"First Login [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"7 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"14 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"28 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
             return coins;
         }
 
