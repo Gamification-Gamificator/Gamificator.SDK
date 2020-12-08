@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Lazlo.Common;
 
 namespace Gamification.Platform.Common
 {
