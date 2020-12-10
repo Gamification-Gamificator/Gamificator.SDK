@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Gamification.Platform.Common.Core;
+using Newtonsoft.Json;
 using System;
 
 namespace Gamification.Platform.Common
