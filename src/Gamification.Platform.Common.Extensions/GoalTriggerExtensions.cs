@@ -141,7 +141,10 @@ namespace Gamification.Platform.Common.Extensions
                 try
                 {
                     participatingActionEvents.AddRange(
-                        step.ValidateStep(playerActionEvents, participatingActionEvents)
+                        step.ValidateStep(playerActionEvents, participatingActionEvents,
+                            goalTrigger.ReleaseOn.UtcDateTime.Date.AddMinutes(
+                            step.PeriodRecurrence.PeriodMinuteBeginOn.Value),
+                            step.PeriodRecurrence.PeriodTimeSpan.GetValueOrDefault())
                         );
 
                     // if valid then which participatingActionEvents participated?
@@ -169,7 +172,9 @@ namespace Gamification.Platform.Common.Extensions
         public static PlayerActionEvents ValidateStep(
             this TriggerStep triggerStep,
             PlayerActionEvents currentPlayerActions,
-            PlayerActionEvents participatingPlayerActions
+            PlayerActionEvents participatingPlayerActions,
+            DateTime start,
+            TimeSpan duration
             )
         {
 
@@ -199,7 +204,21 @@ namespace Gamification.Platform.Common.Extensions
                 }
             }
 
-            // logic to validate other than geofence
+            // logic to validate PeriodRecurrence (i.e. other than Geofence)
+            foreach (var action in currentPlayerActions)
+            {
+                if (triggerStep.PeriodRecurrence != null)
+                {
+                    if (action.OccurredOn != null &&
+                        action.OccurredOn.TimeOfDay > start.TimeOfDay
+                            && action.OccurredOn.TimeOfDay < start.Add(duration).TimeOfDay)
+                    {
+                        contains = true;
+
+                        if (!stepPlayerActions.Exists(e => e.ActionRefId.Equals(action.ActionRefId))) stepPlayerActions.Add(action);
+                    }
+                }
+            }
 
             // add stepPlayerActions to participatingPlayerActions
             foreach (var action in stepPlayerActions)
@@ -211,8 +230,6 @@ namespace Gamification.Platform.Common.Extensions
 
             return participatingPlayerActions;
         }
-
-
 
         public static GoalTriggers LoadTestData(
             this GoalTriggers goalTriggers, 
@@ -240,6 +257,13 @@ namespace Gamification.Platform.Common.Extensions
                     Tags = tags,
                     RollingPeriodActionFilter = TimeSpan.FromDays(-30),
                 };
+
+                goalTrigger.RateLimitRules.Add(
+                    new RateLimitRule()
+                    {
+                        Count = 1
+                    }
+                );
 
                 goalTrigger.NameTranslations.Add(
                     new StringTranslation() { Locale = "en-Us", LocalName = simpleName }
@@ -290,7 +314,135 @@ namespace Gamification.Platform.Common.Extensions
 
             return goalTriggers;
         }
-        
+
+        public static void LoadSingleTestGoalTriggerStepsData(
+            this GoalTrigger goalTrigger,
+            Guid actionRedId,
+            int executionOrder,
+            NetTopologySuite.Geometries.MultiPolygon insideOf,
+            NetTopologySuite.Geometries.MultiPolygon outsideOf)
+        {
+            goalTrigger.Steps.Add(
+                new TriggerStep()
+                {
+                    ExecutionOrder = executionOrder,
+                    PeriodRecurrence = new PeriodRecurrence()
+                    {
+                        PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                        PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
+                        PeriodPattern =
+                                new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                {
+                                    Until = DateTime.MaxValue
+                                }.ToString()
+                    },
+                    ActionOccurrenceRules = new ActionOccurrenceRules()
+                    {
+                        new ActionOccurrenceRule()
+                        {
+                            ActionRefId = actionRedId,
+                            OperationType = Core.Enums.OperationRuleType.And,
+                            TenseType = Core.Enums.TenseRuleType.Did,
+                            CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
+                            Count = 1,
+                            PeriodRecurrence = new PeriodRecurrence()
+                            {
+                                PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                                PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
+                                PeriodPattern =
+                                        new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                        {
+                                            Until = DateTime.MaxValue
+                                        }.ToString()
+                            },
+                            InsideOf = insideOf,
+                            OutsideOf = outsideOf
+                        }
+                    }
+                }
+            ); 
+        }
+
+        /// <summary>
+        /// Create GoalTriggers
+        /// </summary>
+        /// <param name="goalTriggers"></param>
+        /// <param name="realmRefId"></param>
+        /// <param name="goalRefId"></param>
+        /// <param name="actionRedId"></param>
+        /// <param name="executionOrder"></param>
+        /// <param name="insideOf"></param>
+        /// <param name="outsideOf"></param>
+        public static void LoadGoalTriggersDataForLogin(
+            this GoalTriggers goalTriggers,
+            Guid realmRefId,
+            Guid goalRefId,
+            Guid actionRedId,
+            int executionOrder,
+            NetTopologySuite.Geometries.MultiPolygon insideOf,
+            NetTopologySuite.Geometries.MultiPolygon outsideOf)
+        {
+            var goalTrigger = new GoalTrigger()
+            {
+                RealmRefId = realmRefId,
+                GoalRefId = goalRefId,
+                SimpleName = "Login",
+                Priority = 1,
+                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-7),
+                ExpireOn = DateTimeOffset.MaxValue,
+                RollingPeriodActionFilter = TimeSpan.FromDays(-30),
+            };
+
+            goalTrigger.RateLimitRules.Add(
+                new RateLimitRule()
+                {
+                    Count = 1
+                }
+            );
+
+            goalTrigger.Steps.Add(
+                new TriggerStep()
+                {
+                    ExecutionOrder = executionOrder,
+                    PeriodRecurrence = new PeriodRecurrence()
+                    {
+                        PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                        PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),                        
+                        PeriodPattern =
+                                new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                {
+                                    Until = DateTime.MaxValue,
+                                }.ToString()
+                    },
+                    ActionOccurrenceRules = new ActionOccurrenceRules()
+                    {
+                        new ActionOccurrenceRule()
+                        {
+                            ActionRefId = actionRedId,
+                            OperationType = Core.Enums.OperationRuleType.And,
+                            TenseType = Core.Enums.TenseRuleType.Did,
+                            CompareType = Core.Enums.CompareRuleType.GreaterOrEqual,
+                            Count = 1,
+                            PeriodRecurrence = new PeriodRecurrence()
+                            {
+                                PeriodMinuteBeginOn = Convert.ToInt32(TimeSpan.FromMinutes(0).TotalMinutes),
+                                PeriodTimeSpan = TimeSpan.FromSeconds((24 * 60 * 60) - 1),
+                                PeriodPattern =
+                                        new RecurrencePattern(FrequencyType.Daily, interval: 1)
+                                        {
+                                            Until = DateTime.MaxValue
+                                        }.ToString()
+                            },
+                            InsideOf = insideOf,
+                            OutsideOf = outsideOf
+                        }
+                    }
+                }
+            );
+
+            goalTriggers.Add(goalTrigger);
+        }
+
         public static Goal LoadTestData(
             this Goal goal,
             Guid realmRefId,
@@ -301,6 +453,7 @@ namespace Gamification.Platform.Common.Extensions
 
             var simpleName = $"Goal [{Guid.NewGuid()}]";
 
+            goal.EntityRefId = Guid.NewGuid();
             goal.ExpireOn = DateTimeOffset.UtcNow.AddDays(rnd.Next(10, 100));
             goal.RealmRefId = realmRefId;
             goal.SimpleName = simpleName;
@@ -328,7 +481,30 @@ namespace Gamification.Platform.Common.Extensions
                     SimpleName = $"XP [{Guid.NewGuid()}]"
                 }
                 );
-
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"First Login [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"7 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"14 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
+            coins.Add(
+                new Coin()
+                {
+                    SimpleName = $"28 Consecutive Login Streak [{Guid.NewGuid()}]"
+                }
+                );
             return coins;
         }
 
