@@ -8,8 +8,12 @@ namespace Gamification.Platform.Common
     /// <summary>
     /// The persisted Action transaction
     /// </summary>
-    public class ActionEvent : ActionEventBase
+    public class ActionEvent : ActionEventCore
     {
+        [JsonRequired]
+        [JsonProperty(PropertyName = "id")]
+        public Guid EntityRefId { get; set; }
+        
         [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
         public Guid PlayerRefId { get; set; }

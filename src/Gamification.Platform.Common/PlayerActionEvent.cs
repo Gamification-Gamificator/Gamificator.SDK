@@ -8,7 +8,7 @@ namespace Gamification.Platform.Common
     /// <summary>
     /// Because Player is contextually in a Player and a Realm we remove those properties from the Player persistance ActionEvent
     /// </summary>
-    public class PlayerActionEvent : ActionEventBase
+    public class PlayerActionEvent : ActionEventCore
     {
         /// <summary>
         /// An Action can be "used" by a trigger thus eliminating further trigger evaluation consideration 
