@@ -10,10 +10,6 @@ namespace Gamification.Platform.Common.Core
     /// </summary>
     public class ActionEventCore : OccurrenceBase
     {
-        [JsonRequired]
-        [JsonProperty(PropertyName = "actionRefId")]
-        public Guid ActionRefId { get; set; }
-
         /// <summary>
         /// string descibing Hierarchical relationships
         /// Example: 2020:Fall:12
