@@ -7,26 +7,30 @@ namespace Gamification.Platform.Common.Display
     /// <summary>
     /// The persisted Goal transaction
     /// </summary>
-    public class GoalEventDisplay : OccurrenceBase
+    public class GoalEventDisplay : GoalEventCore
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "id")]
         public Guid EntityRefId { get; set; }
 
-        [JsonRequired]
-        [JsonProperty(PropertyName = "playerRefId")]
-        public Guid PlayerRefId { get; set; }
-
         /// <summary>
-        /// All root entities require RealmRefId for multi-tenancy
+        /// This is the Action
         /// </summary>
         [JsonRequired]
-        [JsonProperty(PropertyName = "realmRefId")]
-        public Guid RealmRefId { get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public ActionDisplay Action { get; set; }
+
+        //[JsonRequired]
+        //[JsonProperty(PropertyName = "player")]
+        //public PlayerDisplay Player { get; set; }
 
         [JsonRequired]
-        [JsonProperty(PropertyName = "goalRefId")]
-        public Guid GoalRefId { get; set; }
+        [JsonProperty(PropertyName = "realm")]
+        public RealmDisplay Realm { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "goal")]
+        public GoalDisplay Goal { get; set; }
 
         /// <summary>
         /// A Goal is accomplished

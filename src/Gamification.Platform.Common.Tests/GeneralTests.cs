@@ -1,220 +1,220 @@
-﻿using Gamification.Platform.Common.Extensions;
-using Lazlo.Common;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿//using Gamification.Platform.Common.Extensions;
+//using Lazlo.Common;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Newtonsoft.Json;
+//using System;
+//using System.Collections.Generic;
+//using System.IO;
 
-namespace Gamification.Platform.Common.Tests
-{
-    [TestClass]
-    public class GeneralTests
-    {
-        #region Lists
+//namespace Gamification.Platform.Common.Tests
+//{
+//    [TestClass]
+//    public class GeneralTests
+//    {
+//        #region Lists
 
-        [TestMethod]
-        public void GoalTriggerExceptionsSucceed()
-        {
-            // Arrange
-            var gTriggers = new GoalTriggers();
+//        [TestMethod]
+//        public void GoalTriggerExceptionsSucceed()
+//        {
+//            // Arrange
+//            var gTriggers = new GoalTriggers();
 
-            var goalRefId = Guid.NewGuid();
+//            var goalRefId = Guid.NewGuid();
 
-            gTriggers.Add(
-                new GoalTrigger()
-                {
-                    GoalRefId = goalRefId,
-                    Priority = 1,
-                    SimpleName = "Fuu"
-                }
-            );
+//            gTriggers.Add(
+//                new GoalTrigger()
+//                {
+//                    GoalRefId = goalRefId,
+//                    Priority = 1,
+//                    SimpleName = "Fuu"
+//                }
+//            );
 
-            // Act 
+//            // Act 
 
-            // Assert
+//            // Assert
 
-            // duplicate SimpleName
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                gTriggers.Add(
-                    new GoalTrigger()
-                    {
-                        GoalRefId = goalRefId,
-                        Priority = 2,
-                        SimpleName = "Fuu"
-                    }
-                );
-            }
-            );
+//            // duplicate SimpleName
+//            Assert.ThrowsException<ArgumentException>(() =>
+//            {
+//                gTriggers.Add(
+//                    new GoalTrigger()
+//                    {
+//                        GoalRefId = goalRefId,
+//                        Priority = 2,
+//                        SimpleName = "Fuu"
+//                    }
+//                );
+//            }
+//            );
 
-            // duplicate Priority
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                gTriggers.Add(
-                    new GoalTrigger()
-                    {
-                        GoalRefId = goalRefId,
-                        Priority = 1,
-                        SimpleName = "Fuu2"
-                    }
-                );
-            }
-            );
-        }
+//            // duplicate Priority
+//            Assert.ThrowsException<ArgumentException>(() =>
+//            {
+//                gTriggers.Add(
+//                    new GoalTrigger()
+//                    {
+//                        GoalRefId = goalRefId,
+//                        Priority = 1,
+//                        SimpleName = "Fuu2"
+//                    }
+//                );
+//            }
+//            );
+//        }
 
-        [TestMethod]
-        public void TriggerStepsExceptionsSucceed()
-        {
-            // Arrange
-            var entities = new TriggerSteps();
+//        [TestMethod]
+//        public void TriggerStepsExceptionsSucceed()
+//        {
+//            // Arrange
+//            var entities = new TriggerSteps();
 
-            var goalRefId = Guid.NewGuid();
+//            var goalRefId = Guid.NewGuid();
 
-            entities.Add(
-                new TriggerStep()
-                {
-                    ExecutionOrder = 1,
-                    SimpleName = "Fuu"
-                }
-            );
+//            entities.Add(
+//                new TriggerStep()
+//                {
+//                    ExecutionOrder = 1,
+//                    SimpleName = "Fuu"
+//                }
+//            );
 
-            // Act, Assert
+//            // Act, Assert
 
-            // duplicate SimpleName
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                entities.Add(
-                new TriggerStep()
-                {
-                    ExecutionOrder = 2,
-                    SimpleName = "Fuu"
-                }
-                );
-            }
-            );
+//            // duplicate SimpleName
+//            Assert.ThrowsException<ArgumentException>(() =>
+//            {
+//                entities.Add(
+//                new TriggerStep()
+//                {
+//                    ExecutionOrder = 2,
+//                    SimpleName = "Fuu"
+//                }
+//                );
+//            }
+//            );
 
-            // duplicate ExecutionOrder
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                entities.Add(
-                new TriggerStep()
-                {
-                    ExecutionOrder = 1,
-                    SimpleName = "Fuu2"
-                }
-                );
-            }
-            );
-        }
+//            // duplicate ExecutionOrder
+//            Assert.ThrowsException<ArgumentException>(() =>
+//            {
+//                entities.Add(
+//                new TriggerStep()
+//                {
+//                    ExecutionOrder = 1,
+//                    SimpleName = "Fuu2"
+//                }
+//                );
+//            }
+//            );
+//        }
 
-        #endregion Lists
+//        #endregion Lists
 
-        #region Tags
+//        #region Tags
 
-        [TestMethod]
-        public void GoalTriggerTagMatchingPlayerTagValidates()
-        {
-            var realmRefId = Guid.NewGuid();
+//        [TestMethod]
+//        public void GoalTriggerTagMatchingPlayerTagValidates()
+//        {
+//            var realmRefId = Guid.NewGuid();
 
-            var player = new Player()
-            {
-                RealmRefId = realmRefId,
-            };
+//            var player = new Player()
+//            {
+//                RealmRefId = realmRefId,
+//            };
 
-            player.Tags.Add("Fuu");
+//            player.Tags.Add("Fuu");
 
-            var goalTrigger = new GoalTrigger()
-            {
-                GoalRefId = Guid.NewGuid(),
-                SimpleName = "Fuu",
-                Priority = 0,
-                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-365),
-                ExpireOn = DateTimeOffset.MaxValue,
-            };
+//            var goalTrigger = new GoalTrigger()
+//            {
+//                GoalRefId = Guid.NewGuid(),
+//                SimpleName = "Fuu",
+//                Priority = 0,
+//                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-365),
+//                ExpireOn = DateTimeOffset.MaxValue,
+//            };
 
-            goalTrigger.Tags.Add("Fuu");
+//            goalTrigger.Tags.Add("Fuu");
 
-            Assert.IsTrue(goalTrigger.GoalTriggerTagsAreValid(player));
-        }
+//            Assert.IsTrue(goalTrigger.GoalTriggerTagsAreValid(player));
+//        }
 
-        [TestMethod]
-        public void GoalTriggerTagMatchingPlayerTagFails()
-        {
-            var realmRefId = Guid.NewGuid();
+//        [TestMethod]
+//        public void GoalTriggerTagMatchingPlayerTagFails()
+//        {
+//            var realmRefId = Guid.NewGuid();
 
-            var player = new Player()
-            {
-                RealmRefId = realmRefId,
-            };
+//            var player = new Player()
+//            {
+//                RealmRefId = realmRefId,
+//            };
 
-            player.Tags.Add("Fuu");
+//            player.Tags.Add("Fuu");
 
-            var goalTrigger = new GoalTrigger()
-            {
-                GoalRefId = Guid.NewGuid(),
-                SimpleName = "Fuu",
-                Priority = 0,
-                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-365),
-                ExpireOn = DateTimeOffset.MaxValue,
-            };
+//            var goalTrigger = new GoalTrigger()
+//            {
+//                GoalRefId = Guid.NewGuid(),
+//                SimpleName = "Fuu",
+//                Priority = 0,
+//                ReleaseOn = DateTimeOffset.UtcNow.AddDays(-365),
+//                ExpireOn = DateTimeOffset.MaxValue,
+//            };
 
-            goalTrigger.Tags.Add("Fuu2");
+//            goalTrigger.Tags.Add("Fuu2");
 
-            Assert.IsFalse(goalTrigger.GoalTriggerTagsAreValid(player));
-        }
+//            Assert.IsFalse(goalTrigger.GoalTriggerTagsAreValid(player));
+//        }
 
-        #endregion Tags
+//        #endregion Tags
 
-        #region Serialization
+//        #region Serialization
 
-        [TestMethod]
-        [DeploymentItem(@"GeorgiaGeoJsonData.json")]
-        public void GoalTriggerSerializeDeserializeSucceed()
-        {
-            // Arrange
-            var realmRefId = Guid.NewGuid();
+//        [TestMethod]
+//        [DeploymentItem(@"GeorgiaGeoJsonData.json")]
+//        public void GoalTriggerSerializeDeserializeSucceed()
+//        {
+//            // Arrange
+//            var realmRefId = Guid.NewGuid();
 
-            NetTopologySuite.Geometries.MultiPolygon insideOf = null;
+//            NetTopologySuite.Geometries.MultiPolygon insideOf = null;
 
-            var jsonSerializer = NetTopologySuite.IO.GeoJsonSerializer.Create();
+//            var jsonSerializer = NetTopologySuite.IO.GeoJsonSerializer.Create();
 
-            using (StreamReader file = File.OpenText(@"GeorgiaGeoJsonData.json"))
-            using (JsonTextReader reader = new JsonTextReader(file))
-            {
-                insideOf = jsonSerializer.Deserialize<NetTopologySuite.Geometries.MultiPolygon>(reader);
-            }
+//            using (StreamReader file = File.OpenText(@"GeorgiaGeoJsonData.json"))
+//            using (JsonTextReader reader = new JsonTextReader(file))
+//            {
+//                insideOf = jsonSerializer.Deserialize<NetTopologySuite.Geometries.MultiPolygon>(reader);
+//            }
 
-            var actions = new Actions()
-            {
-                new Common.Action()
-                    {
-                        RealmRefId = realmRefId,
-                        ReleasedOn = DateTimeOffset.UtcNow.AddSeconds(-60),
-                        ActionId = Guid.NewGuid().ToString("N"),
-                    }
-            };
+//            var actions = new Actions()
+//            {
+//                new Common.Action()
+//                    {
+//                        RealmRefId = realmRefId,
+//                        ReleasedOn = DateTimeOffset.UtcNow.AddSeconds(-60),
+//                        ActionId = Guid.NewGuid().ToString("N"),
+//                    }
+//            };
 
-            var coins = new Coins().LoadTestData(realmRefId);
+//            var coins = new Coins().LoadTestData(realmRefId);
 
-            var awards = new Awards().LoadTestData(coins);
+//            var awards = new Awards().LoadTestData(coins);
 
-            var goal = new Goal().LoadTestData(realmRefId, awards);
+//            var goal = new Goal().LoadTestData(realmRefId, awards);
 
-            var goalTriggers = new GoalTriggers().LoadTestData(realmRefId, goal, actions, insideOf, null, null);
+//            var goalTriggers = new GoalTriggers().LoadTestData(realmRefId, goal, actions, insideOf, null, null);
 
-            foreach (var goalTrigger in goalTriggers)
-            {
-                // Act 
-                var json = JsonConvert.SerializeObject(goalTriggers);
+//            foreach (var goalTrigger in goalTriggers)
+//            {
+//                // Act 
+//                var json = JsonConvert.SerializeObject(goalTriggers);
 
-                var t2 = JsonConvert.DeserializeObject<GoalTriggers>(json, new NetTopologySuite.IO.Converters.GeometryConverter());
+//                var t2 = JsonConvert.DeserializeObject<GoalTriggers>(json, new NetTopologySuite.IO.Converters.GeometryConverter());
 
-                // Assert
+//                // Assert
 
-            }
-        }
+//            }
+//        }
 
-        #endregion Serialization
-    }
-}
+//        #endregion Serialization
+//    }
+//}

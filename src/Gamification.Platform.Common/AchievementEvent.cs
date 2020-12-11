@@ -5,9 +5,9 @@ using System;
 namespace Gamification.Platform.Common
 {
     /// <summary>
-    /// The persisted Goal transaction
+    /// The Achievement instance transaction
     /// </summary>
-    public class AchievementEvent : OccurrenceBase
+    public class AchievementEvent : AchievementEventCore
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "id")]

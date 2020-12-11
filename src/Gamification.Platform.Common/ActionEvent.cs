@@ -6,14 +6,18 @@ using Gamification.Platform.Common.Core;
 namespace Gamification.Platform.Common
 {
     /// <summary>
-    /// The persisted Action transaction
+    /// The Action instance transaction
     /// </summary>
     public class ActionEvent : ActionEventCore
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "id")]
         public Guid EntityRefId { get; set; }
-        
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "actionRefId")]
+        public Guid ActionRefId { get; set; }
+
         [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
         public Guid PlayerRefId { get; set; }
