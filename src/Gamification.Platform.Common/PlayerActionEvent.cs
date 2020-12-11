@@ -10,6 +10,10 @@ namespace Gamification.Platform.Common
     /// </summary>
     public class PlayerActionEvent : ActionEventCore
     {
+        [JsonRequired]
+        [JsonProperty(PropertyName = "actionRefId")]
+        public Guid ActionRefId { get; set; }
+
         /// <summary>
         /// An Action can be "used" by a trigger thus eliminating further trigger evaluation consideration 
         /// Nullable as the calculation is Async to persistance
