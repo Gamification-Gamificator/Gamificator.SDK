@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Gamification.Platform.Common.Core;
+using Newtonsoft.Json;
 using System;
 
 namespace Gamification.Platform.Common
 {
-    public class CoinMultiplierRule
+    public class CoinMultiplierRule : CoinMultiplierRuleCore
     {
         [JsonProperty(PropertyName = "coinRefId")]
         public Guid CoinRefId { get; set; }
-
-        [JsonProperty(PropertyName = "multiplier")]
-        public decimal Multiplier { get; set; }
     }
 }
