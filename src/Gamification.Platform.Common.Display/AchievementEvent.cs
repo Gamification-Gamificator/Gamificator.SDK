@@ -10,6 +10,10 @@ namespace Gamification.Platform.Common.Display
     public class AchievementEventDisplay : OccurrenceBase
     {
         [JsonRequired]
+        [JsonProperty(PropertyName = "id")]
+        public Guid EntityRefId { get; set; }
+
+        [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
         public Guid PlayerRefId { get; set; }
 

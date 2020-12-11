@@ -7,7 +7,7 @@ namespace Gamification.Platform.Common.Display
     /// <summary>
     /// The persisted Goal transaction
     /// </summary>
-    public class GoalEvent : OccurrenceBase
+    public class GoalEventDisplay : OccurrenceBase
     {
         [JsonRequired]
         [JsonProperty(PropertyName = "id")]
