@@ -3,13 +3,17 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Gamification.Platform.Common
+namespace Gamification.Platform.Common.Display
 {
     /// <summary>
     /// The persisted Action transaction
     /// </summary>
     public class ActionEventDisplay : ActionEventCore
     {
+        [JsonRequired]
+        [JsonProperty(PropertyName = "id")]
+        public Guid EntityRefId { get; set; }
+
         [JsonRequired]
         [JsonProperty(PropertyName = "playerRefId")]
         public Guid PlayerRefId { get; set; }
