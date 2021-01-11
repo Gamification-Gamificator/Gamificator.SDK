@@ -13,9 +13,9 @@ trigger:
     include:
     - development
     - release
-  paths:
-    include:
-    - src/Gamification.Platform.Common/*
+#  paths:
+#    include:
+#    - src/Gamification.Platform.Common/*
 
 resources:
   repositories:
