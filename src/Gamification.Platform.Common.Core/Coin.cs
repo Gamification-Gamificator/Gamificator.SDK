@@ -17,6 +17,12 @@ namespace Gamification.Platform.Common.Core
         public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
 
         /// <summary>
+        /// Coin image
+        /// </summary>
+        [JsonProperty(PropertyName = "mediaTranslations")]
+        public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
+
+        /// <summary>
         /// Default Ephemeral Award experation for THIS Coin
         /// </summary>
         [JsonProperty(PropertyName = "expireIn")]
