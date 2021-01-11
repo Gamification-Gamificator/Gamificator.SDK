@@ -6,7 +6,7 @@ using Gamification.Platform.Common.Display;
 
 namespace Gamification.Platform.Common.Responses
 {
-    public sealed class PlayerStatisticsResponse : PlayerAwardDisplay
+    public sealed class PlayerStatisticsResponse : PlayerAwardDisplays
     {
     }
 }
