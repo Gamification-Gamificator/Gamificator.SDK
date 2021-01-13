@@ -10,6 +10,9 @@ namespace Gamification.Platform.Common
     /// </summary>
     public class PlayerAward : PlayerAwardCore
     {
+        [JsonProperty(PropertyName = "entityRefId")]
+        public Guid EntityRefId { get; set; } = Guid.NewGuid();
+
         [JsonProperty(PropertyName = "actionRefId")]
         public Guid? ActionRefId { get; set; }
 
