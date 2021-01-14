@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Gamification.Platform.Common.Responses;
 
 namespace Gamification.SDK.CSharp
 {
@@ -10,5 +11,6 @@ namespace Gamification.SDK.CSharp
         Task<bool> ActionCompletedV1Async(Guid correlationRefId, string gamificatorApiKey, ActionRequest actionRequest, double latitude, double longitude, CancellationToken cancellationToken = default);
         Task<PlayerWebPushSubscription> WebPushSubscriptionRetrieve(Guid correlationRefId, Guid playerRefId, double latitude, double longitude, CancellationToken cancellationToken = default);
         Task<bool> WebPushSubscriptionStore(Guid correlationRefId, PlayerWebPushSubscription playerWebPushSubscription, double latitude, double longitude, CancellationToken cancellationToken = default);
+        Task<PlayerStatisticsResponse> GetPlayerStatisticsV1Async(Guid correlationRefId, Guid playerRefId, double latitude, double longitude, CancellationToken cancellationToken = default);
     }
 }

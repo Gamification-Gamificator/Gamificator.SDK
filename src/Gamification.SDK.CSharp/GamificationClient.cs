@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Gamification.Platform.Common.Responses;
+using Newtonsoft.Json;
 
 namespace Gamification.SDK.CSharp
 {
@@ -73,6 +75,32 @@ namespace Gamification.SDK.CSharp
             }
 
             return false;
+        }
+
+        public async Task<PlayerStatisticsResponse> GetPlayerStatisticsV1Async(
+            Guid correlationRefId,
+            Guid playerRefId,
+            double latitude,
+            double longitude,
+            CancellationToken cancellationToken = default)
+        {
+            string pathAndQuery = string.Format("api/v1/player/{0}/statistics", playerRefId);
+
+            HttpResponseMessage response = await SendAsJsonAsync(
+                HttpMethod.Get,
+                pathAndQuery,
+                correlationRefId,
+                null,
+                null, // apiKey is injected
+                cancellationToken).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var stringifyResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<PlayerStatisticsResponse>(stringifyResponse);                
+            }
+
+            return null;
         }
     }
 }

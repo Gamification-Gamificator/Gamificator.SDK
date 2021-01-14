@@ -68,5 +68,23 @@ namespace Gamification.SDK.Test
             }
         }
 
+        [TestMethod]
+        public async Task GetPlayerStatisticsTest()
+        {
+            try
+            {
+                var serviceProvider = services.BuildServiceProvider();
+
+                gamificationFunctionClient = serviceProvider.GetService<GamificationClient>();
+                var response = await gamificationFunctionClient.GetPlayerStatisticsV1Async(Guid.NewGuid(), Guid.Parse("b0410176-edff-47c5-80f5-9e96259702e1"), 33.753746,
+                    -84.386330);
+
+                Assert.IsNotNull(response);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
