@@ -90,12 +90,16 @@ namespace Gamification.SDK.CSharp
         {
             string pathAndQuery = string.Format("api/v1/player/{0}/statistics", playerRefId);
 
+            Dictionary<string, string> requestHeaders = new Dictionary<string, string>();
+
+            requestHeaders["gamificator-apikey"] = playerRefId.ToString();
+
             HttpResponseMessage response = await SendAsJsonAsync(
                 HttpMethod.Get,
                 pathAndQuery,
                 correlationRefId,
                 null,
-                null, // apiKey is injected
+                requestHeaders,
                 cancellationToken).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
