@@ -33,15 +33,16 @@ namespace Gamification.SDK.CSharp
             {
                 foreach (string key in requestHeaders.Keys)
                 {
-                    httpreq.Headers.Add(key, requestHeaders[key]);
+                    //httpreq.Headers.Add(key, requestHeaders[key]);
                     // overwriting the apikey if sent on demand
                     if (key.Equals("gamificator-apikey"))
                     {
                         if (_httpClient.DefaultRequestHeaders.Contains("gamificator-apikey"))
                         {
                             _httpClient.DefaultRequestHeaders.Remove("gamificator-apikey");
-                            _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", requestHeaders[key]);
                         }
+
+                        _httpClient.DefaultRequestHeaders.Add("gamificator-apikey", requestHeaders[key]);
                     }
                 }
             }
