@@ -105,7 +105,7 @@ namespace Gamification.SDK.CSharp
             if (response.IsSuccessStatusCode)
             {
                 var stringifyResponse = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<PlayerStatisticsResponse>(stringifyResponse);                
+                return JsonConvert.DeserializeObject<PlayerStatisticsResponse>(stringifyResponse);
             }
 
             return null;
