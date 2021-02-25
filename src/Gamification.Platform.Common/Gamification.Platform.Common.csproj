@@ -10,7 +10,10 @@
    
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common.Core" Version="*-*" />
-    <PackageReference Include="Gamification.Platform.Common.Display" Version="*-*" />
+  </ItemGroup>  
+   
+  <ItemGroup>
+    <Folder Include="Responses\" />
   </ItemGroup>
 
 </Project>

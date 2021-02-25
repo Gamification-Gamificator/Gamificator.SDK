@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Gamification.Platform.Common.Display;
 
-namespace Gamification.Platform.Common.Responses
+namespace Gamification.Platform.Common.Display
 {
     public sealed class PlayerStatisticsResponse : PlayerAwardDisplays
     {
