@@ -1,6 +1,7 @@
 ﻿using Gamification.Platform.Common.Core;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Gamification.Platform.Common
 {
@@ -36,5 +37,10 @@ namespace Gamification.Platform.Common
 
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
         public CoinMultiplierRule CurrencyMultiplierRule { get; set; }
+    }
+
+    public class AchievementEvents : List<AchievementEvent>
+    {
+
     }
 }

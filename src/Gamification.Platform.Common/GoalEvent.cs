@@ -1,6 +1,7 @@
 ﻿using Gamification.Platform.Common.Core;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Gamification.Platform.Common
 {
@@ -34,5 +35,10 @@ namespace Gamification.Platform.Common
         [JsonRequired]
         [JsonProperty(PropertyName = "accomplishedOn")]
         public DateTimeOffset AccomplishedOn { get; set; }
+    }
+
+    public class GoalEvents : List<GoalEvent>
+    {
+
     }
 }
