@@ -35,6 +35,13 @@ namespace Gamification.Platform.Common
         /// </summary>
         [JsonProperty(PropertyName = "triggerStepRefId")]
         public Guid? TriggerStepRefId { get; set; }
+
+
+        [JsonProperty(PropertyName = "createdOn")]
+        public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
+
+        [JsonProperty(PropertyName = "deletedOn")]
+        public DateTimeOffset? DeletedOn { get; set; }
     }
 
 

@@ -29,14 +29,14 @@ namespace Gamification.Platform.Common
         [JsonProperty(PropertyName = "achievementRefId")]
         public Guid AchievementRefId { get; set; }
 
-        [JsonProperty(PropertyName = "path")]
-        public string Path { get; set; }
-
-        [JsonProperty(PropertyName = "pathPriority")]
-        public int PathPriority { get; set; }
-
         [JsonProperty(PropertyName = "currencyMultiplierRule")]
         public CoinMultiplierRule CurrencyMultiplierRule { get; set; }
+
+        [JsonProperty(PropertyName = "createdOn")]
+        public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
+
+        [JsonProperty(PropertyName = "deletedOn")]
+        public DateTimeOffset? DeletedOn { get; set; }
     }
 
     public class AchievementEvents : List<AchievementEvent>

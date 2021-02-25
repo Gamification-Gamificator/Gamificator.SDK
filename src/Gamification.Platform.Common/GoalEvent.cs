@@ -29,12 +29,11 @@ namespace Gamification.Platform.Common
         [JsonProperty(PropertyName = "goalRefId")]
         public Guid GoalRefId { get; set; }
 
-        /// <summary>
-        /// A Goal is accomplished
-        /// </summary>
-        [JsonRequired]
-        [JsonProperty(PropertyName = "accomplishedOn")]
-        public DateTimeOffset AccomplishedOn { get; set; }
+        [JsonProperty(PropertyName = "createdOn")]
+        public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.UtcNow;
+
+        [JsonProperty(PropertyName = "deletedOn")]
+        public DateTimeOffset? DeletedOn { get; set; }
     }
 
     public class GoalEvents : List<GoalEvent>
