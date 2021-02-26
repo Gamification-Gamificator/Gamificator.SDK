@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ThreeTwoSix.Core;
 
 namespace Gamification.Platform.Common.Core
 {
@@ -12,13 +13,13 @@ namespace Gamification.Platform.Common.Core
         public string SimpleName { get; set; }
 
         [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore NameTranslations { get; set; } = new StringTranslationsCore();
 
         /// <summary>
         /// Goal image
         /// </summary>
         [JsonProperty(PropertyName = "mediaTranslations")]
-        public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
+        public MediaTranslationsCore MediaTranslations { get; set; } = new MediaTranslationsCore();
 
         [JsonProperty(PropertyName = "releaseOn")]
         public DateTimeOffset ReleaseOn { get; set; } = DateTimeOffset.MinValue;

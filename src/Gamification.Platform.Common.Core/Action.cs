@@ -3,6 +3,7 @@ using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using ThreeTwoSix.Core;
 
 namespace Gamification.Platform.Common.Core
 {
@@ -24,7 +25,7 @@ namespace Gamification.Platform.Common.Core
         /// Annonce vue OR Angezeigte Anzeige
         /// </summary>
         [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore NameTranslations { get; set; } = new StringTranslationsCore();
 
         [JsonProperty(PropertyName = "releaseOn")]
         public DateTimeOffset ReleaseOn { get; set; } = DateTimeOffset.MaxValue;

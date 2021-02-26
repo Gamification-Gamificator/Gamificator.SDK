@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using ThreeTwoSix.Core;
 
 namespace Gamification.Platform.Common.Core
 {
@@ -9,15 +10,15 @@ namespace Gamification.Platform.Common.Core
         public string SimpleName { get; set; }
 
         [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore NameTranslations { get; set; } = new StringTranslationsCore();
 
         [JsonProperty(PropertyName = "iconTranslations")]
-        public List<MediaTranslation> IconTranslations { get; set; } = new List<MediaTranslation>();
+        public MediaTranslationsCore IconTranslations { get; set; } = new MediaTranslationsCore();
 
         [JsonProperty(PropertyName = "headerTranslations")]
-        public List<StringTranslation> HeaderTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore HeaderTranslations { get; set; } = new StringTranslationsCore();
 
         [JsonProperty(PropertyName = "bodyTranslations")]
-        public List<StringTranslation> BodyTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore BodyTranslations { get; set; } = new StringTranslationsCore();
     }
 }

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using ThreeTwoSix.Core;
 
 namespace Gamification.Platform.Common.Core
 {
@@ -30,25 +31,25 @@ namespace Gamification.Platform.Common.Core
         public Dictionary<string, string> OptionValues { get; set; }
 
         [JsonProperty(PropertyName = "validationErrorTranslations")]
-        public List<StringTranslation> ValidationErrorTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore ValidationErrorTranslations { get; set; } = new StringTranslationsCore();
 
         /// <summary>
         /// Étoile d’or ! OR Gold Stern!
         /// </summary>
         [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore NameTranslations { get; set; } = new StringTranslationsCore();
 
         /// <summary>
         /// Étoile d’or ! OR Gold Stern!
         /// </summary>
         [JsonProperty(PropertyName = "descriptionTranslations")]
-        public List<StringTranslation> DescriptionTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore DescriptionTranslations { get; set; } = new StringTranslationsCore();
 
         /// <summary>
         /// Trophy image or video etc
         /// </summary>
         [JsonProperty(PropertyName = "mediaTranslations")]
-        public List<MediaTranslation> MediaTranslations { get; set; } = new List<MediaTranslation>();
+        public MediaTranslationsCore MediaTranslations { get; set; } = new MediaTranslationsCore();
 
         [JsonProperty(PropertyName = "releaseOn")]
         public DateTimeOffset ReleaseOn { get; set; } = DateTimeOffset.MinValue;

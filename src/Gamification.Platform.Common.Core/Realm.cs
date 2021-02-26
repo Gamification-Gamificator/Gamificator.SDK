@@ -1,8 +1,9 @@
 ﻿using Gamification.Platform.Common.Core;
-using Lazlo.Common;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using ThreeTwoSix.Core;
 
 namespace Gamification.Platform.Common.Core
 {
@@ -18,13 +19,13 @@ namespace Gamification.Platform.Common.Core
         /// Étoile d’or ! OR Gold Stern!
         /// </summary>
         [JsonProperty(PropertyName = "nameTranslations")]
-        public List<StringTranslation> NameTranslations { get; set; } = new List<StringTranslation>();
+        public StringTranslationsCore NameTranslations { get; set; } = new StringTranslationsCore();
 
         /// <summary>
         /// Logo
         /// </summary>
         [JsonProperty(PropertyName = "logoTranslations")]
-        public List<MediaTranslation> LogoTranslations { get; set; } = new List<MediaTranslation>();
+        public MediaTranslationsCore LogoTranslations { get; set; } = new MediaTranslationsCore();
 
         /// <summary>
         /// When changed causes an administrative creation of an Event Grid subscription with EventType = EntityRefId.ToString()
@@ -32,7 +33,7 @@ namespace Gamification.Platform.Common.Core
         [JsonProperty(PropertyName = "webhookUri")]
         public Uri WebhookUri { get; set; }
 
-        [JsonProperty(PropertyName = "ownerContact")]
-        public ContactCore<EndpointEmail, EndpointVoice, EndpointText> OwnerContact { get; set; }
+        //[JsonProperty(PropertyName = "ownerContact")]
+        //public ContactCore<EndpointEmail, EndpointVoice, EndpointText> OwnerContact { get; set; }
     }
 }
