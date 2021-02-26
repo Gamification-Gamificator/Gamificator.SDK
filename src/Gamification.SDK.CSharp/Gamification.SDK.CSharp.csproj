@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Gamification.Platform.Common" Version="*-*" />
+    <PackageReference Include="Gamification.Platform.Common.Display" Version="2.0.57-preview" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
   </ItemGroup>

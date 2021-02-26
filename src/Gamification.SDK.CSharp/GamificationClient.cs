@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Gamification.Platform.Common.Responses;
 using Newtonsoft.Json;
+using Gamification.Platform.Common.Display;
 
 namespace Gamification.SDK.CSharp
 {

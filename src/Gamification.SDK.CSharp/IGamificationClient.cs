@@ -1,6 +1,6 @@
 ﻿using Gamification.Platform.Common;
+using Gamification.Platform.Common.Display;
 using Gamification.Platform.Common.Requests;
-using Gamification.Platform.Common.Responses;
 using Lazlo.Common.Requests;
 using System;
 using System.Collections.Generic;
