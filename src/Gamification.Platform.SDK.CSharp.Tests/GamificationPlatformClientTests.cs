@@ -44,12 +44,12 @@ namespace Gamification.Platform.SDK.Test
 
                 RealmRegisterRequest realmRegisterRequest = new RealmRegisterRequest()
                 {
-                    SimpleName = "reggie test",
+                    SimpleName = "Test Realm",
                     WebhookUri = new Uri("https://noplace.com"),
                     OwnerContact = new Lazlo.Common.ContactCore<Lazlo.Common.EndpointEmail, Lazlo.Common.EndpointVoice, Lazlo.Common.EndpointText>()
                     {
-                        NameFirst = "reggie",
-                        NameLast = "white",
+                        NameFirst = "Test",
+                        NameLast = "Realm",
                         EndpointsEmail = new System.Collections.Generic.List<Lazlo.Common.EndpointEmail>()
                         {
                             new Lazlo.Common.EndpointEmail()
