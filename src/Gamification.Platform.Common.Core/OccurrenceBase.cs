@@ -2,6 +2,7 @@
 using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using System;
+using ThreeTwoSix.Core.JsonConverters;
 
 namespace Gamification.Platform.Common.Core
 {
