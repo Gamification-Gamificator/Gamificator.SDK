@@ -36,6 +36,12 @@ namespace Gamification.Platform.Common
         public PlayerCredentials Credentials { get; set; }
 
         /// <summary>
+        /// player external details
+        /// </summary>
+        [JsonProperty(PropertyName = "personalDetails")]
+        public PlayerPersonalDetails PersonalDetails { get; set; }
+
+        /// <summary>
         /// Betting skill
         /// </summary>
         [JsonProperty(PropertyName = "bettingSkill")]
@@ -45,13 +51,13 @@ namespace Gamification.Platform.Common
         /// Favorite sports
         /// </summary>
         [JsonProperty(PropertyName = "sports")]
-        public Sports Sports { get; set; }
+        public Sports Sports { get; set; } = new Sports();
 
         /// <summary>
         /// Sportbook members
         /// </summary>
         [JsonProperty(PropertyName = "sportbooksMembers")]
-        public SportbooksMembers SportbooksMembers { get; set; }
+        public SportbooksMembers SportbooksMembers { get; set; } = new SportbooksMembers();
     }
 
     public class Sport
@@ -66,7 +72,7 @@ namespace Gamification.Platform.Common
         /// Favorite teams
         /// </summary>
         [JsonProperty(PropertyName = "teams")]
-        public Teams Teams { get; set; }
+        public Teams Teams { get; set; } = new Teams();
     }
 
     public class Sports : List<Sport>
