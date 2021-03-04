@@ -83,6 +83,12 @@ namespace Gamification.Platform.Common
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "imgName")]
+        public string ImageName { get; set; }
+
+        [JsonProperty(PropertyName = "imgUrl")]
+        public string ImageUrl { get; set; }
     }
 
     public class Teams : List<Team>
