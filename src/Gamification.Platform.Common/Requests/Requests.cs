@@ -69,4 +69,9 @@ namespace Gamification.Platform.Common.Requests
     public sealed class ActionUpdateRequest : Gamification.Platform.Common.Action
     {
     }
+
+    public sealed class PlayerProfileRequest
+    {
+        public string Email { get; set; }
+    }
 }
