@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Gamification.Platform.Common.Requests;
 
 namespace Gamification.Platform.SDK.CSharp
 {
@@ -34,13 +35,13 @@ namespace Gamification.Platform.SDK.CSharp
             throw new Exception($"Get Player Profile by Id failed. {response.Error.Message}");
         }
 
-        public async Task<PlayerProfile> RetrievePlayerProfileByEmailAsync(Guid correlationRefId, string email, CancellationToken cancellationToken = default)
+        public async Task<PlayerProfile> RetrievePlayerProfileRequestAsync(Guid correlationRefId, PlayerProfileRequest playerProfileRequest, CancellationToken cancellationToken = default)
         {
             HttpResponseMessage httpResponse = await SendAsJsonAsync(
-                            method: HttpMethod.Get,
-                            pathAndQuery: $"api/v1/player/email/{email}",
+                            method: HttpMethod.Post,
+                            pathAndQuery: $"api/v1/player/profile",
                             correlationRefId: correlationRefId,
-                            request: null,
+                            request: playerProfileRequest,
                             requestHeaders: null,
                             cancellationToken).ConfigureAwait(false);
 
@@ -53,7 +54,7 @@ namespace Gamification.Platform.SDK.CSharp
                 return response.Data;
             }
 
-            throw new Exception($"Get Player Profile by email failed. {response.Error.Message}");
+            throw new Exception($"Get Player Profile failed. {response.Error.Message}");
         }
 
         public async Task<PlayerProfile> CreatePlayerProfileAsync(Guid correlationRefId, PlayerProfile playerProfile, CancellationToken cancellationToken = default)
