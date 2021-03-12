@@ -1,0 +1,56 @@
+name: "1.1.1"
+
+variables:
+  ${{ if startsWith(variables['Build.SourceBranchName'], 'release') }}:
+    buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
+    buildVersion: "$(ReleaseVersion).$(buildIncrement)"
+  ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
+    buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]
+    buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
+
+trigger:
+  branches:
+    include:
+    - development
+    - release
+  paths:
+   exclude:
+   - BuildPipelines/*
+
+resources:
+  repositories:
+  - repository: 'Infrastructure'
+    type: git
+    name: 'Operations/Infrastructure'
+    ref: 'refs/heads/development'
+
+jobs:
+- job: BuildNETCore
+  displayName: 'Build and Push .NET Core Assemblies'
+  pool:
+    VmImage: 'windows-2019'
+  
+  steps:
+
+  - powershell: |
+      Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
+    displayName: "Set Build Number"
+
+  - template: BuildPipelines\Templates\Steps-BuildAndPushNetCoreMultiProject.yml@Infrastructure
+    parameters:
+      ProjectFolder: '/'
+      Projects: |
+        **/Gamification.Platform.Common.Core.csproj
+        **/Gamification.Platform.Common.Display.csproj
+        **/Gamification.Platform.Common.Extensions.csproj
+        **/Gamification.Platform.Common.csproj
+        **/Gamification.SDK.CSharp.csproj
+        **/Gamification.Platform.SDK.CSharp.csproj
+      PackagesToPack: |
+        **/Gamification.Platform.Common.Core.csproj;
+        **/Gamification.Platform.Common.Display.csproj;
+        **/Gamification.Platform.Common.Extensions.csproj;
+        **/Gamification.Platform.Common.csproj;
+        **/Gamification.SDK.CSharp.csproj;
+        **/Gamification.Platform.SDK.CSharp.csproj;
+      IncludeReferencedProjects: true
