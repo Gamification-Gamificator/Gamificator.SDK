@@ -38,6 +38,8 @@ jobs:
 
   - template: BuildPipelines\Templates\Steps-BuildAndPushNetCoreMultiProject.yml@Infrastructure
     parameters:
+      ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
+        BuildConfiguration: 'Debug'
       ProjectFolder: '/'
       Projects: |
         **/Gamification.Platform.Common.Core.csproj
@@ -54,3 +56,4 @@ jobs:
         **/Gamification.SDK.CSharp.csproj;
         **/Gamification.Platform.SDK.CSharp.csproj;
       IncludeReferencedProjects: true
+      ExternalNuget: true
