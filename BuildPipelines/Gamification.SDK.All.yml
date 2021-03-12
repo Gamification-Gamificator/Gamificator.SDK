@@ -4,9 +4,11 @@ variables:
   ${{ if startsWith(variables['Build.SourceBranchName'], 'release') }}:
     buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
     buildVersion: "$(ReleaseVersion).$(buildIncrement)"
+    buildConfiguration: 'Release'
   ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
     buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]
     buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
+    buildConfiguration: 'Debug'
 
 trigger:
   branches:
