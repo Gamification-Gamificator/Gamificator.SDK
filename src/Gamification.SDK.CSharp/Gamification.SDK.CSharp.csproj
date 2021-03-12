@@ -3,18 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Michael C Pinkus</Authors>
-    <Product>Gamificator</Product>
-    <Company>Lazlo 326</Company>
+    <Product>Gamificator.SDK</Product>
+    <Company>Michael C. Pinkus</Company>
     <PackageProjectUrl>gamificator.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
+    <Copyright>Michael C. Pinkus 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gamification.Platform.Common" Version="2.0.98-preview" />
-    <PackageReference Include="Gamification.Platform.Common.Display" Version="2.0.57-preview" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Abstractions\Gamification.SDK.Abstractions.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Common\Gamification.SDK.Common.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.CSharp.Abstractions\Gamification.SDK.CSharp.Abstractions.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Display\Gamification.SDK.Display.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Requests\Gamification.SDK.Requests.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Responses\Gamification.SDK.Responses.csproj" />
   </ItemGroup>
 
 </Project>

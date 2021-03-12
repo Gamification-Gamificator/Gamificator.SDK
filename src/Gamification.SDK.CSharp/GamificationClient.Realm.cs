@@ -1,14 +1,9 @@
-﻿using Gamification.Platform.Common;
-using Gamification.Platform.Common.Core;
-using Gamification.Platform.Common.Requests;
-using Lazlo.Common;
-using Lazlo.Common.Requests;
-using Lazlo.Common.Responses;
+﻿using Gamification.SDK.Common;
+using Gamification.SDK.Requests;
+using Gamification.SDK.Responses;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +12,7 @@ namespace Gamification.SDK.CSharp
     public partial class GamificationClient
     {
         public async Task<Realm> RegisterRealmAsync(
-            SmartRequest<RealmRegisterRequest> request, 
+            SmartRequestV2<RealmRegisterRequest> request, 
             CancellationToken cancellationToken = default
             )
         {
@@ -31,14 +26,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<Realm>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<Realm>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Register Realm failed. {response.Error.Message}");
+            throw new Exception($"Register Realm failed. ");
         }
     }
 }

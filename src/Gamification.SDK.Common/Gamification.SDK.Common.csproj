@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>Gamificator SDK</Product>
+    <Company></Company>
+    <Authors>Michael C. Pinkus</Authors>
+    <Copyright>Michael C. Pinkus 2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Responses\**" />
+    <EmbeddedResource Remove="Responses\**" />
+    <None Remove="Responses\**" />
+  </ItemGroup>  
+   
+  <ItemGroup>
+    <PackageReference Include="ThreeTwoSix.Common" Version="3.1.28-preview" />
+  </ItemGroup>  
+   
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Abstractions\Gamification.SDK.Abstractions.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Core\Gamification.SDK.Core.csproj" />
+  </ItemGroup>
+
+</Project>

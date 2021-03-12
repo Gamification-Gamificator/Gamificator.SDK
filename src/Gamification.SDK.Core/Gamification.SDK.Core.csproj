@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Michael C. Pinkus</Authors>
+    <Company>Michael C. Pinkus</Company>
+    <Product>Gamificator.SDK</Product>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <Copyright>Michael C. Pinkus 2021</Copyright>
+  </PropertyGroup>
+    
+  
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="2.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ThreeTwoSix.Core" Version="3.1.28-preview" />
+  </ItemGroup>
+
+</Project>

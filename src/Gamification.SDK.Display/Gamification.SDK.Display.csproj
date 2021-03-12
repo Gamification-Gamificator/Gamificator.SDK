@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Michael C. Pinkus</Authors>
+    <Company>Michael C. Pinkus</Company>
+    <Product>Gamificator.SDK</Product>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <Copyright>Michael C. Pinkus 2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ThreeTwoSix.Display" Version="3.1.28-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Abstractions\Gamification.SDK.Abstractions.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Core\Gamification.SDK.Core.csproj" />
+  </ItemGroup>
+
+</Project>

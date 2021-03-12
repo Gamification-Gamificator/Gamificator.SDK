@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Abstractions\Gamification.SDK.Abstractions.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Common\Gamification.SDK.Common.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Display\Gamification.SDK.Display.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Requests\Gamification.SDK.Requests.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Responses\Gamification.SDK.Responses.csproj" />
+  </ItemGroup>
+
+</Project>

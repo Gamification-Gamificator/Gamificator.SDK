@@ -1,5 +1,4 @@
-﻿using Lazlo.Common;
-using Lazlo.Common.Responses;
+﻿using Gamification.SDK.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -77,16 +76,16 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<object>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<object>>(responseJson);
 
-            if (response == null || response.Error == null)
+            if (response == null ) // || response.Error == null)
             {
                 return $"Error Response Status Code: {((int)httpResponse.StatusCode)} {httpResponse.StatusCode}. {responseJson}";
             }
 
             else
             {
-                return $"Error Received From Gaming: {response.Error.Message}";
+                return $"Error Received From Gaming: ";
             }
         }
     }

@@ -1,14 +1,10 @@
-﻿using Gamification.Platform.Common;
-using Lazlo.Common.Requests;
-using Lazlo.Common.Responses;
+﻿using Gamification.SDK.Common;
+using Gamification.SDK.Requests;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Action = Gamification.Platform.Common.Action;
 
 namespace Gamification.SDK.CSharp
 {
@@ -45,11 +41,9 @@ namespace Gamification.SDK.CSharp
             double longitude,
             CancellationToken cancellationToken = default)
         {
-            SmartRequest<PlayerWebPushSubscription> req = new SmartRequest<PlayerWebPushSubscription>
+            SmartRequestV2<PlayerWebPushSubscription> req = new SmartRequestV2<PlayerWebPushSubscription>
             {
                 Data = playerWebPushSubscription,
-                Latitude = latitude,
-                Longitude = longitude,
                 Uuid = Guid.NewGuid().ToString()
             };
 

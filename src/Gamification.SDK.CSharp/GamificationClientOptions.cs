@@ -1,4 +1,6 @@
-﻿namespace Gamification.SDK.CSharp
+﻿using Gamification.SDK.CSharp.Abstractions;
+
+namespace Gamification.SDK.CSharp
 {
     public class GamificationClientOptions : IGamificationClientOptions
     {

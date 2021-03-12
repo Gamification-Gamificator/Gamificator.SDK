@@ -1,10 +1,9 @@
-﻿using Gamification.Platform.Common;
-using Lazlo.Common.Responses;
+﻿using Gamification.SDK.Common;
+using Gamification.SDK.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,14 +24,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<Contact>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<Contact>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Get Contact failed. {response.Error.Message}");
+            throw new Exception($"Get Contact failed. ");
         }
 
 
@@ -48,14 +47,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<List<Contact>>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<List<Contact>>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Get All Contact failed. {response.Error.Message}");
+            throw new Exception($"Get All Contact failed. ");
         }
 
         public async Task<Contact> CreateContactAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
@@ -70,14 +69,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<Contact>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<Contact>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Create Contact failed. {response.Error.Message}");
+            throw new Exception($"Create Contact failed. ");
         }
 
         public async Task UpdateContactAsync(Guid correlationRefId, Contact contact, CancellationToken cancellationToken = default)
@@ -92,14 +91,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<string>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<string>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return;
             }
 
-            throw new Exception($"Update Contact failed. {response.Error.Message}");
+            throw new Exception($"Update Contact failed. ");
         }
 
         public async Task DeleteContactAsync(Guid correlationRefId, Guid contactRefId, CancellationToken cancellationToken = default)
@@ -114,14 +113,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<string>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<string>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return;
             }
 
-            throw new Exception($"Delete Contact failed. {response.Error.Message}");
+            throw new Exception($"Delete Contact failed. ");
         }
 
         public async Task<Contact> RetrieveDeletedContactAsync(Guid correlationRefId, Guid contactRefId, CancellationToken cancellationToken = default)
@@ -136,14 +135,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<Contact>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<Contact>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Get Deleted Contact failed. {response.Error.Message}");
+            throw new Exception($"Get Deleted Contact failed. ");
         }
 
         public async Task<List<Contact>> RetrieveDeletedContactsAsync(Guid correlationRefId, CancellationToken cancellationToken = default)
@@ -158,14 +157,14 @@ namespace Gamification.SDK.CSharp
 
             string responseJson = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<SmartResponse<List<Contact>>>(responseJson);
+            var response = JsonConvert.DeserializeObject<SmartResponseV2<List<Contact>>>(responseJson);
 
             if (httpResponse.IsSuccessStatusCode)
             {
                 return response.Data;
             }
 
-            throw new Exception($"Get Deleted Contacts failed. {response.Error.Message}");
+            throw new Exception($"Get Deleted Contacts failed. ");
         }
 
     }
