@@ -40,6 +40,7 @@ jobs:
 
   - template: BuildPipelines\Templates\Steps-BuildAndPushNetCoreMultiProject.yml@Infrastructure
     parameters:
+      BuildConfiguration: $(buildConfiguration)
       Projects: |
         **/Gamification.Platform.Common.Core.csproj
         **/Gamification.Platform.Common.Display.csproj
