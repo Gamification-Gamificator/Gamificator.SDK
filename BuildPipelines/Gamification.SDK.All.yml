@@ -48,6 +48,7 @@ jobs:
         **/Gamification.Platform.Common.csproj
         **/Gamification.SDK.CSharp.csproj
         **/Gamification.Platform.SDK.CSharp.csproj
+        **/Ical.Net.csproj
       PackagesToPack: |
         **/Gamification.Platform.Common.Core.csproj;
         **/Gamification.Platform.Common.Display.csproj;
