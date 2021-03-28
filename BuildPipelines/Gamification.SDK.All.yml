@@ -50,6 +50,7 @@ jobs:
         **/Gamification.SDK.Display.csproj
         **/Gamification.SDK.Requests.csproj
         **/Gamification.SDK.Responses.csproj
+        **/Gamification.SDK.csproj
       PackagesToPack: |
         **/Gamification.SDK.Abstractions.csproj;
         **/Gamification.SDK.Common.csproj;
@@ -59,5 +60,6 @@ jobs:
         **/Gamification.SDK.Display.csproj;
         **/Gamification.SDK.Requests.csproj;
         **/Gamification.SDK.Responses.csproj;
+        **/Gamification.SDK.csproj;
       IncludeReferencedProjects: true
       ExternalNuget: true
