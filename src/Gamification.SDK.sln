@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.SDK.CSharp.Abs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.SDK", "Gamification.SDK\Gamification.SDK.csproj", "{89D193F5-913B-4532-B5F1-3C62187910BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamification.SDK.Mock.Data", "Gamification.SDK.Mock.Data\Gamification.SDK.Mock.Data.csproj", "{622E6E27-98BB-4F9C-9D3F-D3AE9DC015D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamification.SDK.Extensions.Tests", "Gamification.SDK.Extensions.Tests\Gamification.SDK.Extensions.Tests.csproj", "{9BEDFAA7-C13A-42A5-A514-7A45E4F01919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{89D193F5-913B-4532-B5F1-3C62187910BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89D193F5-913B-4532-B5F1-3C62187910BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89D193F5-913B-4532-B5F1-3C62187910BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{622E6E27-98BB-4F9C-9D3F-D3AE9DC015D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622E6E27-98BB-4F9C-9D3F-D3AE9DC015D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622E6E27-98BB-4F9C-9D3F-D3AE9DC015D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622E6E27-98BB-4F9C-9D3F-D3AE9DC015D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BEDFAA7-C13A-42A5-A514-7A45E4F01919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BEDFAA7-C13A-42A5-A514-7A45E4F01919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BEDFAA7-C13A-42A5-A514-7A45E4F01919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BEDFAA7-C13A-42A5-A514-7A45E4F01919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

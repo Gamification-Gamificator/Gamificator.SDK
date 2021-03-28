@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="NLipsum" Version="1.1.0" />
+    <PackageReference Include="ThreeTwoSix.Extensions.Mock.Data" Version="3.1.115-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Common\Gamification.SDK.Common.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Display\Gamification.SDK.Display.csproj" />
+  </ItemGroup>
+
+</Project>
