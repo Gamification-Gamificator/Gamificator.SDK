@@ -3,6 +3,7 @@ using Gamification.SDK.CSharp.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Net.Http;
+using Gamification.SDK.CSharp.Clients;
 
 namespace Gamification.SDK.CSharp.Clients
 {

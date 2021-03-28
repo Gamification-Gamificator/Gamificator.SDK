@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gamification.SDK.CSharp
+namespace Gamification.SDK.CSharp.Clients
 {
     public partial class GamificationClient
     {
