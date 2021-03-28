@@ -51,7 +51,9 @@ jobs:
         **/Gamification.SDK.Requests.csproj
         **/Gamification.SDK.Responses.csproj
         **/Gamification.SDK.csproj
+        **/Gamification.SDK.Mock.Data.csproj
       PackagesToPack: |
+        **/Gamification.SDK.Mock.Data.csproj;
         **/Gamification.SDK.Abstractions.csproj;
         **/Gamification.SDK.Common.csproj;
         **/Gamification.SDK.Core.csproj;
