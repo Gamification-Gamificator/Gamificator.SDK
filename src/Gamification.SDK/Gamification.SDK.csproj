@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Michael C. Pinkus</Authors>
+    <Copyright>Michael C. Pinkus 2020-2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.Common\Gamification.SDK.Common.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Core\Gamification.SDK.Core.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Requests\Gamification.SDK.Requests.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Responses\Gamification.SDK.Responses.csproj" />
+  </ItemGroup>
+
+</Project>

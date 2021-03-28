@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.SDK.Responses"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.SDK.CSharp.Abstractions", "Gamification.SDK.CSharp.Abstractions\Gamification.SDK.CSharp.Abstractions.csproj", "{B511A98D-EBC1-4002-B8CA-FB136C0E7F17}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification.SDK", "Gamification.SDK\Gamification.SDK.csproj", "{89D193F5-913B-4532-B5F1-3C62187910BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B511A98D-EBC1-4002-B8CA-FB136C0E7F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B511A98D-EBC1-4002-B8CA-FB136C0E7F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B511A98D-EBC1-4002-B8CA-FB136C0E7F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D193F5-913B-4532-B5F1-3C62187910BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D193F5-913B-4532-B5F1-3C62187910BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D193F5-913B-4532-B5F1-3C62187910BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D193F5-913B-4532-B5F1-3C62187910BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
