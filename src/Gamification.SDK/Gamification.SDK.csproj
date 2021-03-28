@@ -4,6 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Michael C. Pinkus</Authors>
     <Copyright>Michael C. Pinkus 2020-2021</Copyright>
+    <Product>Gamificator.SDK</Product>
+    <PackageId>Gamificator.SDK</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
