@@ -9,30 +9,11 @@ using Gamification.SDK.Responses;
 using Gamification.SDK.CSharp.Abstractions;
 using Gamification.SDK.Common;
 using Gamification.SDK.Requests;
+using Gamification.SDK.CSharp.Clients;
 
-namespace Gamification.SDK.CSharp
+namespace Gamification.SDK.CSharp.Clients
 {
-    //public static class GamificationExtensions
-    //{
-    //    public static IServiceCollection AddGamificationClient(
-    //        this IServiceCollection services, 
-    //        IOptions<GamificationClientOptions> gamificationClientOptions,
-    //        Uri baseAddress
-    //        )
-    //    {
-    //        services.AddHttpClient<GamificationClient>(c => c.BaseAddress = baseAddress);
-
-    //        services.AddOptions();
-
-    //        services.Configure<GamificationClientOptions>(o => o = gamificationClientOptions.Value);
-
-    //        services.AddTransient<IGamificationClient, GamificationClient>();
-
-    //        return services;
-    //    }
-    //}
-
-    public partial class GamificationClient : GamificationClientBase, IGamificationClient
+    public partial class GamificationClient : GamificationClientBase
     {
         public GamificationClient(HttpClient httpClient, IOptions<GamificationClientOptions> options)
         {
