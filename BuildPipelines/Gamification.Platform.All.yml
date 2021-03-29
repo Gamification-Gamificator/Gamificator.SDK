@@ -4,9 +4,11 @@ variables:
   ${{ if startsWith(variables['Build.SourceBranchName'], 'release') }}:
     buildIncrement: $[counter(variables['ReleaseVersion'], 0)]
     buildVersion: "$(ReleaseVersion).$(buildIncrement)"
+    buildConfiguration: 'Release'
   ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
     buildIncrement: $[counter(variables['DevelopmentVersion'], 0)]
     buildVersion: "$(DevelopmentVersion).$(buildIncrement)-preview"
+    buildConfiguration: 'Debug'
 
 trigger:
   branches:
@@ -14,8 +16,8 @@ trigger:
     - development
     - release
   paths:
-    include:
-    - src/Gamification.SDK.CSharp/*
+   exclude:
+   - BuildPipelines/*
 
 resources:
   repositories:
@@ -29,16 +31,27 @@ jobs:
   displayName: 'Build and Push .NET Core Assemblies'
   pool:
     VmImage: 'windows-2019'
-
+  
   steps:
 
   - powershell: |
       Write-Host "##vso[build.updatebuildnumber]$(buildVersion)"
     displayName: "Set Build Number"
 
-  - template: BuildPipelines\Templates\Steps-BuildAndPushNetCore.yml@Infrastructure
+  - template: BuildPipelines\Templates\Steps-BuildAndPushNetCoreMultiProject.yml@Infrastructure
     parameters:
-      ProjectFolder: 'src/Gamification.SDK.CSharp'
-      ${{ if not(startsWith(variables['Build.SourceBranchName'], 'release')) }}:
-        BuildConfiguration: 'Debug'
-        ExternalNuget: true
+      BuildConfiguration: $(buildConfiguration)
+      Projects: |
+        **/Gamification.Platform.Common.Core.csproj
+        **/Gamification.Platform.Common.Display.csproj
+        **/Gamification.Platform.Common.Extensions.csproj
+        **/Gamification.Platform.Common.csproj
+        **/Gamification.Platform.SDK.CSharp.csproj
+      PackagesToPack: |
+        **/Gamification.Platform.Common.Core.csproj;
+        **/Gamification.Platform.Common.Display.csproj;
+        **/Gamification.Platform.Common.Extensions.csproj;
+        **/Gamification.Platform.Common.csproj;
+        **/Gamification.Platform.SDK.CSharp.csproj;
+      IncludeReferencedProjects: true
+      ExternalNuget: true
