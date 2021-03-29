@@ -18,6 +18,8 @@ trigger:
   paths:
    exclude:
    - BuildPipelines/*
+   include:
+   - Gamification.SDK/*
 
 resources:
   repositories:
