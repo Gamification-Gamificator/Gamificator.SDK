@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Michael C. Pinkus</Authors>
+    <Product>Gamification.SDK</Product>
+    <Copyright>Michael C. Pinkus 2020-2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
