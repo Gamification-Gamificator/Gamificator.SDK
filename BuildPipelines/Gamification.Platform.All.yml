@@ -19,7 +19,7 @@ trigger:
    exclude:
    - BuildPipelines/*
    include:
-   - Gamification.SDK/*
+   - Gamification.Platform/*
 
 resources:
   repositories:
@@ -44,26 +44,16 @@ jobs:
     parameters:
       BuildConfiguration: $(buildConfiguration)
       Projects: |
-        **/Gamification.SDK.Abstractions.csproj
-        **/Gamification.SDK.Common.csproj
-        **/Gamification.SDK.Core.csproj
-        **/Gamification.SDK.CSharp.Abstractions.csproj
-        **/Gamification.SDK.CSharp.Clients.csproj
-        **/Gamification.SDK.Display.csproj
-        **/Gamification.SDK.Requests.csproj
-        **/Gamification.SDK.Responses.csproj
-        **/Gamification.SDK.csproj
-        **/Gamification.SDK.Mock.Data.csproj
+        **/Gamification.Platform.Common.Core.csproj
+        **/Gamification.Platform.Common.Display.csproj
+        **/Gamification.Platform.Common.Extensions.csproj
+        **/Gamification.Platform.Common.csproj
+        **/Gamification.Platform.SDK.CSharp.csproj
       PackagesToPack: |
-        **/Gamification.SDK.Mock.Data.csproj;
-        **/Gamification.SDK.Abstractions.csproj;
-        **/Gamification.SDK.Common.csproj;
-        **/Gamification.SDK.Core.csproj;
-        **/Gamification.SDK.CSharp.Abstractions.csproj;
-        **/Gamification.SDK.CSharp.Clients.csproj;
-        **/Gamification.SDK.Display.csproj;
-        **/Gamification.SDK.Requests.csproj;
-        **/Gamification.SDK.Responses.csproj;
-        **/Gamification.SDK.csproj;
+        **/Gamification.Platform.Common.Core.csproj;
+        **/Gamification.Platform.Common.Display.csproj;
+        **/Gamification.Platform.Common.Extensions.csproj;
+        **/Gamification.Platform.Common.csproj;
+        **/Gamification.Platform.SDK.CSharp.csproj;
       IncludeReferencedProjects: true
       ExternalNuget: true
