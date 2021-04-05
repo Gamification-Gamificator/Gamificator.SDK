@@ -1,5 +1,6 @@
 ﻿using Gamification.SDK.Display;
 using NLipsum.Core;
+using Gamification.SDK.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,23 @@ namespace Gamification.SDK.Mock.Data
 {
     public static class PlayerAwardExtensions
     {
+        public static PlayerAward ToMock(this PlayerAward pad, Uri uri)
+        {
+            string rawText = Lipsums.LoremIpsum;
+            LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
+
+            return new PlayerAward()
+            {
+                Description = $"{lipsum.GenerateWords(1)[0]}",
+                Value = 400,
+                ActionRefId = Guid.NewGuid(),
+                AchievementRefId = Guid.NewGuid(),
+                CoinRefId = Guid.NewGuid(),
+                GoalRefId = Guid.NewGuid(),
+                OccurredOn = DateTimeOffset.UtcNow
+            };
+        }
+
         public static PlayerAwardDisplay ToMock(this PlayerAwardDisplay pad, Uri uri)
         {
             string rawText = Lipsums.LoremIpsum;

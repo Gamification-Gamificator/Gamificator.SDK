@@ -1,6 +1,7 @@
 ﻿using Gamification.SDK.Display;
 using NLipsum.Core;
 using System;
+using Gamification.SDK.Common;
 using System.Collections.Generic;
 using System.Text;
 using ThreeTwoSix.Common;
@@ -10,8 +11,49 @@ using ThreeTwoSix.SDK.Extensions;
 
 namespace Gamification.SDK.Mock.Data
 {
-    public static class GoalDisplayExtensions
+    public static class GoalExtensions
     {
+        public static Goal ToMock(this Goal cb, Uri uri)
+        {
+            string rawText = Lipsums.LoremIpsum;
+            LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
+
+            return new Goal()
+            {
+                Awards = new List<AwardRule>()
+                {
+                    new AwardRule()
+                    {
+                        AwardRefId = Guid.NewGuid()
+                    }
+                },
+
+                SimpleName = $"{lipsum.GenerateWords(1)[0]}",
+                NameTranslations = new StringTranslationsCore().Map(new StringTranslations().ToMock()),
+                MediaTranslations = new MediaTranslationsCore().Map(new MediaTranslations().ToMock(uri))
+            };
+        }
+
+        public static Goals ToMock(this Goals goals, Uri uri, int count = 1)
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            string rawText = Lipsums.LoremIpsum;
+            LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
+
+            for (int i = 0; i < count; i++)
+            {
+                var last = $"{lipsum.GenerateWords(1)[0]}";
+                var first = $"{lipsum.GenerateWords(1)[0]}";
+                var profile = $"{first}.{last}.{Guid.NewGuid().ToString().Substring(4)}".ToLower();
+
+                goals.Add(
+                    new Goal().ToMock(uri)
+                );
+            }
+
+            return goals;
+        }
+
         public static GoalDisplay ToMock(this GoalDisplay cb, Uri uri)
         {
             string rawText = Lipsums.LoremIpsum;

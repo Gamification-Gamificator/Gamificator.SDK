@@ -1,4 +1,5 @@
-﻿using Gamification.SDK.Display;
+﻿using Gamification.SDK.Common;
+using Gamification.SDK.Display;
 using NLipsum.Core;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,21 @@ using ThreeTwoSix.SDK.Extensions;
 
 namespace Gamification.SDK.Mock.Data
 {
-    public static class CoinBalanceExtensions
+    public static class CoinExtensions
     {
+        public static Coin ToMock(this Coin ad, Uri uri)
+        {
+            string rawText = Lipsums.LoremIpsum;
+            LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
+
+            return new Coin()
+            {
+                SimpleName = $"{lipsum.GenerateWords(1)[0]}",
+                NameTranslations = new StringTranslationsCore().Map(new StringTranslations().ToMock()),
+                MediaTranslations = new MediaTranslationsCore().Map(new MediaTranslations().ToMock(uri)),
+            };
+        }
+
         public static IEnumerable<CoinBalanceDisplay> ToMock(this CoinBalancesDisplay coinBalanceDisplay, Uri uri, int count = 1)
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());

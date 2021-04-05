@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>Gamificator</Product>
+    <Authors>Michael C. Pinkus</Authors>
+    <Company>Lazlo 326Michael C. Pinkus</Company>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gamification-Gamificator/Gamificator.SDK</RepositoryUrl>
+    <Copyright>Copyright 2020 Lazlo 326, Llc</Copyright>
+  </PropertyGroup>
+  
+  
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gamification.SDK.AutoMapping.Profiles\Gamification.SDK.AutoMapping.Profiles.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Common\Gamification.SDK.Common.csproj" />
+    <ProjectReference Include="..\Gamification.SDK.Display\Gamification.SDK.Display.csproj" />
+    <ProjectReference Include="..\Ical.Net\Ical.Net.csproj" />
+  </ItemGroup>
+
+</Project>
