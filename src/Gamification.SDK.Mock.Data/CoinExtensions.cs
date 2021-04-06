@@ -26,12 +26,11 @@ namespace Gamification.SDK.Mock.Data
             };
         }
 
-        public static IEnumerable<CoinBalanceDisplay> ToMock(this CoinBalancesDisplay coinBalanceDisplay, Uri uri, int count = 1)
+        public static CoinBalancesDisplay ToMock(this CoinBalancesDisplay coinBalancesDisplay, Uri uri, int count = 1)
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             string rawText = Lipsums.LoremIpsum;
             LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
-            var cCount = rnd.Next(6);
 
             for (int i = 0; i < count; i++)
             {
@@ -39,12 +38,12 @@ namespace Gamification.SDK.Mock.Data
                 var first = $"{lipsum.GenerateWords(1)[0]}";
                 var profile = $"{first}.{last}.{Guid.NewGuid().ToString().Substring(4)}".ToLower();
 
-                coinBalanceDisplay.Add(
+                coinBalancesDisplay.Add(
                     new CoinBalanceDisplay().ToMock(uri)
                     );
             }
 
-            return coinBalanceDisplay;
+            return coinBalancesDisplay;
         }
 
         public static CoinBalanceDisplay ToMock(this CoinBalanceDisplay cb, Uri uri)

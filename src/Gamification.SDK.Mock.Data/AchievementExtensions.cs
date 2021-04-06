@@ -42,5 +42,25 @@ namespace Gamification.SDK.Mock.Data
                 Goals = new GoalDisplays().ToMock(uri)                
             };
         }
+
+        public static AchievementDisplays ToMock(this AchievementDisplays achievementDisplays, Uri uri, int count = 1)
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            string rawText = Lipsums.LoremIpsum;
+            LipsumGenerator lipsum = new LipsumGenerator(rawText, false);
+
+            for (int i = 0; i < count; i++)
+            {
+                var last = $"{lipsum.GenerateWords(1)[0]}";
+                var first = $"{lipsum.GenerateWords(1)[0]}";
+                var profile = $"{first}.{last}.{Guid.NewGuid().ToString().Substring(4)}".ToLower();
+
+                achievementDisplays.Add(
+                    new AchievementDisplay().ToMock(uri)
+                    );
+            }
+
+            return achievementDisplays;
+        }
     }
 }
